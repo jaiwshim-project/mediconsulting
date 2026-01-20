@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>무료상담 | 첨단재생의료 인허가 컨설팅</title>
+    <meta name="description" content="첨단재생의료 실시기관 인허가 무료 상담을 신청하세요. 전문가가 친절하게 안내해 드립니다.">
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 헤더 -->
+    <header class="header" id="header">
+        <div class="header-container">
+            <a href="../index.html" class="logo">
+                <span class="logo-icon">🧬</span>
+                <span class="logo-text">RegenMed<span class="logo-highlight">Consulting</span></span>
+            </a>
+            <nav class="nav">
+                <a href="why-us.html" class="nav-link">왜 우리인가</a>
+                <a href="services.html" class="nav-link">서비스</a>
+                <a href="process.html" class="nav-link">프로세스</a>
+                <a href="expertise.html" class="nav-link">전문분야</a>
+                <a href="requirements.html" class="nav-link">시설요건</a>
+                <a href="contact.html" class="nav-link nav-cta active">무료상담</a>
+            </nav>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- 모바일 메뉴 -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="why-us.html" class="mobile-nav-link">왜 우리인가</a>
+        <a href="services.html" class="mobile-nav-link">서비스</a>
+        <a href="process.html" class="mobile-nav-link">프로세스</a>
+        <a href="expertise.html" class="mobile-nav-link">전문분야</a>
+        <a href="requirements.html" class="mobile-nav-link">시설요건</a>
+        <a href="contact.html" class="mobile-nav-link">무료상담 신청</a>
+    </div>
+
+    <!-- 페이지 히어로 -->
+    <section class="page-hero">
+        <div class="hero-bg">
+            <div class="hero-gradient"></div>
+            <div class="hero-pattern"></div>
+        </div>
+        <div class="page-hero-content">
+            <span class="section-badge">06. Contact</span>
+            <h1 class="page-hero-title">무료 상담 신청</h1>
+            <p class="page-hero-desc">궁금한 점이 있으시면 언제든 문의해 주세요</p>
+        </div>
+    </section>
+
+    <!-- 연락처 섹션 -->
+    <section class="contact-section">
+        <div class="container">
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-card">
+                        <div class="contact-icon">📞</div>
+                        <h3>전화 상담</h3>
+                        <p class="contact-value">010-1234-5678</p>
+                        <p class="contact-note">평일 09:00 - 18:00</p>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon">📧</div>
+                        <h3>이메일</h3>
+                        <p class="contact-value">consulting@regenmed.co.kr</p>
+                        <p class="contact-note">24시간 접수 가능</p>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon">💬</div>
+                        <h3>카카오톡 상담</h3>
+                        <p class="contact-value">@regenmed</p>
+                        <p class="contact-note">실시간 상담 가능</p>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon">📍</div>
+                        <h3>오시는 길</h3>
+                        <p class="contact-value">서울특별시 강남구</p>
+                        <p class="contact-note">지하철 2호선 강남역 3번 출구</p>
+                    </div>
+                </div>
+                <form class="contact-form" id="contactForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">성함 *</label>
+                            <input type="text" id="name" name="name" required placeholder="홍길동">
+                        </div>
+                        <div class="form-group">
+                            <label for="company">기관/회사명</label>
+                            <input type="text" id="company" name="company" placeholder="OO병원">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="phone">연락처 *</label>
+                            <input type="tel" id="phone" name="phone" required placeholder="010-0000-0000">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">이메일</label>
+                            <input type="email" id="email" name="email" placeholder="example@email.com">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="service">관심 서비스</label>
+                        <select id="service" name="service">
+                            <option value="">선택해주세요</option>
+                            <option value="facility">시설 설계 컨설팅</option>
+                            <option value="equipment">장비 구축 컨설팅</option>
+                            <option value="legal">법규 검토 컨설팅</option>
+                            <option value="license">인허가 절차 대행</option>
+                            <option value="total">종합 컨설팅 (전체)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">문의 내용</label>
+                        <textarea id="message" name="message" rows="5" placeholder="궁금한 점이나 요청사항을 자유롭게 작성해 주세요"></textarea>
+                    </div>
+                    <div class="form-group checkbox">
+                        <input type="checkbox" id="privacy" name="privacy" required>
+                        <label for="privacy">개인정보 수집 및 이용에 동의합니다 *</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">
+                        <span>상담 신청하기</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+                        </svg>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- 푸터 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="../index.html" class="logo">
+                        <span class="logo-icon">🧬</span>
+                        <span class="logo-text">RegenMed<span class="logo-highlight">Consulting</span></span>
+                    </a>
+                    <p class="footer-desc">첨단재생의료 실시기관 인허가 전문 컨설팅<br>복잡한 인허가 절차를 쉽고 빠르게</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <a href="services.html">서비스</a>
+                    <a href="process.html">컨설팅 프로세스</a>
+                    <a href="expertise.html">전문분야</a>
+                    <a href="contact.html">무료상담</a>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact</h4>
+                    <p>📞 010-1234-5678</p>
+                    <p>📧 consulting@regenmed.co.kr</p>
+                    <p>📍 서울특별시 강남구</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 RegenMed Consulting. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 맨 위로 버튼 -->
+    <button class="back-to-top" id="backToTop">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 15l-6-6-6 6"/>
+        </svg>
+    </button>
+
+    <script src="../script.js"></script>
+</body>
+</html>
