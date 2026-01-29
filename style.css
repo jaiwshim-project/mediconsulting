@@ -3100,7 +3100,11 @@ button {
     border-radius: 20px;
     border: 1px solid #E5E7EB;
     box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    border-left: 5px solid transparent;
 }
+.diagnosis-part:nth-child(1) .part-header { border-left-color: #004DA6; }
+.diagnosis-part:nth-child(2) .part-header { border-left-color: #D97706; }
+.diagnosis-part:nth-child(3) .part-header { border-left-color: #059669; }
 
 .part-number {
     display: inline-block;
@@ -3145,29 +3149,45 @@ button {
     transition: all 0.3s ease;
 }
 
+/* 홀짝 교차 배경색 - 파트1 (블루) */
+.diagnosis-part:nth-child(1) .question-card:nth-child(odd) { background: #fff; }
+.diagnosis-part:nth-child(1) .question-card:nth-child(even) { background: linear-gradient(135deg, #F0F4FF, #EEF2FF); }
+
+/* 홀짝 교차 배경색 - 파트2 (앰버) */
+.diagnosis-part:nth-child(2) .question-card:nth-child(odd) { background: #fff; }
+.diagnosis-part:nth-child(2) .question-card:nth-child(even) { background: linear-gradient(135deg, #FFFBEB, #FEF9E7); }
+
+/* 홀짝 교차 배경색 - 파트3 (그린) */
+.diagnosis-part:nth-child(3) .question-card:nth-child(odd) { background: #fff; }
+.diagnosis-part:nth-child(3) .question-card:nth-child(even) { background: linear-gradient(135deg, #ECFDF5, #F0FDF4); }
+
 .question-card:hover {
     box-shadow: 0 6px 24px rgba(0,0,0,0.06);
     border-color: #D1DAE8;
     transform: translateY(-1px);
 }
 
+/* 응답완료 - 파트별 색상 */
 .question-card.answered {
-    border-color: #059669;
-    background: linear-gradient(135deg, rgba(5,150,105,0.02) 0%, var(--white) 100%);
     box-shadow: 0 2px 12px rgba(5,150,105,0.08);
 }
-
-.question-card.answered .question-number {
-    background: #059669;
-    color: #fff;
+.diagnosis-part:nth-child(1) .question-card.answered {
+    border-color: #004DA6;
+    background: linear-gradient(135deg, rgba(0,77,166,0.03), #fff);
+}
+.diagnosis-part:nth-child(2) .question-card.answered {
+    border-color: #D97706;
+    background: linear-gradient(135deg, rgba(217,119,6,0.03), #fff);
+}
+.diagnosis-part:nth-child(3) .question-card.answered {
+    border-color: #059669;
+    background: linear-gradient(135deg, rgba(5,150,105,0.03), #fff);
 }
 
 .question-number {
     flex-shrink: 0;
     width: 50px;
     height: 50px;
-    background: linear-gradient(135deg, #EEF2FF, #E0E7FF);
-    color: var(--primary);
     font-weight: 900;
     font-size: 0.82rem;
     display: flex;
@@ -3177,6 +3197,16 @@ button {
     transition: all 0.3s ease;
     letter-spacing: 0.5px;
 }
+
+/* 번호 배경 - 파트별 */
+.diagnosis-part:nth-child(1) .question-number { background: linear-gradient(135deg, #EEF2FF, #E0E7FF); color: #004DA6; }
+.diagnosis-part:nth-child(2) .question-number { background: linear-gradient(135deg, #FEF3C7, #FDE68A); color: #92400E; }
+.diagnosis-part:nth-child(3) .question-number { background: linear-gradient(135deg, #D1FAE5, #A7F3D0); color: #065F46; }
+
+/* 응답완료 번호 */
+.diagnosis-part:nth-child(1) .question-card.answered .question-number { background: #004DA6; color: #fff; }
+.diagnosis-part:nth-child(2) .question-card.answered .question-number { background: #D97706; color: #fff; }
+.diagnosis-part:nth-child(3) .question-card.answered .question-number { background: #059669; color: #fff; }
 
 .question-content {
     flex: 1;
