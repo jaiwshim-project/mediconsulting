@@ -3149,17 +3149,9 @@ button {
     transition: all 0.3s ease;
 }
 
-/* 홀짝 교차 배경색 - 파트1 (블루) */
-.diagnosis-part:nth-child(1) .question-card:nth-child(odd) { background: #fff; }
-.diagnosis-part:nth-child(1) .question-card:nth-child(even) { background: linear-gradient(135deg, #F0F4FF, #EEF2FF); }
-
-/* 홀짝 교차 배경색 - 파트2 (앰버) */
-.diagnosis-part:nth-child(2) .question-card:nth-child(odd) { background: #fff; }
-.diagnosis-part:nth-child(2) .question-card:nth-child(even) { background: linear-gradient(135deg, #FFFBEB, #FEF9E7); }
-
-/* 홀짝 교차 배경색 - 파트3 (그린) */
-.diagnosis-part:nth-child(3) .question-card:nth-child(odd) { background: #fff; }
-.diagnosis-part:nth-child(3) .question-card:nth-child(even) { background: linear-gradient(135deg, #ECFDF5, #F0FDF4); }
+/* 홀짝 교차 배경색 - 홀수: 하늘색, 짝수: 초록색 */
+.question-card:nth-child(odd) { background: linear-gradient(135deg, #E8F4FD, #EBF5FF); }
+.question-card:nth-child(even) { background: linear-gradient(135deg, #ECFDF5, #F0FDF4); }
 
 .question-card:hover {
     box-shadow: 0 6px 24px rgba(0,0,0,0.06);
