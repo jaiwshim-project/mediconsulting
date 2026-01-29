@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>진단 결과 보기 | 첨단재생의료 인허가 컨설팅</title>
+    <meta name="description" content="재생의료 비즈니스 성공 가능성 정밀 진단 결과 샘플을 확인하세요.">
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* ===== 리포트 전용 프리미엄 스타일 ===== */
+        .report-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 리포트 래퍼 - 종이 느낌 */
+        .report-paper {
+            background: #fff;
+            border-radius: 24px;
+            box-shadow: 0 4px 40px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.04);
+            padding: 48px 48px 56px;
+            margin-top: -60px;
+            position: relative;
+            z-index: 2;
+        }
+        @media (max-width: 768px) {
+            .report-paper { padding: 28px 20px 36px; margin-top: -40px; }
+        }
+
+        /* 리포트 상단 헤더 */
+        .report-top-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 32px;
+            padding-bottom: 24px;
+            border-bottom: 2px solid #F0F2F5;
+        }
+        .report-logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .report-logo-icon {
+            width: 44px; height: 44px;
+            background: linear-gradient(135deg, #004DA6, #0073E6);
+            border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 22px;
+        }
+        .report-logo-text {
+            font-size: 14px; font-weight: 800; color: #1F2937;
+            line-height: 1.3;
+        }
+        .report-logo-text span { color: #004DA6; }
+        .report-meta {
+            text-align: right;
+            font-size: 13px; color: #6B7280;
+        }
+        .report-meta .report-id {
+            font-size: 11px;
+            font-weight: 700;
+            color: #004DA6;
+            background: #EEF2FF;
+            padding: 4px 10px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 4px;
+        }
+
+        /* 샘플 배너 */
+        .sample-banner {
+            text-align: center;
+            padding: 18px 24px;
+            margin-bottom: 36px;
+            background: linear-gradient(135deg, #EEF2FF 0%, #F0FDF4 100%);
+            border: 2px dashed #004DA6;
+            border-radius: 16px;
+        }
+        .sample-banner p {
+            color: #004DA6;
+            font-weight: 700;
+            font-size: 15px;
+            margin: 0;
+        }
+        .sample-banner a { color: #008F72; text-decoration: underline; font-weight: 800; }
+
+        /* 신청자 정보 카드 */
+        .applicant-card {
+            background: linear-gradient(135deg, #F8FAFF 0%, #F0F9F4 100%);
+            border: 1px solid #E0E7F1;
+            border-radius: 20px;
+            padding: 28px 32px;
+            margin-bottom: 36px;
+        }
+        .applicant-card-title {
+            font-size: 13px;
+            font-weight: 800;
+            color: #004DA6;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .applicant-card-title::before {
+            content: '';
+            width: 4px; height: 16px;
+            background: linear-gradient(180deg, #004DA6, #0073E6);
+            border-radius: 2px;
+        }
+        .applicant-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+        @media (max-width: 768px) {
+            .applicant-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 480px) {
+            .applicant-grid { grid-template-columns: 1fr; }
+        }
+        .applicant-item {
+            background: rgba(255,255,255,0.9);
+            backdrop-filter: blur(4px);
+            border-radius: 12px;
+            padding: 14px 18px;
+            border: 1px solid rgba(0,0,0,0.04);
+        }
+        .applicant-item .ai-label {
+            font-size: 10px;
+            font-weight: 700;
+            color: #9CA3AF;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin-bottom: 4px;
+        }
+        .applicant-item .ai-value {
+            font-size: 14px;
+            font-weight: 700;
+            color: #1F2937;
+        }
+        .applicant-note {
+            margin-top: 14px;
+            padding: 16px 20px;
+            background: rgba(255,255,255,0.9);
+            border-radius: 12px;
+            border: 1px solid rgba(0,0,0,0.04);
+        }
+        .applicant-note .ai-label {
+            font-size: 10px; font-weight: 700; color: #9CA3AF;
+            text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 6px;
+        }
+        .applicant-note .ai-value {
+            font-size: 13.5px; color: #374151; line-height: 1.7;
+        }
+
+        /* === 총점 섹션 === */
+        .score-hero {
+            text-align: center;
+            padding: 48px 20px 40px;
+            margin-bottom: 40px;
+            background: linear-gradient(180deg, #FAFBFF 0%, #fff 100%);
+            border-radius: 20px;
+            border: 1px solid #F0F2F5;
+        }
+        .score-hero-label {
+            font-size: 12px;
+            font-weight: 800;
+            color: #6B7280;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 24px;
+        }
+        .score-circle-wrap {
+            position: relative;
+            width: 180px; height: 180px;
+            margin: 0 auto 24px;
+        }
+        .score-circle-wrap svg {
+            width: 100%; height: 100%;
+        }
+        .score-circle-wrap .score-number {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+        .score-circle-wrap .score-number .num {
+            font-size: 48px;
+            font-weight: 900;
+            color: #1F2937;
+            line-height: 1;
+        }
+        .score-circle-wrap .score-number .unit {
+            font-size: 14px;
+            font-weight: 600;
+            color: #9CA3AF;
+            display: block;
+            margin-top: 4px;
+        }
+        .grade-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 800;
+            margin-bottom: 16px;
+        }
+        .grade-pill.grade-a { background: #ECFDF5; color: #059669; }
+        .grade-pill.grade-b { background: #FFFBEB; color: #D97706; }
+        .grade-pill.grade-c { background: #FEF2F2; color: #DC2626; }
+        .grade-pill .grade-letter {
+            width: 32px; height: 32px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 18px; font-weight: 900; color: #fff;
+        }
+        .grade-pill.grade-a .grade-letter { background: #059669; }
+        .grade-pill.grade-b .grade-letter { background: #D97706; }
+        .grade-pill.grade-c .grade-letter { background: #DC2626; }
+        .score-summary {
+            font-size: 15px;
+            color: #6B7280;
+            line-height: 1.7;
+            max-width: 520px;
+            margin: 0 auto;
+        }
+
+        /* === 레이더 차트 === */
+        .radar-section {
+            margin-bottom: 48px;
+        }
+        .section-title-bar {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid #F0F2F5;
+        }
+        .section-title-bar .icon {
+            width: 36px; height: 36px;
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 18px;
+        }
+        .section-title-bar h3 {
+            font-size: 18px;
+            font-weight: 800;
+            color: #1F2937;
+            margin: 0;
+        }
+        .radar-chart-container {
+            background: #FAFBFF;
+            border: 1px solid #F0F2F5;
+            border-radius: 20px;
+            padding: 32px 20px 24px;
+            text-align: center;
+        }
+        .radar-chart-container svg {
+            max-width: 420px;
+            width: 100%;
+            height: auto;
+        }
+        .radar-legend {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 16px;
+        }
+        .radar-legend-item {
+            display: flex; align-items: center; gap: 6px;
+            font-size: 12px; font-weight: 600; color: #6B7280;
+        }
+        .legend-dot {
+            width: 10px; height: 10px; border-radius: 50%;
+        }
+
+        /* === 파트별 분석 카드 === */
+        .parts-section {
+            margin-bottom: 48px;
+        }
+        .part-card {
+            background: #fff;
+            border: 1px solid #F0F2F5;
+            border-radius: 20px;
+            padding: 32px;
+            margin-bottom: 20px;
+            transition: box-shadow 0.3s ease;
+        }
+        .part-card:hover {
+            box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+        }
+        .part-card-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 20px;
+        }
+        .part-icon-box {
+            width: 48px; height: 48px;
+            border-radius: 14px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 22px;
+            flex-shrink: 0;
+        }
+        .part-icon-box.p1 { background: linear-gradient(135deg, #EEF2FF, #E0E7FF); }
+        .part-icon-box.p2 { background: linear-gradient(135deg, #FEF3C7, #FDE68A); }
+        .part-icon-box.p3 { background: linear-gradient(135deg, #ECFDF5, #D1FAE5); }
+        .part-card-header h3 {
+            font-size: 16px; font-weight: 800; color: #1F2937; margin: 0;
+        }
+        .part-card-header .part-label {
+            font-size: 11px; font-weight: 700; color: #9CA3AF;
+            text-transform: uppercase; letter-spacing: 1px;
+        }
+
+        /* 점수 바 */
+        .part-score-row {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+        .part-bar-track {
+            flex: 1;
+            height: 10px;
+            background: #F3F4F6;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .part-bar-fill {
+            height: 100%;
+            border-radius: 10px;
+            width: 0%;
+            transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .part-score-value {
+            font-size: 16px;
+            font-weight: 900;
+            color: #1F2937;
+            min-width: 60px;
+            text-align: right;
+        }
+        .part-comment {
+            font-size: 14px;
+            color: #6B7280;
+            line-height: 1.6;
+            margin-bottom: 0;
+        }
+
+        /* 전문가 피드백 */
+        .expert-feedback { margin-top: 20px; }
+        .feedback-box {
+            background: #FAFBFF;
+            border-radius: 16px;
+            padding: 24px 28px;
+            margin-top: 8px;
+            border-left: 4px solid #ccc;
+        }
+        .feedback-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+        .feedback-badge {
+            font-size: 11px;
+            font-weight: 800;
+            padding: 4px 12px;
+            border-radius: 20px;
+            color: #fff;
+        }
+        .feedback-title {
+            font-size: 14px;
+            font-weight: 800;
+            margin: 0;
+        }
+        .feedback-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 18px 0;
+        }
+        .feedback-list li {
+            position: relative;
+            padding: 7px 0 7px 24px;
+            font-size: 13.5px;
+            line-height: 1.75;
+            color: #374151;
+        }
+        .feedback-list li::before {
+            content: '';
+            position: absolute;
+            left: 4px;
+            top: 15px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+        .feedback-action {
+            background: #fff;
+            border-radius: 12px;
+            padding: 18px 20px;
+            font-size: 13.5px;
+            line-height: 1.75;
+            color: #1F2937;
+            border: 1px solid #E5E7EB;
+            display: flex;
+            gap: 8px;
+        }
+        .feedback-action-icon {
+            flex-shrink: 0;
+            width: 20px;
+            font-size: 14px;
+            padding-top: 2px;
+        }
+        .feedback-action strong { color: #004DA6; }
+
+        /* === CTA 버튼 영역 === */
+        .report-cta {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            margin-top: 48px;
+            padding-top: 36px;
+            border-top: 2px solid #F0F2F5;
+        }
+        .report-cta a {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 32px;
+            border-radius: 14px;
+            font-size: 15px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .btn-retry {
+            background: #F3F4F6;
+            color: #374151;
+        }
+        .btn-retry:hover { background: #E5E7EB; }
+        .btn-consult {
+            background: linear-gradient(135deg, #004DA6, #0073E6);
+            color: #fff;
+            box-shadow: 0 4px 14px rgba(0,77,166,0.25);
+        }
+        .btn-consult:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,77,166,0.3);
+        }
+        @media (max-width: 480px) {
+            .report-cta { flex-direction: column; }
+            .report-cta a { justify-content: center; }
+        }
+
+        /* 하단 워터마크 */
+        .report-watermark {
+            text-align: center;
+            margin-top: 32px;
+            font-size: 11px;
+            color: #D1D5DB;
+            letter-spacing: 1px;
+        }
+
+        /* 리포트 영역 하단 여백 */
+        .report-outer-section {
+            padding: 0 0 80px;
+            background: #F6F7FB;
+        }
+    </style>
+</head>
+<body>
+    <!-- 헤더 -->
+    <header class="header" id="header">
+        <div class="header-container">
+            <a href="../index.html" class="logo">
+                <span class="logo-icon">🧬</span>
+                <span class="logo-text">RegenMed<span class="logo-highlight">Consulting</span></span>
+            </a>
+            <nav class="nav">
+                <a href="why-us.html" class="nav-link">왜 우리인가</a>
+                <div class="nav-dropdown">
+                    <a href="services.html" class="nav-link">서비스 <span class="nav-arrow">▾</span></a>
+                    <div class="nav-dropdown-menu">
+                        <a href="services.html" class="dropdown-link">서비스 소개</a>
+                        <a href="diagnosis.html" class="dropdown-link">비즈니스 진단</a>
+                        <a href="results.html" class="dropdown-link active">진단 결과 보기</a>
+                    </div>
+                </div>
+                <a href="process.html" class="nav-link">프로세스</a>
+                <a href="expertise.html" class="nav-link">전문분야</a>
+                <a href="requirements.html" class="nav-link">시설요건</a>
+                <a href="contact.html" class="nav-link nav-cta">무료상담</a>
+            </nav>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- 모바일 메뉴 -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="why-us.html" class="mobile-nav-link">왜 우리인가</a>
+        <a href="services.html" class="mobile-nav-link">서비스</a>
+        <a href="diagnosis.html" class="mobile-nav-link mobile-sub-link">↳ 비즈니스 진단</a>
+        <a href="results.html" class="mobile-nav-link mobile-sub-link">↳ 진단 결과 보기</a>
+        <a href="process.html" class="mobile-nav-link">프로세스</a>
+        <a href="expertise.html" class="mobile-nav-link">전문분야</a>
+        <a href="requirements.html" class="mobile-nav-link">시설요건</a>
+        <a href="contact.html" class="mobile-nav-link">무료상담 신청</a>
+    </div>
+
+    <!-- 페이지 히어로 -->
+    <section class="page-hero diagnosis-hero">
+        <div class="hero-bg">
+            <div class="hero-gradient"></div>
+            <div class="hero-pattern"></div>
+        </div>
+        <div class="page-hero-content">
+            <span class="section-badge">02-2. Diagnosis Results</span>
+            <h1 class="page-hero-title">진단 결과 샘플</h1>
+            <p class="page-hero-desc">AI 분석 리포트가 이렇게 제공됩니다</p>
+        </div>
+    </section>
+
+    <!-- 리포트 영역 -->
+    <section class="report-outer-section">
+        <div class="report-container">
+            <div class="report-paper">
+
+                <!-- 리포트 상단 로고/메타 -->
+                <div class="report-top-header">
+                    <div class="report-logo-area">
+                        <div class="report-logo-icon">🧬</div>
+                        <div class="report-logo-text">RegenMed <span>Consulting</span><br><small style="font-size:10px;color:#9CA3AF;font-weight:500;">AI Business Diagnosis Report</small></div>
+                    </div>
+                    <div class="report-meta">
+                        <div class="report-id" id="reportId">SAMPLE</div>
+                        <div id="resultDate" style="margin-top:4px;"></div>
+                    </div>
+                </div>
+
+                <!-- 샘플 안내 배너 -->
+                <div class="sample-banner" id="sampleBanner">
+                    <p>아래는 샘플 진단 결과입니다. 실제 진단을 원하시면 <a href="diagnosis.html">비즈니스 진단</a>을 진행해 주세요.</p>
+                </div>
+
+                <!-- 신청자 정보 -->
+                <div class="applicant-card" id="applicantInfo"></div>
+
+                <!-- 총점 -->
+                <div class="score-hero">
+                    <div class="score-hero-label">Total Score</div>
+                    <div class="score-circle-wrap">
+                        <svg viewBox="0 0 180 180">
+                            <defs>
+                                <linearGradient id="scoreGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#004DA6"/>
+                                    <stop offset="100%" style="stop-color:#0073E6"/>
+                                </linearGradient>
+                            </defs>
+                            <circle cx="90" cy="90" r="78" fill="none" stroke="#F3F4F6" stroke-width="10"/>
+                            <circle cx="90" cy="90" r="78" fill="none" stroke-width="10" stroke-linecap="round" id="scoreCirclePath"
+                                    stroke-dasharray="490.088" stroke-dashoffset="490.088"
+                                    transform="rotate(-90 90 90)"/>
+                        </svg>
+                        <div class="score-number">
+                            <span class="num" id="totalScoreValue">0</span>
+                            <span class="unit">/ 100</span>
+                        </div>
+                    </div>
+                    <div id="resultGrade"></div>
+                    <p class="score-summary" id="resultSummary"></p>
+                </div>
+
+                <!-- 레이더 차트 -->
+                <div class="radar-section">
+                    <div class="section-title-bar">
+                        <div class="icon" style="background:linear-gradient(135deg,#EEF2FF,#E0E7FF);">📊</div>
+                        <h3>영역별 역량 분석</h3>
+                    </div>
+                    <div class="radar-chart-container">
+                        <svg id="radarChart" viewBox="0 0 400 380" xmlns="http://www.w3.org/2000/svg"></svg>
+                        <div class="radar-legend">
+                            <span class="radar-legend-item"><span class="legend-dot" style="background:#004DA6"></span>현재 수준</span>
+                            <span class="radar-legend-item"><span class="legend-dot" style="background:#E2E8F0"></span>만점 기준</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 파트별 분석 -->
+                <div class="parts-section">
+                    <div class="section-title-bar">
+                        <div class="icon" style="background:linear-gradient(135deg,#FEF3C7,#FDE68A);">📋</div>
+                        <h3>파트별 상세 분석</h3>
+                    </div>
+
+                    <div class="part-card">
+                        <div class="part-card-header">
+                            <div class="part-icon-box p1">📍</div>
+                            <div>
+                                <div class="part-label">Part 1</div>
+                                <h3>입지 분석 및 수익성</h3>
+                            </div>
+                        </div>
+                        <div class="part-score-row">
+                            <div class="part-bar-track"><div class="part-bar-fill" id="part1Bar"></div></div>
+                            <span class="part-score-value" id="part1Score">0/50</span>
+                        </div>
+                        <p class="part-comment" id="part1Comment"></p>
+                        <div class="expert-feedback" id="part1Feedback"></div>
+                    </div>
+
+                    <div class="part-card">
+                        <div class="part-card-header">
+                            <div class="part-icon-box p2">🏗️</div>
+                            <div>
+                                <div class="part-label">Part 2</div>
+                                <h3>시설 인허가 및 엔지니어링</h3>
+                            </div>
+                        </div>
+                        <div class="part-score-row">
+                            <div class="part-bar-track"><div class="part-bar-fill" id="part2Bar"></div></div>
+                            <span class="part-score-value" id="part2Score">0/50</span>
+                        </div>
+                        <p class="part-comment" id="part2Comment"></p>
+                        <div class="expert-feedback" id="part2Feedback"></div>
+                    </div>
+
+                    <div class="part-card">
+                        <div class="part-card-header">
+                            <div class="part-icon-box p3">👥</div>
+                            <div>
+                                <div class="part-label">Part 3</div>
+                                <h3>운영 전략 및 팀빌딩</h3>
+                            </div>
+                        </div>
+                        <div class="part-score-row">
+                            <div class="part-bar-track"><div class="part-bar-fill" id="part3Bar"></div></div>
+                            <span class="part-score-value" id="part3Score">0/50</span>
+                        </div>
+                        <p class="part-comment" id="part3Comment"></p>
+                        <div class="expert-feedback" id="part3Feedback"></div>
+                    </div>
+                </div>
+
+                <!-- CTA -->
+                <div class="report-cta">
+                    <a href="diagnosis.html" class="btn-retry">나도 진단받기</a>
+                    <a href="contact.html" class="btn-consult">
+                        <span>전문가 상담 신청</span>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                </div>
+
+                <div class="report-watermark">REGENMED CONSULTING &middot; AI BUSINESS DIAGNOSIS REPORT</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA 섹션 -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>나도 비즈니스 진단을 받아보고 싶다면?</h2>
+                <p>30개 문항으로 입지, 시설, 운영 전략을 AI가 정밀 분석합니다</p>
+                <a href="diagnosis.html" class="btn btn-white">
+                    <span>비즈니스 진단 시작</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 푸터 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="../index.html" class="logo">
+                        <span class="logo-icon">🧬</span>
+                        <span class="logo-text">RegenMed<span class="logo-highlight">Consulting</span></span>
+                    </a>
+                    <p class="footer-desc">첨단재생의료 실시기관 인허가 전문 컨설팅<br>복잡한 인허가 절차를 쉽고 빠르게</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <a href="services.html">서비스</a>
+                    <a href="diagnosis.html">비즈니스 진단</a>
+                    <a href="process.html">컨설팅 프로세스</a>
+                    <a href="expertise.html">전문분야</a>
+                    <a href="contact.html">무료상담</a>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact</h4>
+                    <p>📞 010-1234-5678</p>
+                    <p>📧 consulting@regenmed.co.kr</p>
+                    <p>📍 서울특별시 강남구</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 RegenMed Consulting. All rights reserved.</p>
+                <a href="admin.html" class="admin-footer-btn" title="관리자 대시보드">&#9881; 관리자</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 맨 위로 버튼 -->
+    <button class="back-to-top" id="backToTop">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 15l-6-6-6 6"/>
+        </svg>
+    </button>
+
+    <script src="../js/supabase.js"></script>
+    <script src="../script.js"></script>
+    <script>
+    (function() {
+        var urlParams = new URLSearchParams(window.location.search);
+        var recordId = urlParams.get('id');
+
+        function renderPage(pct, scores, radarVals, userData, isRecord, displayId) {
+            // 레코드 모드일 때 배너 숨기고 메타 변경
+            if (isRecord) {
+                document.getElementById('sampleBanner').style.display = 'none';
+                document.querySelector('.page-hero-title').textContent = '진단 결과 리포트';
+                document.querySelector('.page-hero-desc').textContent = 'No. ' + String(displayId).padStart(4, '0') + ' — ' + (userData.name || '') + ' / ' + (userData.hospital || '');
+                document.getElementById('reportId').textContent = 'No. ' + String(displayId).padStart(4, '0');
+            }
+
+            // 신청자 정보
+            (function(u) {
+                if (!u) return;
+                var html = '<div class="applicant-card-title">신청자 정보</div>';
+                html += '<div class="applicant-grid">';
+                var fields = [
+                    { label: '성함', value: u.name },
+                    { label: '직함', value: u.position },
+                    { label: '연락처', value: u.phone },
+                    { label: '이메일', value: u.email },
+                    { label: '병원/기관명', value: u.hospital },
+                    { label: '소재지', value: u.location }
+                ];
+                fields.forEach(function(f) {
+                    if (f.value) {
+                        html += '<div class="applicant-item"><div class="ai-label">' + f.label + '</div><div class="ai-value">' + f.value + '</div></div>';
+                    }
+                });
+                html += '</div>';
+                if (u.note) {
+                    html += '<div class="applicant-note"><div class="ai-label">추가 문의사항</div><div class="ai-value">' + u.note + '</div></div>';
+                }
+                document.getElementById('applicantInfo').innerHTML = html;
+            })(userData);
+
+            // 날짜
+            var now = new Date();
+            document.getElementById('resultDate').textContent =
+                now.getFullYear() + '.' + String(now.getMonth()+1).padStart(2,'0') + '.' + String(now.getDate()).padStart(2,'0');
+
+            // 총점 원형 애니메이션
+            var circle = document.getElementById('scoreCirclePath');
+            var circumference = 490.088;
+            var offset = circumference - (pct / 100) * circumference;
+            var color;
+            if (pct >= 80) color = '#059669';
+            else if (pct >= 60) color = '#D97706';
+            else color = '#DC2626';
+
+            circle.style.stroke = color;
+            circle.style.transition = 'stroke-dashoffset 1.8s cubic-bezier(0.4, 0, 0.2, 1)';
+            setTimeout(function() { circle.style.strokeDashoffset = offset; }, 200);
+
+            // 숫자 카운트업
+            var current = 0;
+            var scoreEl = document.getElementById('totalScoreValue');
+            var duration = 1800;
+            var startTime = null;
+            function animateScore(timestamp) {
+                if (!startTime) startTime = timestamp;
+                var progress = Math.min((timestamp - startTime) / duration, 1);
+                var eased = 1 - Math.pow(1 - progress, 3);
+                scoreEl.textContent = Math.round(eased * pct);
+                if (progress < 1) requestAnimationFrame(animateScore);
+            }
+            requestAnimationFrame(animateScore);
+
+            // 등급
+            var gradeEl = document.getElementById('resultGrade');
+            var summaryEl = document.getElementById('resultSummary');
+            if (pct >= 80) {
+                gradeEl.innerHTML = '<span class="grade-pill grade-a"><span class="grade-letter">A</span>즉시 추진 가능</span>';
+                summaryEl.textContent = '즉시 인허가 착수가 가능하며, 수익성이 매우 높은 것으로 분석됩니다.';
+            } else if (pct >= 60) {
+                gradeEl.innerHTML = '<span class="grade-pill grade-b"><span class="grade-letter">B</span>보완 후 추진 권장</span>';
+                summaryEl.textContent = '시설 및 운영 전략의 일부 보완이 필요합니다. 전문가 상담을 통해 부족한 영역을 파악하고 개선 방안을 수립하세요.';
+            } else {
+                gradeEl.innerHTML = '<span class="grade-pill grade-c"><span class="grade-letter">C</span>전면 재검토 필요</span>';
+                summaryEl.textContent = '입지 재검토 혹은 시설/인력에 대한 대대적인 구조조정이 필요합니다.';
+            }
+
+            // 전문가 피드백 데이터
+            var expertFeedback = {
+                p1: {
+                    high: {
+                        title: '우수', range: '40~50점', color: '#059669', bg: '#ECFDF5',
+                        items: [
+                            '고소득 타겟 고객층이 풍부하여 프리미엄 재생의료 시술의 수요가 매우 높습니다.',
+                            '교통 인프라와 글로벌 접근성이 우수해 외국인 환자 유치에 유리합니다.',
+                            '경쟁사 밀도가 낮아 선점 효과를 극대화할 수 있는 최적의 입지입니다.',
+                            '건물 외관과 주차 환경이 VVIP 환자의 기대 수준에 부합합니다.'
+                        ],
+                        action: '현재 입지 조건을 최대한 활용하여 신속히 인허가를 추진하시기 바랍니다. 프리미엄 브랜딩과 함께 빠른 시장 선점이 핵심입니다.'
+                    },
+                    mid: {
+                        title: '보통', range: '30~39점', color: '#D97706', bg: '#FFFBEB',
+                        items: [
+                            '타겟 고객층은 존재하나, 인근 경쟁 병원과의 차별화 전략이 필요합니다.',
+                            '교통 접근성 또는 주차 환경 중 일부 보완이 필요할 수 있습니다.',
+                            '시술 단가에 대한 지역 고객의 수용도를 사전 조사하시기 바랍니다.',
+                            '마케팅 키워드 분석을 통해 지역 내 수요 포텐셜을 재확인하세요.'
+                        ],
+                        action: '입지 보완 포인트를 파악한 후 추진하면 충분히 성공 가능합니다. 전문가 상담을 통해 약점을 전략적으로 보완하세요.'
+                    },
+                    low: {
+                        title: '미흡', range: '10~29점', color: '#DC2626', bg: '#FEF2F2',
+                        items: [
+                            '현재 입지의 고객 소득 수준과 재생의료 수요층의 불일치가 우려됩니다.',
+                            '교통 인프라 부족으로 외국인 환자 유치에 상당한 제약이 예상됩니다.',
+                            '경쟁사 밀집 또는 시술 단가 저항이 수익성을 크게 제한할 수 있습니다.',
+                            '입지 재검토 또는 타겟 시장 전환을 강력히 권고합니다.'
+                        ],
+                        action: '현재 입지에서의 추진은 리스크가 높습니다. 반드시 전문가와 함께 입지 재분석 및 대안 검토를 진행하세요.'
+                    }
+                },
+                p2: {
+                    high: {
+                        title: '우수', range: '40~50점', color: '#059669', bg: '#ECFDF5',
+                        items: [
+                            '층고, 공간 격리, 공조기 설치 공간 등 물리적 조건이 충분히 확보되어 있습니다.',
+                            '전력 용량과 배수 시스템이 GMP 시설 기준을 충족합니다.',
+                            '비상 통로, 가스 안전, CCTV 보안 등 안전 요건이 잘 갖춰져 있습니다.',
+                            '패스박스 설치 등 세포처리실 운영에 필요한 구조적 요건이 충족됩니다.'
+                        ],
+                        action: '시설 조건이 우수합니다. GMP 설계 착수와 함께 밸리데이션 프로토콜을 병행 진행하시기 바랍니다.'
+                    },
+                    mid: {
+                        title: '보통', range: '30~39점', color: '#D97706', bg: '#FFFBEB',
+                        items: [
+                            '기본적인 시설 구조는 갖추고 있으나, 일부 GMP 요건 보완이 필요합니다.',
+                            '공조 시스템이나 전력 용량 증설에 대한 사전 검토가 필요합니다.',
+                            '클린룸 등급에 맞는 마감재(에폭시 바닥, 라운딩 코빙) 시공 계획을 수립하세요.',
+                            '보안 시스템과 패스박스 설치 가능 여부를 건축 전문가와 확인하세요.'
+                        ],
+                        action: '시설 보완 비용과 일정을 산정한 후 추진하면 충분히 인허가 통과가 가능합니다. 설계 단계에서 전문 컨설팅을 받으시기 바랍니다.'
+                    },
+                    low: {
+                        title: '미흡', range: '10~29점', color: '#DC2626', bg: '#FEF2F2',
+                        items: [
+                            '층고 부족, 공간 격리 불가 등 구조적 한계가 심각하여 대규모 리모델링이 필요합니다.',
+                            '전력, 배수, 공조 등 핵심 인프라가 부족하여 추가 공사 비용이 상당할 수 있습니다.',
+                            '현재 건물에서는 GMP 시설 기준 충족이 매우 어려울 수 있습니다.',
+                            '신축 또는 다른 건물로의 이전을 적극 검토하시기 바랍니다.'
+                        ],
+                        action: '현재 시설로는 인허가 통과가 매우 어렵습니다. 신축/이전을 포함한 근본적 대안을 전문가와 함께 모색하세요.'
+                    }
+                },
+                p3: {
+                    high: {
+                        title: '우수', range: '40~50점', color: '#059669', bg: '#ECFDF5',
+                        items: [
+                            '필수 인력(책임의사, 세포관리자) 확보와 팀빌딩 체계가 잘 갖춰져 있습니다.',
+                            '원장의 재생의료 비전이 명확하고, 전문 인력 관리 시스템이 운영되고 있습니다.',
+                            'AI 매뉴얼, SOP 디지털화 등 스마트 운영 체계 도입 의지가 높습니다.',
+                            '브랜딩 일관성과 환자 커뮤니티 구축으로 지속 가능한 성장 기반이 마련되어 있습니다.'
+                        ],
+                        action: '운영 전략이 탄탄합니다. 인허가 완료 후 즉시 본격 운영에 돌입할 수 있는 준비 상태입니다.'
+                    },
+                    mid: {
+                        title: '보통', range: '30~39점', color: '#D97706', bg: '#FFFBEB',
+                        items: [
+                            '핵심 인력 확보 계획은 있으나, 구체적인 채용 일정과 교육 프로그램을 수립하세요.',
+                            'GMP 규정 숙지를 위한 디지털 매뉴얼 도입을 적극 검토하시기 바랍니다.',
+                            '환자 사후 관리 및 장기 모니터링 프로세스를 체계화할 필요가 있습니다.',
+                            '브랜딩과 마케팅 채널 다변화를 통해 차별화된 포지셔닝을 구축하세요.'
+                        ],
+                        action: '운영 체계의 부분 보완으로 충분히 경쟁력을 확보할 수 있습니다. 인허가 준비와 병행하여 팀빌딩을 강화하세요.'
+                    },
+                    low: {
+                        title: '미흡', range: '10~29점', color: '#DC2626', bg: '#FEF2F2',
+                        items: [
+                            '법정 필수 인력 확보가 미비하여 인허가 신청 자체가 불가할 수 있습니다.',
+                            '재생의료에 대한 경영 철학과 장기 비전 수립이 시급합니다.',
+                            '직원 교육 체계, SOP, 품질관리 시스템이 전무한 상태입니다.',
+                            '환자 관리 프로세스와 브랜딩 전략을 근본부터 재설계해야 합니다.'
+                        ],
+                        action: '운영 기반이 매우 취약합니다. 시설 투자 전 인력 확보와 운영 전략 수립을 최우선으로 진행하세요.'
+                    }
+                }
+            };
+
+            function renderFeedback(partKey, feedbackId, score) {
+                var fb;
+                if (score >= 40) fb = expertFeedback[partKey].high;
+                else if (score >= 30) fb = expertFeedback[partKey].mid;
+                else fb = expertFeedback[partKey].low;
+
+                var html = '<div class="feedback-box" style="border-left-color:' + fb.color + '; background:' + fb.bg + '">';
+                html += '<div class="feedback-header">';
+                html += '<span class="feedback-badge" style="background:' + fb.color + '">' + fb.title + '</span>';
+                html += '<span class="feedback-title" style="color:' + fb.color + '">' + fb.range + '</span>';
+                html += '</div>';
+                html += '<ul class="feedback-list">';
+                fb.items.forEach(function(item) {
+                    html += '<li style="color:' + fb.color + '"><span style="color:#374151">' + item + '</span></li>';
+                });
+                html += '</ul>';
+                html += '<div class="feedback-action">';
+                html += '<span class="feedback-action-icon">💡</span>';
+                html += '<div><strong>권고사항</strong><br>' + fb.action + '</div>';
+                html += '</div>';
+                html += '</div>';
+                document.getElementById(feedbackId).innerHTML = html;
+            }
+
+            function setPartBar(id, score, commentId, partKey, feedbackId) {
+                var barPct = (score / 50) * 100;
+                var bar = document.getElementById(id);
+                var barColor;
+                if (barPct >= 80) barColor = '#059669';
+                else if (barPct >= 60) barColor = '#D97706';
+                else barColor = '#DC2626';
+
+                bar.style.background = barColor;
+                setTimeout(function() { bar.style.width = barPct + '%'; }, 300);
+                document.getElementById(id.replace('Bar', 'Score')).textContent = score + '/50';
+
+                var cEl = document.getElementById(commentId);
+                if (barPct >= 80) cEl.textContent = '우수한 수준입니다. 현재 상태를 유지하면서 추진하세요.';
+                else if (barPct >= 60) cEl.textContent = '양호하나 일부 항목의 보완이 필요합니다.';
+                else cEl.textContent = '집중적인 개선이 필요한 영역입니다. 전문가 상담을 권장합니다.';
+
+                renderFeedback(partKey, feedbackId, score);
+            }
+
+            setTimeout(function() {
+                setPartBar('part1Bar', scores.p1, 'part1Comment', 'p1', 'part1Feedback');
+                setPartBar('part2Bar', scores.p2, 'part2Comment', 'p2', 'part2Feedback');
+                setPartBar('part3Bar', scores.p3, 'part3Comment', 'p3', 'part3Feedback');
+            }, 400);
+
+            // 레이더 차트
+            var sampleRadarVals = radarVals || [8, 7, 6, 14, 11, 17, 7, 8, 15, 14];
+            setTimeout(function() { drawRadar(sampleRadarVals); }, 300);
+
+            function drawRadar(vals) {
+                var svg = document.getElementById('radarChart');
+                var ns = 'http://www.w3.org/2000/svg';
+                svg.innerHTML = '';
+
+                var cx = 200, cy = 180, maxR = 140;
+                var labels = [
+                    { name: '소득/고객층', sub: '(Q1-Q2)' },
+                    { name: '인프라/접근성', sub: '(Q3-Q4)' },
+                    { name: '경쟁/단가', sub: '(Q5-Q6)' },
+                    { name: '환경/마케팅', sub: '(Q7-Q10)' },
+                    { name: '시설 구조', sub: '(Q11-Q13)' },
+                    { name: '설비/안전', sub: '(Q14-Q18)' },
+                    { name: '보안/패스박스', sub: '(Q19-Q20)' },
+                    { name: '인력/비전', sub: '(Q21-Q22)' },
+                    { name: 'AI/SOP', sub: '(Q23-Q26)' },
+                    { name: '브랜딩/커뮤니티', sub: '(Q27-Q30)' }
+                ];
+                var n = labels.length;
+                var maxVals = [10, 10, 10, 20, 15, 25, 10, 10, 20, 20];
+
+                function polarToXY(angle, r) {
+                    var a = angle - Math.PI / 2;
+                    return { x: cx + r * Math.cos(a), y: cy + r * Math.sin(a) };
+                }
+
+                // 배경 그리드
+                for (var lv = 1; lv <= 5; lv++) {
+                    var r = maxR * lv / 5;
+                    var pts = [];
+                    for (var i = 0; i < n; i++) {
+                        var p = polarToXY(2 * Math.PI * i / n, r);
+                        pts.push(p.x + ',' + p.y);
+                    }
+                    var poly = document.createElementNS(ns, 'polygon');
+                    poly.setAttribute('points', pts.join(' '));
+                    poly.setAttribute('fill', lv % 2 === 0 ? 'rgba(0,77,166,0.02)' : 'none');
+                    poly.setAttribute('stroke', '#E2E8F0');
+                    poly.setAttribute('stroke-width', lv === 5 ? '2' : '0.5');
+                    svg.appendChild(poly);
+                }
+
+                // 축선
+                for (var i = 0; i < n; i++) {
+                    var p = polarToXY(2 * Math.PI * i / n, maxR);
+                    var line = document.createElementNS(ns, 'line');
+                    line.setAttribute('x1', cx);
+                    line.setAttribute('y1', cy);
+                    line.setAttribute('x2', p.x);
+                    line.setAttribute('y2', p.y);
+                    line.setAttribute('stroke', '#E2E8F0');
+                    line.setAttribute('stroke-width', '0.5');
+                    svg.appendChild(line);
+                }
+
+                // 데이터 폴리곤
+                var dataPts = [];
+                for (var i = 0; i < n; i++) {
+                    var ratio = vals[i] / maxVals[i];
+                    var p = polarToXY(2 * Math.PI * i / n, maxR * ratio);
+                    dataPts.push(p.x + ',' + p.y);
+                }
+                var dataPoly = document.createElementNS(ns, 'polygon');
+                dataPoly.setAttribute('points', dataPts.join(' '));
+                dataPoly.setAttribute('fill', 'rgba(0, 77, 166, 0.15)');
+                dataPoly.setAttribute('stroke', '#004DA6');
+                dataPoly.setAttribute('stroke-width', '2.5');
+                dataPoly.setAttribute('stroke-linejoin', 'round');
+                dataPoly.style.opacity = '0';
+                dataPoly.style.transition = 'opacity 1.2s ease';
+                svg.appendChild(dataPoly);
+                setTimeout(function() { dataPoly.style.opacity = '1'; }, 200);
+
+                // 데이터 포인트
+                for (var i = 0; i < n; i++) {
+                    var ratio = vals[i] / maxVals[i];
+                    var p = polarToXY(2 * Math.PI * i / n, maxR * ratio);
+                    var dot = document.createElementNS(ns, 'circle');
+                    dot.setAttribute('cx', p.x);
+                    dot.setAttribute('cy', p.y);
+                    dot.setAttribute('r', '5');
+                    dot.setAttribute('fill', '#004DA6');
+                    dot.setAttribute('stroke', '#FFFFFF');
+                    dot.setAttribute('stroke-width', '2.5');
+                    svg.appendChild(dot);
+                }
+
+                // 라벨
+                for (var i = 0; i < n; i++) {
+                    var angle = 2 * Math.PI * i / n;
+                    var lp = polarToXY(angle, maxR + 30);
+                    var text = document.createElementNS(ns, 'text');
+                    text.setAttribute('x', lp.x);
+                    text.setAttribute('y', lp.y);
+                    text.setAttribute('text-anchor', 'middle');
+                    text.setAttribute('dominant-baseline', 'middle');
+                    text.setAttribute('font-size', '11');
+                    text.setAttribute('font-weight', '600');
+                    text.setAttribute('fill', '#374151');
+
+                    var tspan1 = document.createElementNS(ns, 'tspan');
+                    tspan1.setAttribute('x', lp.x);
+                    tspan1.setAttribute('dy', '0');
+                    tspan1.textContent = labels[i].name;
+                    text.appendChild(tspan1);
+
+                    var pctVal = Math.round((vals[i] / maxVals[i]) * 100);
+                    var tspan2 = document.createElementNS(ns, 'tspan');
+                    tspan2.setAttribute('x', lp.x);
+                    tspan2.setAttribute('dy', '15');
+                    tspan2.setAttribute('font-size', '11');
+                    tspan2.setAttribute('font-weight', '800');
+                    tspan2.setAttribute('fill', pctVal >= 80 ? '#059669' : pctVal >= 60 ? '#D97706' : '#DC2626');
+                    tspan2.textContent = pctVal + '%';
+                    text.appendChild(tspan2);
+
+                    svg.appendChild(text);
+                }
+            }
+        } // end renderPage
+
+        // Supabase에서 데이터 로드 or 샘플 표시
+        if (recordId !== null) {
+            supabaseFetchDiagnosisById(parseInt(recordId)).then(function(rec) {
+                if (rec) {
+                    renderPage(
+                        rec.pct,
+                        { p1: rec.scores_p1, p2: rec.scores_p2, p3: rec.scores_p3 },
+                        rec.radar_vals,
+                        { name: rec.name, position: rec.position, phone: rec.phone, email: rec.email, hospital: rec.hospital, location: rec.location, note: rec.note },
+                        true,
+                        rec.id
+                    );
+                } else {
+                    renderSample();
+                }
+            }).catch(function() { renderSample(); });
+        } else {
+            renderSample();
+        }
+
+        function renderSample() {
+            renderPage(74, { p1: 39, p2: 34, p3: 38 }, [8,7,6,14,11,17,7,8,15,14], {
+                name: '김재원', position: '대표원장', phone: '010-9876-5432',
+                email: 'jwkim@gangnam-clinic.co.kr', hospital: '강남첨단재생의료의원',
+                location: '서울시 강남구 테헤란로', note: '줄기세포 치료 중심의 프리미엄 클리닉 개원을 준비 중입니다. 시설 설계부터 인허가까지 원스톱 컨설팅을 희망합니다.'
+            }, false, 0);
+        }
+    })();
+    </script>
+    <script src="https://chatbot-sdk.aitalker.co.kr/talker-sdk.umd.js"></script>
+    <script>
+        TalkerSDK.initializeTalkerSDK({ code: "jws", position: "right" });
+    </script>
+</body>
+</html>

@@ -232,20 +232,38 @@ function initContactForm() {
                 return;
             }
 
-            // Simulate form submission
             const submitBtn = form.querySelector('button[type="submit"]');
             const originalText = submitBtn.innerHTML;
 
             submitBtn.innerHTML = '<span>전송 중...</span>';
             submitBtn.disabled = true;
 
-            // Simulate API call
-            setTimeout(() => {
-                showNotification('상담 신청이 완료되었습니다. 빠른 시일 내에 연락드리겠습니다.', 'success');
-                form.reset();
-                submitBtn.innerHTML = originalText;
-                submitBtn.disabled = false;
-            }, 1500);
+            // Supabase에 문의사항 저장
+            if (typeof supabaseInsertInquiry === 'function') {
+                supabaseInsertInquiry({
+                    name: data.name || '',
+                    company: data.company || '',
+                    phone: data.phone || '',
+                    email: data.email || '',
+                    service: data.service || '',
+                    message: data.message || ''
+                }).then(() => {
+                    showNotification('상담 신청이 완료되었습니다. 빠른 시일 내에 연락드리겠습니다.', 'success');
+                    form.reset();
+                }).catch(() => {
+                    showNotification('전송에 실패했습니다. 다시 시도해주세요.', 'error');
+                }).finally(() => {
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                });
+            } else {
+                setTimeout(() => {
+                    showNotification('상담 신청이 완료되었습니다. 빠른 시일 내에 연락드리겠습니다.', 'success');
+                    form.reset();
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                }, 1500);
+            }
         });
     }
 }

@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>비즈니스 진단 | 첨단재생의료 인허가 컨설팅</title>
+    <meta name="description" content="재생의료 비즈니스 성공 가능성 정밀 진단. 입지분석, 시설인허가, 운영전략 30개 항목으로 정밀 진단합니다.">
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        .applicant-info-card {
+            background: linear-gradient(135deg, #F0F4FF 0%, #F0FDF4 100%);
+            border: 1px solid #D1DAE8; border-radius: 16px;
+            padding: 28px 32px; margin-bottom: 32px;
+        }
+        .applicant-info-title { font-size: 15px; font-weight: 800; color: #004DA6; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+        .applicant-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+        .applicant-item { background: rgba(255,255,255,0.8); border-radius: 10px; padding: 12px 16px; }
+        .applicant-item .ai-label { font-size: 11px; font-weight: 600; color: #6B7280; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+        .applicant-item .ai-value { font-size: 14px; font-weight: 700; color: #1F2937; }
+        .applicant-note { margin-top: 12px; padding: 12px 16px; background: rgba(255,255,255,0.8); border-radius: 10px; }
+        .applicant-note .ai-label { font-size: 11px; font-weight: 600; color: #6B7280; margin-bottom: 4px; }
+        .applicant-note .ai-value { font-size: 13px; color: #374151; line-height: 1.6; }
+    </style>
+</head>
+<body>
+    <!-- 헤더 -->
+    <header class="header" id="header">
+        <div class="header-container">
+            <a href="../index.html" class="logo">
+                <span class="logo-icon">🧬</span>
+                <span class="logo-text">RegenMed<span class="logo-highlight">Consulting</span></span>
+            </a>
+            <nav class="nav">
+                <a href="why-us.html" class="nav-link">왜 우리인가</a>
+                <div class="nav-dropdown">
+                    <a href="services.html" class="nav-link">서비스 <span class="nav-arrow">▾</span></a>
+                    <div class="nav-dropdown-menu">
+                        <a href="services.html" class="dropdown-link">서비스 소개</a>
+                        <a href="diagnosis.html" class="dropdown-link active">비즈니스 진단</a>
+                        <a href="results.html" class="dropdown-link">진단 결과 보기</a>
+                    </div>
+                </div>
+                <a href="process.html" class="nav-link">프로세스</a>
+                <a href="expertise.html" class="nav-link">전문분야</a>
+                <a href="requirements.html" class="nav-link">시설요건</a>
+                <a href="contact.html" class="nav-link nav-cta">무료상담</a>
+            </nav>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- 모바일 메뉴 -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="why-us.html" class="mobile-nav-link">왜 우리인가</a>
+        <a href="services.html" class="mobile-nav-link">서비스</a>
+        <a href="diagnosis.html" class="mobile-nav-link mobile-sub-link">↳ 비즈니스 진단</a>
+        <a href="results.html" class="mobile-nav-link mobile-sub-link">↳ 진단 결과 보기</a>
+        <a href="process.html" class="mobile-nav-link">프로세스</a>
+        <a href="expertise.html" class="mobile-nav-link">전문분야</a>
+        <a href="requirements.html" class="mobile-nav-link">시설요건</a>
+        <a href="contact.html" class="mobile-nav-link">무료상담 신청</a>
+    </div>
+
+    <!-- 페이지 히어로 -->
+    <section class="page-hero diagnosis-hero">
+        <div class="hero-bg">
+            <div class="hero-gradient"></div>
+            <div class="hero-pattern"></div>
+        </div>
+        <div class="page-hero-content">
+            <span class="section-badge">02-1. Business Diagnosis</span>
+            <h1 class="page-hero-title">재생의료 비즈니스 성공 가능성 정밀 진단</h1>
+            <p class="page-hero-desc">30개 핵심 항목으로 입지, 시설, 운영 전략을 AI가 정밀 분석합니다</p>
+        </div>
+    </section>
+
+    <!-- 진단 안내 -->
+    <section class="diagnosis-intro-section">
+        <div class="container">
+            <div class="diagnosis-intro">
+                <div class="diagnosis-intro-icon">🔬</div>
+                <h2>전문가의 시선으로 설계한 정밀 진단지</h2>
+                <p>각 파트별 10개 항목, 총 30개 문항으로 구성되어 있으며,<br>모든 문항에 응답하시면 AI가 정교한 분석 리포트를 제공합니다.</p>
+                <div class="diagnosis-score-guide">
+                    <div class="score-item score-high">
+                        <strong>80점 이상</strong>
+                        <span>즉시 인허가 착수 가능 및 수익성 매우 높음</span>
+                    </div>
+                    <div class="score-item score-mid">
+                        <strong>60~79점</strong>
+                        <span>시설 및 운영 전략 일부 보완 후 추진 권장</span>
+                    </div>
+                    <div class="score-item score-low">
+                        <strong>60점 미만</strong>
+                        <span>입지 재검토 혹은 대대적 구조조정 필요</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 진단 폼 -->
+    <section class="diagnosis-form-section">
+        <div class="container">
+            <form id="diagnosisForm">
+                <!-- PART 1 -->
+                <div class="diagnosis-part">
+                    <div class="part-header">
+                        <span class="part-number">PART 1</span>
+                        <h2 class="part-title">입지 분석 및 수익성 잠재력</h2>
+                        <p class="part-subtitle">Location & Profitability — 주변 인프라와 타겟 고객층의 결합도를 진단합니다</p>
+                    </div>
+                    <div class="diagnosis-questions">
+                        <div class="question-card" data-part="1" data-q="1">
+                            <div class="question-number">Q1</div>
+                            <div class="question-content">
+                                <h4>소득 수준</h4>
+                                <p>반경 3km 내 거주자의 평균 가구 소득이 전국 상위 10% 이내입니까?</p>
+                                <div class="answer-group">
+                                    <label class="answer-option"><input type="radio" name="p1q1" value="5"><span class="radio-custom"></span><span class="answer-text">매우 그렇다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p1q1" value="4"><span class="radio-custom"></span><span class="answer-text">그렇다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p1q1" value="3"><span class="radio-custom"></span><span class="answer-text">보통이다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p1q1" value="2"><span class="radio-custom"></span><span class="answer-text">아니다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p1q1" value="1"><span class="radio-custom"></span><span class="answer-text">전혀 아니다</span></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="question-card" data-part="1" data-q="2">
+                            <div class="question-number">Q2</div>
+                            <div class="question-content">
+                                <h4>고객 연령대</h4>
+                                <p>40~60대(안티에이징/관절 수요층) 인구 비중이 35% 이상입니까?</p>
+                                <div class="answer-group">
+                                    <label class="answer-option"><input type="radio" name="p1q2" value="5"><span class="radio-custom"></span><span class="answer-text">매우 그렇다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p1q2" value="4"><span class="radio-custom"></span><span class="answer-text">그렇다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p1q2" value="3"><span class="radio-custom"></span><span class="answer-text">보통이다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p1q2" value="2"><span class="radio-custom"></span><span class="answer-text">아니다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p1q2" value="1"><span class="radio-custom"></span><span class="answer-text">전혀 아니다</span></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="question-card" data-part="1" data-q="3">
+                            <div class="question-number">Q3</div>
+                            <div class="question-content">
+                                <h4>유입 인프라</h4>
+                                <p>인근에 5성급 호텔, 대형 리조트, 혹은 고급 골프장이 위치해 있습니까?</p>
+                                <div class="answer-group">
+                                    <label class="answer-option"><input type="radio" name="p1q3" value="5"><span class="radio-custom"></span><span class="answer-text">매우 그렇다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p1q3" value="4"><span class="radio-custom"></span><span class="answer-text">그렇다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p1q3" value="3"><span class="radio-custom"></span><span class="answer-text">보통이다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p1q3" value="2"><span class="radio-custom"></span><span class="answer-text">아니다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p1q3" value="1"><span class="radio-custom"></span><span class="answer-text">전혀 아니다</span></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="question-card" data-part="1" data-q="4">
+                            <div class="question-number">Q4</div>
+                            <div class="question-content">
+                                <h4>글로벌 접근성</h4>
+                                <p>공항/항만에서 1시간 이내 거리이며, 외국인 환자 전용 셔틀 운영이 가능합니까?</p>
+                                <div class="answer-group">
+                                    <label class="answer-option"><input type="radio" name="p1q4" value="5"><span class="radio-custom"></span><span class="answer-text">매우 그렇다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p1q4" value="4"><span class="radio-custom"></span><span class="answer-text">그렇다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p1q4" value="3"><span class="radio-custom"></span><span class="answer-text">보통이다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p1q4" value="2"><span class="radio-custom"></span><span class="answer-text">아니다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p1q4" value="1"><span class="radio-custom"></span><span class="answer-text">전혀 아니다</span></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="question-card" data-part="1" data-q="5">
+                            <div class="question-number">Q5</div>
+                            <div class="question-content">
+                                <h4>경쟁사 밀도</h4>
+                                <p>반경 1km 내 '줄기세포' 키워드로 광고 중인 병원이 2개 이하입니까?</p>
+                                <div class="answer-group">
+                                    <label class="answer-option"><input type="radio" name="p1q5" value="5"><span class="radio-custom"></span><span class="answer-text">매우 그렇다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p1q5" value="4"><span class="radio-custom"></span><span class="answer-text">그렇다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p1q5" value="3"><span class="radio-custom"></span><span class="answer-text">보통이다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p1q5" value="2"><span class="radio-custom"></span><span class="answer-text">아니다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p1q5" value="1"><span class="radio-custom"></span><span class="answer-text">전혀 아니다</span></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="question-card" data-part="1" data-q="6">
+                            <div class="question-number">Q6</div>
+                            <div class="question-content">
+                                <h4>시술 단가 적정성</h4>
+                                <p>해당 지역 고객들이 회당 500만 원 이상의 비급여 시술에 저항감이 낮습니까?</p>
+                                <div class="answer-group">
+                                    <label class="answer-option"><input type="radio" name="p1q6" value="5"><span class="radio-custom"></span><span class="answer-text">매우 그렇다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p1q6" value="4"><span class="radio-custom"></span><span class="answer-text">그렇다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p1q6" value="3"><span class="radio-custom"></span><span class="answer-text">보통이다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p1q6" value="2"><span class="radio-custom"></span><span class="answer-text">아니다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p1q6" value="1"><span class="radio-custom"></span><span class="answer-text">전혀 아니다</span></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="question-card" data-part="1" data-q="7">
+                            <div class="question-number">Q7</div>
+                            <div class="question-content">
+                                <h4>연계 병과</h4>
+                                <p>주변에 정형외과, 피부과, 내과 등 협진 가능한 1차 의료기관이 밀집해 있습니까?</p>
+                                <div class="answer-group">
+                                    <label class="answer-option"><input type="radio" name="p1q7" value="5"><span class="radio-custom"></span><span class="answer-text">매우 그렇다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p1q7" value="4"><span class="radio-custom"></span><span class="answer-text">그렇다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p1q7" value="3"><span class="radio-custom"></span><span class="answer-text">보통이다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p1q7" value="2"><span class="radio-custom"></span><span class="answer-text">아니다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p1q7" value="1"><span class="radio-custom"></span><span class="answer-text">전혀 아니다</span></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="question-card" data-part="1" data-q="8">
+                            <div class="question-number">Q8</div>
+                            <div class="question-content">
+                                <h4>건물 이미지</h4>
+                                <p>건물의 외관이나 로비가 VVIP 환자가 선호하는 '럭셔리한 느낌'을 줍니까?</p>
+                                <div class="answer-group">
+                                    <label class="answer-option"><input type="radio" name="p1q8" value="5"><span class="radio-custom"></span><span class="answer-text">매우 그렇다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p1q8" value="4"><span class="radio-custom"></span><span class="answer-text">그렇다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p1q8" value="3"><span class="radio-custom"></span><span class="answer-text">보통이다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p1q8" value="2"><span class="radio-custom"></span><span class="answer-text">아니다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p1q8" value="1"><span class="radio-custom"></span><span class="answer-text">전혀 아니다</span></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="question-card" data-part="1" data-q="9">
+                            <div class="question-number">Q9</div>
+                            <div class="question-content">
+                                <h4>주차 및 발렛</h4>
+                                <p>환자의 프라이버시를 보장하는 전용 주차 공간이나 발렛 서비스가 가능합니까?</p>
+                                <div class="answer-group">
+                                    <label class="answer-option"><input type="radio" name="p1q9" value="5"><span class="radio-custom"></span><span class="answer-text">매우 그렇다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p1q9" value="4"><span class="radio-custom"></span><span class="answer-text">그렇다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p1q9" value="3"><span class="radio-custom"></span><span class="answer-text">보통이다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p1q9" value="2"><span class="radio-custom"></span><span class="answer-text">아니다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p1q9" value="1"><span class="radio-custom"></span><span class="answer-text">전혀 아니다</span></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="question-card" data-part="1" data-q="10">
+                            <div class="question-number">Q10</div>
+                            <div class="question-content">
+                                <h4>마케팅 키워드</h4>
+                                <p>지역명과 결합한 '재생의료' 검색량이 타 지역 대비 유의미하게 높습니까?</p>
+                                <div class="answer-group">
+                                    <label class="answer-option"><input type="radio" name="p1q10" value="5"><span class="radio-custom"></span><span class="answer-text">매우 그렇다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p1q10" value="4"><span class="radio-custom"></span><span class="answer-text">그렇다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p1q10" value="3"><span class="radio-custom"></span><span class="answer-text">보통이다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p1q10" value="2"><span class="radio-custom"></span><span class="answer-text">아니다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p1q10" value="1"><span class="radio-custom"></span><span class="answer-text">전혀 아니다</span></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PART 2 -->
+                <div class="diagnosis-part">
+                    <div class="part-header">
+                        <span class="part-number">PART 2</span>
+                        <h2 class="part-title">시설 인허가 및 엔지니어링</h2>
+                        <p class="part-subtitle">Infrastructure & GMP — 식약처/복지부의 법적 기준 통과 가능성을 물리적으로 진단합니다</p>
+                    </div>
+                    <div class="diagnosis-questions">
+                        <div class="question-card" data-part="2" data-q="1">
+                            <div class="question-number">Q11</div>
+                            <div class="question-content">
+                                <h4>순수 층고</h4>
+                                <p>천장 마감 후 바닥부터 천장까지의 높이가 최소 2.7m(공조 포함 시 3m 권장) 이상입니까?</p>
+                                <div class="answer-group">
+                                    <label class="answer-option"><input type="radio" name="p2q1" value="5"><span class="radio-custom"></span><span class="answer-text">매우 그렇다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p2q1" value="4"><span class="radio-custom"></span><span class="answer-text">그렇다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p2q1" value="3"><span class="radio-custom"></span><span class="answer-text">보통이다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p2q1" value="2"><span class="radio-custom"></span><span class="answer-text">아니다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p2q1" value="1"><span class="radio-custom"></span><span class="answer-text">전혀 아니다</span></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="question-card" data-part="2" data-q="2">
+                            <div class="question-number">Q12</div>
+                            <div class="question-content">
+                                <h4>공간 격리</h4>
+                                <p>[오염-준청정-청정] 구역을 물리적 벽체로 완전히 구분할 수 있는 평면 구조입니까?</p>
+                                <div class="answer-group">
+                                    <label class="answer-option"><input type="radio" name="p2q2" value="5"><span class="radio-custom"></span><span class="answer-text">매우 그렇다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p2q2" value="4"><span class="radio-custom"></span><span class="answer-text">그렇다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p2q2" value="3"><span class="radio-custom"></span><span class="answer-text">보통이다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p2q2" value="2"><span class="radio-custom"></span><span class="answer-text">아니다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p2q2" value="1"><span class="radio-custom"></span><span class="answer-text">전혀 아니다</span></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="question-card" data-part="2" data-q="3">
+                            <div class="question-number">Q13</div>
+                            <div class="question-content">
+                                <h4>공조기 위치</h4>
+                                <p>옥상이나 외벽에 대형 AHU(공기조화장치)를 설치할 전용 공간이 있습니까?</p>
+                                <div class="answer-group">
+                                    <label class="answer-option"><input type="radio" name="p2q3" value="5"><span class="radio-custom"></span><span class="answer-text">매우 그렇다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p2q3" value="4"><span class="radio-custom"></span><span class="answer-text">그렇다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p2q3" value="3"><span class="radio-custom"></span><span class="answer-text">보통이다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p2q3" value="2"><span class="radio-custom"></span><span class="answer-text">아니다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p2q3" value="1"><span class="radio-custom"></span><span class="answer-text">전혀 아니다</span></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="question-card" data-part="2" data-q="4">
+                            <div class="question-number">Q14</div>
+                            <div class="question-content">
+                                <h4>전력 용량</h4>
+                                <p>항온항습기, 비상발전기(UPS) 등 고전력 장비를 감당할 추가 증설이 가능합니까?</p>
+                                <div class="answer-group">
+                                    <label class="answer-option"><input type="radio" name="p2q4" value="5"><span class="radio-custom"></span><span class="answer-text">매우 그렇다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p2q4" value="4"><span class="radio-custom"></span><span class="answer-text">그렇다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p2q4" value="3"><span class="radio-custom"></span><span class="answer-text">보통이다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p2q4" value="2"><span class="radio-custom"></span><span class="answer-text">아니다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p2q4" value="1"><span class="radio-custom"></span><span class="answer-text">전혀 아니다</span></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="question-card" data-part="2" data-q="5">
+                            <div class="question-number">Q15</div>
+                            <div class="question-content">
+                                <h4>배수 시스템</h4>
+                                <p>세포처리실 내 배수구 역류 방지 장치 및 무균 배수 설비 설치가 가능합니까?</p>
+                                <div class="answer-group">
+                                    <label class="answer-option"><input type="radio" name="p2q5" value="5"><span class="radio-custom"></span><span class="answer-text">매우 그렇다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p2q5" value="4"><span class="radio-custom"></span><span class="answer-text">그렇다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p2q5" value="3"><span class="radio-custom"></span><span class="answer-text">보통이다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p2q5" value="2"><span class="radio-custom"></span><span class="answer-text">아니다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p2q5" value="1"><span class="radio-custom"></span><span class="answer-text">전혀 아니다</span></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="question-card" data-part="2" data-q="6">
+                            <div class="question-number">Q16</div>
+                            <div class="question-content">
+                                <h4>마감재 적합성</h4>
+                                <p>벽면 모서리 라운딩(Coving) 시공과 틈새 없는 에폭시 바닥 시공이 가능한 구조입니까?</p>
+                                <div class="answer-group">
+                                    <label class="answer-option"><input type="radio" name="p2q6" value="5"><span class="radio-custom"></span><span class="answer-text">매우 그렇다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p2q6" value="4"><span class="radio-custom"></span><span class="answer-text">그렇다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p2q6" value="3"><span class="radio-custom"></span><span class="answer-text">보통이다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p2q6" value="2"><span class="radio-custom"></span><span class="answer-text">아니다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p2q6" value="1"><span class="radio-custom"></span><span class="answer-text">전혀 아니다</span></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="question-card" data-part="2" data-q="7">
+                            <div class="question-number">Q17</div>
+                            <div class="question-content">
+                                <h4>비상 통로</h4>
+                                <p>화재나 비상 상황 시 세포 보관 시설을 보호하며 대피할 수 있는 동선이 확보되었습니까?</p>
+                                <div class="answer-group">
+                                    <label class="answer-option"><input type="radio" name="p2q7" value="5"><span class="radio-custom"></span><span class="answer-text">매우 그렇다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p2q7" value="4"><span class="radio-custom"></span><span class="answer-text">그렇다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p2q7" value="3"><span class="radio-custom"></span><span class="answer-text">보통이다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p2q7" value="2"><span class="radio-custom"></span><span class="answer-text">아니다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p2q7" value="1"><span class="radio-custom"></span><span class="answer-text">전혀 아니다</span></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="question-card" data-part="2" data-q="8">
+                            <div class="question-number">Q18</div>
+                            <div class="question-content">
+                                <h4>가스 안전</h4>
+                                <p>액체질소(LN2) 탱크 반입을 위한 엘리베이터 하중 및 전용 환기 시설이 있습니까?</p>
+                                <div class="answer-group">
+                                    <label class="answer-option"><input type="radio" name="p2q8" value="5"><span class="radio-custom"></span><span class="answer-text">매우 그렇다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p2q8" value="4"><span class="radio-custom"></span><span class="answer-text">그렇다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p2q8" value="3"><span class="radio-custom"></span><span class="answer-text">보통이다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p2q8" value="2"><span class="radio-custom"></span><span class="answer-text">아니다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p2q8" value="1"><span class="radio-custom"></span><span class="answer-text">전혀 아니다</span></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="question-card" data-part="2" data-q="9">
+                            <div class="question-number">Q19</div>
+                            <div class="question-content">
+                                <h4>CCTV/보안</h4>
+                                <p>수술실 및 Lab 내부의 24시간 감시와 데이터 20년 보존 시스템 구축이 가능합니까?</p>
+                                <div class="answer-group">
+                                    <label class="answer-option"><input type="radio" name="p2q9" value="5"><span class="radio-custom"></span><span class="answer-text">매우 그렇다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p2q9" value="4"><span class="radio-custom"></span><span class="answer-text">그렇다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p2q9" value="3"><span class="radio-custom"></span><span class="answer-text">보통이다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p2q9" value="2"><span class="radio-custom"></span><span class="answer-text">아니다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p2q9" value="1"><span class="radio-custom"></span><span class="answer-text">전혀 아니다</span></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="question-card" data-part="2" data-q="10">
+                            <div class="question-number">Q20</div>
+                            <div class="question-content">
+                                <h4>패스박스(Pass-box)</h4>
+                                <p>수술실과 세포처리실 사이 벽면에 물품 전달용 이중 문 설치가 가능합니까?</p>
+                                <div class="answer-group">
+                                    <label class="answer-option"><input type="radio" name="p2q10" value="5"><span class="radio-custom"></span><span class="answer-text">매우 그렇다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p2q10" value="4"><span class="radio-custom"></span><span class="answer-text">그렇다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p2q10" value="3"><span class="radio-custom"></span><span class="answer-text">보통이다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p2q10" value="2"><span class="radio-custom"></span><span class="answer-text">아니다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p2q10" value="1"><span class="radio-custom"></span><span class="answer-text">전혀 아니다</span></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PART 3 -->
+                <div class="diagnosis-part">
+                    <div class="part-header">
+                        <span class="part-number">PART 3</span>
+                        <h2 class="part-title">운영 전략 및 팀빌딩</h2>
+                        <p class="part-subtitle">Operation & Team Building — 원장의 철학이 반영된 지속 가능한 경영 시스템을 진단합니다</p>
+                    </div>
+                    <div class="diagnosis-questions">
+                        <div class="question-card" data-part="3" data-q="1">
+                            <div class="question-number">Q21</div>
+                            <div class="question-content">
+                                <h4>필수 인력</h4>
+                                <p>책임의사, 인체세포 관리자 등 법정 필수 인력(3인 이상)을 확보했거나 채용 계획이 있습니까?</p>
+                                <div class="answer-group">
+                                    <label class="answer-option"><input type="radio" name="p3q1" value="5"><span class="radio-custom"></span><span class="answer-text">매우 그렇다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p3q1" value="4"><span class="radio-custom"></span><span class="answer-text">그렇다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p3q1" value="3"><span class="radio-custom"></span><span class="answer-text">보통이다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p3q1" value="2"><span class="radio-custom"></span><span class="answer-text">아니다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p3q1" value="1"><span class="radio-custom"></span><span class="answer-text">전혀 아니다</span></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="question-card" data-part="3" data-q="2">
+                            <div class="question-number">Q22</div>
+                            <div class="question-content">
+                                <h4>원장의 비전</h4>
+                                <p>재생의료를 단순 '수익 도구'가 아닌 병원의 '핵심 철학'으로 정의하고 있습니까?</p>
+                                <div class="answer-group">
+                                    <label class="answer-option"><input type="radio" name="p3q2" value="5"><span class="radio-custom"></span><span class="answer-text">매우 그렇다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p3q2" value="4"><span class="radio-custom"></span><span class="answer-text">그렇다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p3q2" value="3"><span class="radio-custom"></span><span class="answer-text">보통이다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p3q2" value="2"><span class="radio-custom"></span><span class="answer-text">아니다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p3q2" value="1"><span class="radio-custom"></span><span class="answer-text">전혀 아니다</span></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="question-card" data-part="3" data-q="3">
+                            <div class="question-number">Q23</div>
+                            <div class="question-content">
+                                <h4>AI 매뉴얼</h4>
+                                <p>복잡한 GMP 규정을 직원이 즉시 숙지할 수 있는 디지털 매뉴얼(AI 북튜터 등) 도입 의사가 있습니까?</p>
+                                <div class="answer-group">
+                                    <label class="answer-option"><input type="radio" name="p3q3" value="5"><span class="radio-custom"></span><span class="answer-text">매우 그렇다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p3q3" value="4"><span class="radio-custom"></span><span class="answer-text">그렇다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p3q3" value="3"><span class="radio-custom"></span><span class="answer-text">보통이다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p3q3" value="2"><span class="radio-custom"></span><span class="answer-text">아니다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p3q3" value="1"><span class="radio-custom"></span><span class="answer-text">전혀 아니다</span></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="question-card" data-part="3" data-q="4">
+                            <div class="question-number">Q24</div>
+                            <div class="question-content">
+                                <h4>팀빌딩 문화</h4>
+                                <p>고난도 시술과 까다로운 규정을 준수할 수 있는 전문 간호/연구 인력 관리 체계가 있습니까?</p>
+                                <div class="answer-group">
+                                    <label class="answer-option"><input type="radio" name="p3q4" value="5"><span class="radio-custom"></span><span class="answer-text">매우 그렇다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p3q4" value="4"><span class="radio-custom"></span><span class="answer-text">그렇다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p3q4" value="3"><span class="radio-custom"></span><span class="answer-text">보통이다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p3q4" value="2"><span class="radio-custom"></span><span class="answer-text">아니다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p3q4" value="1"><span class="radio-custom"></span><span class="answer-text">전혀 아니다</span></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="question-card" data-part="3" data-q="5">
+                            <div class="question-number">Q25</div>
+                            <div class="question-content">
+                                <h4>환자 사후 관리</h4>
+                                <p>시술 후 6개월~1년 이상의 장기 모니터링 및 데이터 축적 프로세스가 있습니까?</p>
+                                <div class="answer-group">
+                                    <label class="answer-option"><input type="radio" name="p3q5" value="5"><span class="radio-custom"></span><span class="answer-text">매우 그렇다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p3q5" value="4"><span class="radio-custom"></span><span class="answer-text">그렇다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p3q5" value="3"><span class="radio-custom"></span><span class="answer-text">보통이다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p3q5" value="2"><span class="radio-custom"></span><span class="answer-text">아니다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p3q5" value="1"><span class="radio-custom"></span><span class="answer-text">전혀 아니다</span></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="question-card" data-part="3" data-q="6">
+                            <div class="question-number">Q26</div>
+                            <div class="question-content">
+                                <h4>SOP 디지털화</h4>
+                                <p>수천 페이지의 종이 서류 대신 태블릿 기반의 실시간 GMP 기록 시스템을 선호합니까?</p>
+                                <div class="answer-group">
+                                    <label class="answer-option"><input type="radio" name="p3q6" value="5"><span class="radio-custom"></span><span class="answer-text">매우 그렇다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p3q6" value="4"><span class="radio-custom"></span><span class="answer-text">그렇다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p3q6" value="3"><span class="radio-custom"></span><span class="answer-text">보통이다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p3q6" value="2"><span class="radio-custom"></span><span class="answer-text">아니다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p3q6" value="1"><span class="radio-custom"></span><span class="answer-text">전혀 아니다</span></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="question-card" data-part="3" data-q="7">
+                            <div class="question-number">Q27</div>
+                            <div class="question-content">
+                                <h4>브랜딩 일관성</h4>
+                                <p>병원의 인테리어, 직원 유니폼, 상담 멘트가 '첨단 과학'의 느낌을 줍니까?</p>
+                                <div class="answer-group">
+                                    <label class="answer-option"><input type="radio" name="p3q7" value="5"><span class="radio-custom"></span><span class="answer-text">매우 그렇다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p3q7" value="4"><span class="radio-custom"></span><span class="answer-text">그렇다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p3q7" value="3"><span class="radio-custom"></span><span class="answer-text">보통이다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p3q7" value="2"><span class="radio-custom"></span><span class="answer-text">아니다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p3q7" value="1"><span class="radio-custom"></span><span class="answer-text">전혀 아니다</span></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="question-card" data-part="3" data-q="8">
+                            <div class="question-number">Q28</div>
+                            <div class="question-content">
+                                <h4>법규 업데이트</h4>
+                                <p>변화하는 첨단재생법 가이드라인을 실시간으로 확인하고 즉시 반영할 체계가 있습니까?</p>
+                                <div class="answer-group">
+                                    <label class="answer-option"><input type="radio" name="p3q8" value="5"><span class="radio-custom"></span><span class="answer-text">매우 그렇다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p3q8" value="4"><span class="radio-custom"></span><span class="answer-text">그렇다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p3q8" value="3"><span class="radio-custom"></span><span class="answer-text">보통이다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p3q8" value="2"><span class="radio-custom"></span><span class="answer-text">아니다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p3q8" value="1"><span class="radio-custom"></span><span class="answer-text">전혀 아니다</span></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="question-card" data-part="3" data-q="9">
+                            <div class="question-number">Q29</div>
+                            <div class="question-content">
+                                <h4>마케팅 플랫폼</h4>
+                                <p>자체 웹사이트 외에 '진단지 기반 추천 시스템' 등 차별화된 유입 채널을 보유했습니까?</p>
+                                <div class="answer-group">
+                                    <label class="answer-option"><input type="radio" name="p3q9" value="5"><span class="radio-custom"></span><span class="answer-text">매우 그렇다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p3q9" value="4"><span class="radio-custom"></span><span class="answer-text">그렇다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p3q9" value="3"><span class="radio-custom"></span><span class="answer-text">보통이다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p3q9" value="2"><span class="radio-custom"></span><span class="answer-text">아니다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p3q9" value="1"><span class="radio-custom"></span><span class="answer-text">전혀 아니다</span></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="question-card" data-part="3" data-q="10">
+                            <div class="question-number">Q30</div>
+                            <div class="question-content">
+                                <h4>환자 커뮤니티</h4>
+                                <p>시술 환자들이 경험을 공유하고 재방문을 유도하는 멤버십 시스템이 있습니까?</p>
+                                <div class="answer-group">
+                                    <label class="answer-option"><input type="radio" name="p3q10" value="5"><span class="radio-custom"></span><span class="answer-text">매우 그렇다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p3q10" value="4"><span class="radio-custom"></span><span class="answer-text">그렇다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p3q10" value="3"><span class="radio-custom"></span><span class="answer-text">보통이다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p3q10" value="2"><span class="radio-custom"></span><span class="answer-text">아니다</span></label>
+                                    <label class="answer-option"><input type="radio" name="p3q10" value="1"><span class="radio-custom"></span><span class="answer-text">전혀 아니다</span></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 진행률 & 제출 -->
+                <div class="diagnosis-progress-bar">
+                    <div class="progress-info">
+                        <span>응답 진행률</span>
+                        <span id="progressText">0 / 30</span>
+                    </div>
+                    <div class="progress-track">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                </div>
+
+                <div class="diagnosis-submit-area">
+                    <button type="submit" class="btn-diagnosis-submit" id="submitBtn" disabled>
+                        <span>AI 분석 리포트 받기</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                    <p class="submit-hint">모든 문항에 응답하셔야 진단 결과를 확인하실 수 있습니다</p>
+                </div>
+            </form>
+
+            <!-- 정보 입력 영역 -->
+            <div class="user-info-section" id="userInfoSection" style="display:none;">
+                <div class="user-info-card">
+                    <div class="user-info-header">
+                        <span class="user-info-icon">📋</span>
+                        <h2>리포트 수신 정보 입력</h2>
+                        <p>분석 결과를 확인하시려면 아래 정보를 입력해 주세요.<br>입력하신 정보는 맞춤 컨설팅 제안에만 활용됩니다.</p>
+                    </div>
+                    <form id="userInfoForm">
+                        <div class="info-form-row">
+                            <div class="info-form-group">
+                                <label for="infoName">성함 <span class="required">*</span></label>
+                                <input type="text" id="infoName" name="name" placeholder="홍길동" required>
+                            </div>
+                            <div class="info-form-group">
+                                <label for="infoPosition">직함</label>
+                                <input type="text" id="infoPosition" name="position" placeholder="대표원장 / 이사 등">
+                            </div>
+                        </div>
+                        <div class="info-form-row">
+                            <div class="info-form-group">
+                                <label for="infoPhone">연락처 <span class="required">*</span></label>
+                                <input type="tel" id="infoPhone" name="phone" placeholder="010-0000-0000" required>
+                            </div>
+                            <div class="info-form-group">
+                                <label for="infoEmail">이메일</label>
+                                <input type="email" id="infoEmail" name="email" placeholder="example@hospital.co.kr">
+                            </div>
+                        </div>
+                        <div class="info-form-group">
+                            <label for="infoHospital">병원/기관명 <span class="required">*</span></label>
+                            <input type="text" id="infoHospital" name="hospital" placeholder="OO병원 / OO의원" required>
+                        </div>
+                        <div class="info-form-group">
+                            <label for="infoLocation">소재지 (시/구 단위)</label>
+                            <input type="text" id="infoLocation" name="location" placeholder="서울시 강남구">
+                        </div>
+                        <div class="info-form-group">
+                            <label for="infoNote">추가 문의사항</label>
+                            <textarea id="infoNote" name="note" rows="3" placeholder="궁금하신 점이나 추가 요청사항을 자유롭게 적어주세요"></textarea>
+                        </div>
+                        <div class="info-form-group info-checkbox">
+                            <label>
+                                <input type="checkbox" id="infoAgree" required>
+                                <span>개인정보 수집 및 이용에 동의합니다 <span class="required">*</span></span>
+                            </label>
+                        </div>
+                        <div class="info-submit-area">
+                            <button type="submit" class="btn-info-submit" id="infoSubmitBtn">
+                                <span>AI 분석 리포트 확인하기</span>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- 결과 영역 -->
+            <div class="diagnosis-result" id="diagnosisResult" style="display:none;">
+                <div class="result-header">
+                    <h2>AI 분석 리포트</h2>
+                    <p class="result-date" id="resultDate"></p>
+                </div>
+
+                <!-- 신청자 정보 -->
+                <div class="applicant-info-card" id="applicantInfo"></div>
+
+                <div class="result-total">
+                    <div class="result-score-circle" id="totalScoreCircle">
+                        <svg viewBox="0 0 120 120">
+                            <circle cx="60" cy="60" r="54" fill="none" stroke="#e5e7eb" stroke-width="8"/>
+                            <circle cx="60" cy="60" r="54" fill="none" stroke-width="8" stroke-linecap="round" id="scoreCirclePath"
+                                    stroke-dasharray="339.292" stroke-dashoffset="339.292"
+                                    transform="rotate(-90 60 60)"/>
+                        </svg>
+                        <div class="score-value" id="totalScoreValue">0</div>
+                    </div>
+                    <div class="result-grade" id="resultGrade"></div>
+                    <p class="result-summary" id="resultSummary"></p>
+                </div>
+
+                <!-- 레이더 차트 -->
+                <div class="radar-chart-section">
+                    <h3 class="radar-title">영역별 역량 분석</h3>
+                    <div class="radar-chart-wrap">
+                        <svg id="radarChart" viewBox="0 0 400 380" xmlns="http://www.w3.org/2000/svg"></svg>
+                    </div>
+                    <div class="radar-legend">
+                        <span class="radar-legend-item"><span class="legend-dot" style="background:#004DA6"></span>현재 수준</span>
+                        <span class="radar-legend-item"><span class="legend-dot" style="background:#CBD5E0"></span>만점 기준</span>
+                    </div>
+                </div>
+
+                <div class="result-parts">
+                    <div class="result-part-card">
+                        <div class="result-part-header">
+                            <span class="result-part-icon">📍</span>
+                            <h3>PART 1. 입지 분석 및 수익성</h3>
+                        </div>
+                        <div class="result-part-score">
+                            <div class="result-bar-track"><div class="result-bar-fill" id="part1Bar"></div></div>
+                            <span class="result-part-value" id="part1Score">0/50</span>
+                        </div>
+                        <p class="result-part-comment" id="part1Comment"></p>
+                    </div>
+                    <div class="result-part-card">
+                        <div class="result-part-header">
+                            <span class="result-part-icon">🏗️</span>
+                            <h3>PART 2. 시설 인허가 및 엔지니어링</h3>
+                        </div>
+                        <div class="result-part-score">
+                            <div class="result-bar-track"><div class="result-bar-fill" id="part2Bar"></div></div>
+                            <span class="result-part-value" id="part2Score">0/50</span>
+                        </div>
+                        <p class="result-part-comment" id="part2Comment"></p>
+                    </div>
+                    <div class="result-part-card">
+                        <div class="result-part-header">
+                            <span class="result-part-icon">👥</span>
+                            <h3>PART 3. 운영 전략 및 팀빌딩</h3>
+                        </div>
+                        <div class="result-part-score">
+                            <div class="result-bar-track"><div class="result-bar-fill" id="part3Bar"></div></div>
+                            <span class="result-part-value" id="part3Score">0/50</span>
+                        </div>
+                        <p class="result-part-comment" id="part3Comment"></p>
+                    </div>
+                </div>
+
+                <div class="result-actions">
+                    <button class="btn-result-retry" onclick="location.reload()">다시 진단하기</button>
+                    <a href="contact.html" class="btn-result-consult">전문가 상담 신청</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA 섹션 -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>진단 결과를 바탕으로 전문가 상담을 받아보세요</h2>
+                <p>맞춤형 인허가 전략과 시설 설계 방안을 제안해 드립니다</p>
+                <a href="contact.html" class="btn btn-white">
+                    <span>무료 상담 신청</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 푸터 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="../index.html" class="logo">
+                        <span class="logo-icon">🧬</span>
+                        <span class="logo-text">RegenMed<span class="logo-highlight">Consulting</span></span>
+                    </a>
+                    <p class="footer-desc">첨단재생의료 실시기관 인허가 전문 컨설팅<br>복잡한 인허가 절차를 쉽고 빠르게</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <a href="services.html">서비스</a>
+                    <a href="diagnosis.html">비즈니스 진단</a>
+                    <a href="process.html">컨설팅 프로세스</a>
+                    <a href="expertise.html">전문분야</a>
+                    <a href="contact.html">무료상담</a>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact</h4>
+                    <p>📞 010-1234-5678</p>
+                    <p>📧 consulting@regenmed.co.kr</p>
+                    <p>📍 서울특별시 강남구</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 RegenMed Consulting. All rights reserved.</p>
+                <a href="admin.html" class="admin-footer-btn" title="관리자 대시보드">&#9881; 관리자</a>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- 맨 위로 버튼 -->
+    <button class="back-to-top" id="backToTop">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 15l-6-6-6 6"/>
+        </svg>
+    </button>
+
+    <script src="../script.js"></script>
+    <script src="../js/supabase.js"></script>
+    <script>
+    // 진단 폼 로직
+    (function() {
+        const form = document.getElementById('diagnosisForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const progressFill = document.getElementById('progressFill');
+        const progressText = document.getElementById('progressText');
+        const totalQuestions = 30;
+
+        // 진행률 업데이트 + answered 표시
+        form.addEventListener('change', function(e) {
+            if (e.target.type === 'radio') {
+                const card = e.target.closest('.question-card');
+                if (card) card.classList.add('answered');
+            }
+            const answered = form.querySelectorAll('input[type="radio"]:checked').length;
+            const pct = (answered / totalQuestions) * 100;
+            progressFill.style.width = pct + '%';
+            progressText.textContent = answered + ' / ' + totalQuestions;
+            submitBtn.disabled = answered < totalQuestions;
+        });
+
+        // 점수 저장용
+        let savedScores = null;
+        let savedPct = 0;
+
+        // 제출 → 정보 입력 화면으로
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const scores = { p1: 0, p2: 0, p3: 0 };
+            for (let i = 1; i <= 10; i++) {
+                const v1 = form.querySelector('input[name="p1q' + i + '"]:checked');
+                const v2 = form.querySelector('input[name="p2q' + i + '"]:checked');
+                const v3 = form.querySelector('input[name="p3q' + i + '"]:checked');
+                if (v1) scores.p1 += parseInt(v1.value);
+                if (v2) scores.p2 += parseInt(v2.value);
+                if (v3) scores.p3 += parseInt(v3.value);
+            }
+            const total = scores.p1 + scores.p2 + scores.p3;
+            const maxScore = 150;
+            savedPct = Math.round((total / maxScore) * 100);
+            savedScores = scores;
+
+            // 폼 숨기고 정보 입력 표시
+            form.style.display = 'none';
+            var infoSection = document.getElementById('userInfoSection');
+            infoSection.style.display = 'block';
+            infoSection.scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // 정보 입력 완료 → 결과 표시
+        document.getElementById('userInfoForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            document.getElementById('userInfoSection').style.display = 'none';
+
+            // 레이더 차트용 세부 점수 계산
+            var radarVals = [];
+            function getQVal(name) {
+                var el = form.querySelector('input[name="' + name + '"]:checked');
+                return el ? parseInt(el.value) : 0;
+            }
+            radarVals.push(getQVal('p1q1') + getQVal('p1q2'));
+            radarVals.push(getQVal('p1q3') + getQVal('p1q4'));
+            radarVals.push(getQVal('p1q5') + getQVal('p1q6'));
+            radarVals.push(getQVal('p1q7') + getQVal('p1q8') + getQVal('p1q9') + getQVal('p1q10'));
+            radarVals.push(getQVal('p2q1') + getQVal('p2q2') + getQVal('p2q3'));
+            radarVals.push(getQVal('p2q4') + getQVal('p2q5') + getQVal('p2q6') + getQVal('p2q7') + getQVal('p2q8'));
+            radarVals.push(getQVal('p2q9') + getQVal('p2q10'));
+            radarVals.push(getQVal('p3q1') + getQVal('p3q2'));
+            radarVals.push(getQVal('p3q3') + getQVal('p3q4') + getQVal('p3q5') + getQVal('p3q6'));
+            radarVals.push(getQVal('p3q7') + getQVal('p3q8') + getQVal('p3q9') + getQVal('p3q10'));
+
+            // Supabase에 결과 저장
+            var userInfo = {
+                name: document.getElementById('infoName').value,
+                position: document.getElementById('infoPosition').value,
+                phone: document.getElementById('infoPhone').value,
+                email: document.getElementById('infoEmail').value,
+                hospital: document.getElementById('infoHospital').value,
+                location: document.getElementById('infoLocation').value,
+                note: document.getElementById('infoNote').value
+            };
+
+            supabaseInsertDiagnosis({
+                name: userInfo.name,
+                position: userInfo.position,
+                phone: userInfo.phone,
+                email: userInfo.email,
+                hospital: userInfo.hospital,
+                location: userInfo.location,
+                note: userInfo.note,
+                pct: savedPct,
+                scores_p1: savedScores.p1,
+                scores_p2: savedScores.p2,
+                scores_p3: savedScores.p3,
+                radar_vals: radarVals
+            }).then(function(res) {
+                console.log('Supabase 저장 완료', res);
+            }).catch(function(err) {
+                console.error('Supabase 저장 실패', err);
+            });
+
+            showResult(savedPct, savedScores);
+        });
+
+        function showResult(pct, scores) {
+            var result = document.getElementById('diagnosisResult');
+            result.style.display = 'block';
+            result.scrollIntoView({ behavior: 'smooth' });
+
+            // 신청자 정보 표시
+            (function() {
+                var u = {
+                    name: document.getElementById('infoName').value,
+                    position: document.getElementById('infoPosition').value,
+                    phone: document.getElementById('infoPhone').value,
+                    email: document.getElementById('infoEmail').value,
+                    hospital: document.getElementById('infoHospital').value,
+                    location: document.getElementById('infoLocation').value,
+                    note: document.getElementById('infoNote').value
+                };
+                var html = '<div class="applicant-info-title">📋 신청자 정보</div>';
+                html += '<div class="applicant-grid">';
+                var fields = [
+                    { label: '성함', value: u.name },
+                    { label: '직함', value: u.position },
+                    { label: '연락처', value: u.phone },
+                    { label: '이메일', value: u.email },
+                    { label: '병원/기관명', value: u.hospital },
+                    { label: '소재지', value: u.location }
+                ];
+                fields.forEach(function(f) {
+                    if (f.value) {
+                        html += '<div class="applicant-item"><div class="ai-label">' + f.label + '</div><div class="ai-value">' + f.value + '</div></div>';
+                    }
+                });
+                html += '</div>';
+                if (u.note) {
+                    html += '<div class="applicant-note"><div class="ai-label">추가 문의사항</div><div class="ai-value">' + u.note + '</div></div>';
+                }
+                document.getElementById('applicantInfo').innerHTML = html;
+            })();
+
+            // 날짜
+            const now = new Date();
+            document.getElementById('resultDate').textContent =
+                now.getFullYear() + '.' + String(now.getMonth()+1).padStart(2,'0') + '.' + String(now.getDate()).padStart(2,'0');
+
+            // 총점 애니메이션
+            const circle = document.getElementById('scoreCirclePath');
+            const circumference = 339.292;
+            const offset = circumference - (pct / 100) * circumference;
+
+            let color;
+            if (pct >= 80) color = '#00B894';
+            else if (pct >= 60) color = '#FDCB6E';
+            else color = '#E17055';
+
+            circle.style.stroke = color;
+            circle.style.transition = 'stroke-dashoffset 1.5s ease';
+            setTimeout(() => { circle.style.strokeDashoffset = offset; }, 100);
+
+            // 숫자 카운트업
+            let current = 0;
+            const target = pct;
+            const scoreEl = document.getElementById('totalScoreValue');
+            const interval = setInterval(() => {
+                current++;
+                scoreEl.textContent = current;
+                if (current >= target) clearInterval(interval);
+            }, 20);
+
+            // 등급
+            const gradeEl = document.getElementById('resultGrade');
+            const summaryEl = document.getElementById('resultSummary');
+            if (pct >= 80) {
+                gradeEl.innerHTML = '<span class="grade-badge grade-a">A등급</span> 즉시 추진 가능';
+                gradeEl.style.color = '#00B894';
+                summaryEl.textContent = '즉시 인허가 착수가 가능하며, 수익성이 매우 높은 것으로 분석됩니다. 전문 컨설팅을 통해 신속하게 진행하시기 바랍니다.';
+            } else if (pct >= 60) {
+                gradeEl.innerHTML = '<span class="grade-badge grade-b">B등급</span> 보완 후 추진 권장';
+                gradeEl.style.color = '#FDCB6E';
+                summaryEl.textContent = '시설 및 운영 전략의 일부 보완이 필요합니다. 전문가 상담을 통해 부족한 영역을 파악하고 개선 방안을 수립하세요.';
+            } else {
+                gradeEl.innerHTML = '<span class="grade-badge grade-c">C등급</span> 전면 재검토 필요';
+                gradeEl.style.color = '#E17055';
+                summaryEl.textContent = '입지 재검토 혹은 시설/인력에 대한 대대적인 구조조정이 필요합니다. 전문가와 함께 근본적인 전략을 재수립하시기 바랍니다.';
+            }
+
+            // 파트별 바
+            function setPartBar(id, score, commentId) {
+                const barPct = (score / 50) * 100;
+                const bar = document.getElementById(id);
+                bar.style.width = barPct + '%';
+                if (barPct >= 80) bar.style.background = '#00B894';
+                else if (barPct >= 60) bar.style.background = '#FDCB6E';
+                else bar.style.background = '#E17055';
+                document.getElementById(id.replace('Bar', 'Score')).textContent = score + '/50';
+
+                const cEl = document.getElementById(commentId);
+                if (barPct >= 80) cEl.textContent = '우수한 수준입니다. 현재 상태를 유지하면서 추진하세요.';
+                else if (barPct >= 60) cEl.textContent = '양호하나 일부 항목의 보완이 필요합니다.';
+                else cEl.textContent = '집중적인 개선이 필요한 영역입니다. 전문가 상담을 권장합니다.';
+            }
+            setTimeout(() => {
+                setPartBar('part1Bar', scores.p1, 'part1Comment');
+                setPartBar('part2Bar', scores.p2, 'part2Comment');
+                setPartBar('part3Bar', scores.p3, 'part3Comment');
+            }, 300);
+
+            // 레이더 차트
+            setTimeout(() => { drawRadar(scores); }, 200);
+        }
+
+        function drawRadar(scores) {
+            var svg = document.getElementById('radarChart');
+            var ns = 'http://www.w3.org/2000/svg';
+            svg.innerHTML = '';
+
+            var cx = 200, cy = 180, maxR = 140;
+            var labels = [
+                { name: '소득/고객층', sub: '(Q1-Q2)' },
+                { name: '인프라/접근성', sub: '(Q3-Q4)' },
+                { name: '경쟁/단가', sub: '(Q5-Q6)' },
+                { name: '환경/마케팅', sub: '(Q7-Q10)' },
+                { name: '시설 구조', sub: '(Q11-Q13)' },
+                { name: '설비/안전', sub: '(Q14-Q18)' },
+                { name: '보안/패스박스', sub: '(Q19-Q20)' },
+                { name: '인력/비전', sub: '(Q21-Q22)' },
+                { name: 'AI/SOP', sub: '(Q23-Q26)' },
+                { name: '브랜딩/커뮤니티', sub: '(Q27-Q30)' }
+            ];
+            var n = labels.length;
+
+            // 각 세부 점수 계산 (10개 축)
+            var vals = [];
+            function getQ(name) {
+                var el = form.querySelector('input[name="' + name + '"]:checked');
+                return el ? parseInt(el.value) : 0;
+            }
+            vals.push(getQ('p1q1') + getQ('p1q2'));
+            vals.push(getQ('p1q3') + getQ('p1q4'));
+            vals.push(getQ('p1q5') + getQ('p1q6'));
+            vals.push(getQ('p1q7') + getQ('p1q8') + getQ('p1q9') + getQ('p1q10'));
+            vals.push(getQ('p2q1') + getQ('p2q2') + getQ('p2q3'));
+            vals.push(getQ('p2q4') + getQ('p2q5') + getQ('p2q6') + getQ('p2q7') + getQ('p2q8'));
+            vals.push(getQ('p2q9') + getQ('p2q10'));
+            vals.push(getQ('p3q1') + getQ('p3q2'));
+            vals.push(getQ('p3q3') + getQ('p3q4') + getQ('p3q5') + getQ('p3q6'));
+            vals.push(getQ('p3q7') + getQ('p3q8') + getQ('p3q9') + getQ('p3q10'));
+
+            var maxVals = [10, 10, 10, 20, 15, 25, 10, 10, 20, 20];
+
+            function polarToXY(angle, r) {
+                var a = angle - Math.PI / 2;
+                return { x: cx + r * Math.cos(a), y: cy + r * Math.sin(a) };
+            }
+
+            // 배경 그리드 (5단계)
+            for (var lv = 1; lv <= 5; lv++) {
+                var r = maxR * lv / 5;
+                var pts = [];
+                for (var i = 0; i < n; i++) {
+                    var p = polarToXY(2 * Math.PI * i / n, r);
+                    pts.push(p.x + ',' + p.y);
+                }
+                var poly = document.createElementNS(ns, 'polygon');
+                poly.setAttribute('points', pts.join(' '));
+                poly.setAttribute('fill', 'none');
+                poly.setAttribute('stroke', '#E2E8F0');
+                poly.setAttribute('stroke-width', lv === 5 ? '2' : '1');
+                svg.appendChild(poly);
+            }
+
+            // 축선
+            for (var i = 0; i < n; i++) {
+                var p = polarToXY(2 * Math.PI * i / n, maxR);
+                var line = document.createElementNS(ns, 'line');
+                line.setAttribute('x1', cx);
+                line.setAttribute('y1', cy);
+                line.setAttribute('x2', p.x);
+                line.setAttribute('y2', p.y);
+                line.setAttribute('stroke', '#E2E8F0');
+                line.setAttribute('stroke-width', '1');
+                svg.appendChild(line);
+            }
+
+            // 데이터 폴리곤
+            var dataPts = [];
+            for (var i = 0; i < n; i++) {
+                var ratio = vals[i] / maxVals[i];
+                var p = polarToXY(2 * Math.PI * i / n, maxR * ratio);
+                dataPts.push(p.x + ',' + p.y);
+            }
+            var dataPoly = document.createElementNS(ns, 'polygon');
+            dataPoly.setAttribute('points', dataPts.join(' '));
+            dataPoly.setAttribute('fill', 'rgba(0, 77, 166, 0.2)');
+            dataPoly.setAttribute('stroke', '#004DA6');
+            dataPoly.setAttribute('stroke-width', '2.5');
+            dataPoly.setAttribute('stroke-linejoin', 'round');
+            dataPoly.style.opacity = '0';
+            dataPoly.style.transition = 'opacity 1s ease';
+            svg.appendChild(dataPoly);
+            setTimeout(function() { dataPoly.style.opacity = '1'; }, 100);
+
+            // 데이터 포인트 (점)
+            for (var i = 0; i < n; i++) {
+                var ratio = vals[i] / maxVals[i];
+                var p = polarToXY(2 * Math.PI * i / n, maxR * ratio);
+                var dot = document.createElementNS(ns, 'circle');
+                dot.setAttribute('cx', p.x);
+                dot.setAttribute('cy', p.y);
+                dot.setAttribute('r', '5');
+                dot.setAttribute('fill', '#004DA6');
+                dot.setAttribute('stroke', '#FFFFFF');
+                dot.setAttribute('stroke-width', '2');
+                svg.appendChild(dot);
+            }
+
+            // 라벨
+            for (var i = 0; i < n; i++) {
+                var angle = 2 * Math.PI * i / n;
+                var lp = polarToXY(angle, maxR + 28);
+                var text = document.createElementNS(ns, 'text');
+                text.setAttribute('x', lp.x);
+                text.setAttribute('y', lp.y);
+                text.setAttribute('text-anchor', 'middle');
+                text.setAttribute('dominant-baseline', 'middle');
+                text.setAttribute('font-size', '11');
+                text.setAttribute('font-weight', '600');
+                text.setAttribute('fill', '#1F2937');
+
+                var tspan1 = document.createElementNS(ns, 'tspan');
+                tspan1.setAttribute('x', lp.x);
+                tspan1.setAttribute('dy', '0');
+                tspan1.textContent = labels[i].name;
+                text.appendChild(tspan1);
+
+                var pctVal = Math.round((vals[i] / maxVals[i]) * 100);
+                var tspan2 = document.createElementNS(ns, 'tspan');
+                tspan2.setAttribute('x', lp.x);
+                tspan2.setAttribute('dy', '14');
+                tspan2.setAttribute('font-size', '10');
+                tspan2.setAttribute('font-weight', '700');
+                tspan2.setAttribute('fill', pctVal >= 80 ? '#00B894' : pctVal >= 60 ? '#E17055' : '#D63031');
+                tspan2.textContent = pctVal + '%';
+                text.appendChild(tspan2);
+
+                svg.appendChild(text);
+            }
+        }
+    })();
+    </script>
+    <script src="https://chatbot-sdk.aitalker.co.kr/talker-sdk.umd.js"></script>
+    <script>
+        TalkerSDK.initializeTalkerSDK({ code: "jws", position: "right" });
+    </script>
+</body>
+</html>

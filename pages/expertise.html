@@ -18,7 +18,14 @@
             </a>
             <nav class="nav">
                 <a href="why-us.html" class="nav-link">왜 우리인가</a>
-                <a href="services.html" class="nav-link">서비스</a>
+                <div class="nav-dropdown">
+                    <a href="services.html" class="nav-link">서비스 <span class="nav-arrow">▾</span></a>
+                    <div class="nav-dropdown-menu">
+                        <a href="services.html" class="dropdown-link">서비스 소개</a>
+                        <a href="diagnosis.html" class="dropdown-link">비즈니스 진단</a>
+                        <a href="results.html" class="dropdown-link">진단 결과 보기</a>
+                    </div>
+                </div>
                 <a href="process.html" class="nav-link">프로세스</a>
                 <a href="expertise.html" class="nav-link active">전문분야</a>
                 <a href="requirements.html" class="nav-link">시설요건</a>
@@ -36,6 +43,8 @@
     <div class="mobile-menu" id="mobileMenu">
         <a href="why-us.html" class="mobile-nav-link">왜 우리인가</a>
         <a href="services.html" class="mobile-nav-link">서비스</a>
+        <a href="diagnosis.html" class="mobile-nav-link mobile-sub-link">↳ 비즈니스 진단</a>
+        <a href="results.html" class="mobile-nav-link mobile-sub-link">↳ 진단 결과 보기</a>
         <a href="process.html" class="mobile-nav-link">프로세스</a>
         <a href="expertise.html" class="mobile-nav-link">전문분야</a>
         <a href="requirements.html" class="mobile-nav-link">시설요건</a>
@@ -172,9 +181,11 @@
             </div>
             <div class="footer-bottom">
                 <p>&copy; 2025 RegenMed Consulting. All rights reserved.</p>
+                <a href="admin.html" class="admin-footer-btn" title="관리자 대시보드">&#9881; 관리자</a>
             </div>
         </div>
     </footer>
+
 
     <!-- 맨 위로 버튼 -->
     <button class="back-to-top" id="backToTop">
