@@ -2118,16 +2118,17 @@ button {
     box-shadow: var(--shadow-md);
     padding: 8px 0;
     z-index: 1001;
-    margin-top: 8px;
+    margin-top: 0;
+    padding-top: 16px;
 }
 
 .nav-dropdown-menu::before {
     content: '';
     position: absolute;
-    top: -8px;
-    left: 0;
-    right: 0;
-    height: 8px;
+    top: -12px;
+    left: -20px;
+    right: -20px;
+    height: 20px;
 }
 
 .nav-dropdown:hover .nav-dropdown-menu {
