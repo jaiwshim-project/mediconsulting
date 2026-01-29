@@ -321,25 +321,40 @@
             text-transform: uppercase; letter-spacing: 1px;
         }
 
-        /* 점수 바 */
+        /* 점수 바 - 5단계 세그먼트 */
         .part-score-row {
             display: flex;
             align-items: center;
             gap: 16px;
             margin-bottom: 16px;
         }
-        .part-bar-track {
+        .seg-bar {
             flex: 1;
-            height: 10px;
-            background: #F3F4F6;
-            border-radius: 10px;
-            overflow: hidden;
+            display: flex;
+            gap: 3px;
+            height: 14px;
         }
-        .part-bar-fill {
+        .seg-bar .seg {
+            flex: 1;
+            background: #F3F4F6;
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+        }
+        .seg-bar .seg-fill {
             height: 100%;
-            border-radius: 10px;
             width: 0%;
-            transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 4px;
+            transition: width 1s cubic-bezier(0.4,0,0.2,1);
+        }
+        .seg-bar .seg-label {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 8px;
+            font-weight: 800;
+            color: rgba(0,0,0,0.2);
+            pointer-events: none;
         }
         .part-score-value {
             font-size: 16px;
@@ -614,7 +629,7 @@
                             </div>
                         </div>
                         <div class="part-score-row">
-                            <div class="part-bar-track"><div class="part-bar-fill" id="part1Bar"></div></div>
+                            <div class="seg-bar" id="part1Bar"></div>
                             <span class="part-score-value" id="part1Score">0/50</span>
                         </div>
                         <p class="part-comment" id="part1Comment"></p>
@@ -630,7 +645,7 @@
                             </div>
                         </div>
                         <div class="part-score-row">
-                            <div class="part-bar-track"><div class="part-bar-fill" id="part2Bar"></div></div>
+                            <div class="seg-bar" id="part2Bar"></div>
                             <span class="part-score-value" id="part2Score">0/50</span>
                         </div>
                         <p class="part-comment" id="part2Comment"></p>
@@ -646,7 +661,7 @@
                             </div>
                         </div>
                         <div class="part-score-row">
-                            <div class="part-bar-track"><div class="part-bar-fill" id="part3Bar"></div></div>
+                            <div class="seg-bar" id="part3Bar"></div>
                             <span class="part-score-value" id="part3Score">0/50</span>
                         </div>
                         <p class="part-comment" id="part3Comment"></p>
@@ -935,16 +950,28 @@
                 document.getElementById(feedbackId).innerHTML = html;
             }
 
+            var segColors = ['#E17055', '#FDCB6E', '#F6E05E', '#48BB78', '#004DA6'];
+            var segLabels = ['10', '20', '30', '40', '50'];
+
             function setPartBar(id, score, commentId, partKey, feedbackId) {
                 var barPct = (score / 50) * 100;
-                var bar = document.getElementById(id);
-                var barColor;
-                if (barPct >= 80) barColor = '#059669';
-                else if (barPct >= 60) barColor = '#D97706';
-                else barColor = '#DC2626';
-
-                bar.style.background = barColor;
-                setTimeout(function() { bar.style.width = barPct + '%'; }, 300);
+                var container = document.getElementById(id);
+                var html = '';
+                for (var s = 0; s < 5; s++) {
+                    var segMin = s * 10;
+                    var segMax = (s + 1) * 10;
+                    var fill;
+                    if (score >= segMax) fill = 100;
+                    else if (score > segMin) fill = ((score - segMin) / 10) * 100;
+                    else fill = 0;
+                    html += '<div class="seg"><div class="seg-fill" data-w="' + fill + '" style="background:' + segColors[s] + '"></div><span class="seg-label">' + segLabels[s] + '</span></div>';
+                }
+                container.innerHTML = html;
+                setTimeout(function() {
+                    container.querySelectorAll('.seg-fill').forEach(function(el) {
+                        el.style.width = el.getAttribute('data-w') + '%';
+                    });
+                }, 300);
                 document.getElementById(id.replace('Bar', 'Score')).textContent = score + '/50';
 
                 var cEl = document.getElementById(commentId);
