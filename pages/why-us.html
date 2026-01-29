@@ -109,6 +109,29 @@
             .dhc-buttons { flex-direction: column; }
             .dhc-btn { justify-content: center; }
         }
+
+        /* PDF 뷰어 */
+        .pdf-viewer-section {
+            padding: 80px 0;
+            background: #F6F7FB;
+        }
+        .pdf-viewer-wrap {
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 4px 32px rgba(0,0,0,0.08);
+            overflow: hidden;
+            border: 1px solid #E2E8F0;
+        }
+        .pdf-iframe {
+            width: 100%;
+            height: 800px;
+            border: none;
+            display: block;
+        }
+        @media (max-width: 768px) {
+            .pdf-iframe { height: 500px; }
+            .pdf-viewer-section { padding: 48px 0; }
+        }
     </style>
 </head>
 <body>
@@ -250,6 +273,19 @@
                         <a href="results.html" class="dhc-btn dhc-btn-secondary">샘플 리포트 보기</a>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PDF 뷰어 섹션 -->
+    <section class="pdf-viewer-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">비즈니스 성공 블루프린트</h2>
+                <p class="section-desc">첨단재생의료 실시기관 인허가 성공을 위한 가이드를 확인하세요</p>
+            </div>
+            <div class="pdf-viewer-wrap">
+                <iframe src="../RegenMed_Business_Success_Blueprint_compressed.pdf#toolbar=0&navpanes=0&scrollbar=1" class="pdf-iframe"></iframe>
             </div>
         </div>
     </section>
