@@ -115,6 +115,33 @@
             padding: 80px 0;
             background: #F6F7FB;
         }
+        .pdf-tab-nav {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        .pdf-tab-btn {
+            padding: 12px 28px;
+            border: 2px solid #E2E8F0;
+            border-radius: 12px;
+            background: #fff;
+            font-size: 14px;
+            font-weight: 700;
+            color: #4A5568;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: var(--font-primary);
+        }
+        .pdf-tab-btn:hover {
+            border-color: #0066CC;
+            color: #0066CC;
+        }
+        .pdf-tab-btn.active {
+            background: linear-gradient(135deg, #004DA6, #008F72);
+            color: #fff;
+            border-color: transparent;
+        }
         .pdf-viewer-wrap {
             background: #fff;
             border-radius: 20px;
@@ -131,6 +158,7 @@
         @media (max-width: 768px) {
             .pdf-iframe { height: 500px; }
             .pdf-viewer-section { padding: 48px 0; }
+            .pdf-tab-btn { padding: 10px 18px; font-size: 13px; }
         }
     </style>
 </head>
@@ -152,10 +180,11 @@
                         <a href="results.html" class="dropdown-link">진단 결과 보기</a>
                     </div>
                 </div>
+                <a href="exvar.html" class="nav-link">ExVAR 셀테라피</a>
                 <a href="process.html" class="nav-link">프로세스</a>
                 <a href="expertise.html" class="nav-link">전문분야</a>
                 <a href="requirements.html" class="nav-link">시설요건</a>
-                <a href="contact.html" class="nav-link nav-cta">무료상담</a>
+                <a href="results.html" class="nav-link nav-cta">진단 결과 보기</a>
             </nav>
             <button class="mobile-menu-btn" id="mobileMenuBtn">
                 <span></span>
@@ -171,10 +200,11 @@
         <a href="services.html" class="mobile-nav-link">서비스</a>
         <a href="diagnosis.html" class="mobile-nav-link mobile-sub-link">↳ 비즈니스 진단</a>
         <a href="results.html" class="mobile-nav-link mobile-sub-link">↳ 진단 결과 보기</a>
+        <a href="exvar.html" class="mobile-nav-link">ExVAR 셀테라피</a>
         <a href="process.html" class="mobile-nav-link">프로세스</a>
         <a href="expertise.html" class="mobile-nav-link">전문분야</a>
         <a href="requirements.html" class="mobile-nav-link">시설요건</a>
-        <a href="contact.html" class="mobile-nav-link">무료상담 신청</a>
+        <a href="results.html" class="mobile-nav-link nav-cta-mobile">진단 결과 보기</a>
     </div>
 
     <!-- 페이지 히어로 -->
@@ -284,9 +314,21 @@
                 <h2 class="section-title">비즈니스 성공 블루프린트</h2>
                 <p class="section-desc">첨단재생의료 실시기관 인허가 성공을 위한 가이드를 확인하세요</p>
             </div>
-            <div class="pdf-viewer-wrap">
-                <iframe src="../RegenMed_Business_Success_Blueprint_compressed.pdf#toolbar=0&navpanes=0&scrollbar=1" class="pdf-iframe"></iframe>
+            <div class="pdf-tab-nav">
+                <button class="pdf-tab-btn active" onclick="switchPdf(this, '../RegenMed_Business_Success_Blueprint_compressed.pdf')">비즈니스 블루프린트</button>
+                <button class="pdf-tab-btn" onclick="switchPdf(this, '../ExVAR_Introduction.pdf')">ExVAR 셀테라피 소개</button>
+                <button class="pdf-tab-btn" onclick="switchPdf(this, '../NK_Cell_Facility_Guide.pdf')">NK세포 시설 구축 가이드</button>
             </div>
+            <div class="pdf-viewer-wrap">
+                <iframe id="pdfFrame" src="../RegenMed_Business_Success_Blueprint_compressed.pdf#toolbar=0&navpanes=0&scrollbar=1" class="pdf-iframe"></iframe>
+            </div>
+            <script>
+            function switchPdf(btn, src) {
+                document.querySelectorAll('.pdf-tab-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                document.getElementById('pdfFrame').src = src + '#toolbar=0&navpanes=0&scrollbar=1';
+            }
+            </script>
         </div>
     </section>
 

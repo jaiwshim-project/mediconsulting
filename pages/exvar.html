@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ExVAR 셀테라피 | 첨단재생의료 인허가 컨설팅</title>
+    <meta name="description" content="ExVAR(Cell Ex vivo Activation Reinfusion) NK세포 면역 셀테라피 기술 소개. CORE와 APEX 두 가지 모델로 최적의 면역세포 치료 시설을 구축합니다.">
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* ExVAR 페이지 전용 스타일 */
+        .exvar-process-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            margin-top: 48px;
+        }
+        .exvar-process-card {
+            background: #fff;
+            border-radius: 20px;
+            padding: 40px 32px;
+            text-align: center;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+            border: 1px solid #E2E8F0;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .exvar-process-card:hover {
+            transform: translateY(-8px);
+        }
+        .exvar-step-num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 56px; height: 56px;
+            background: linear-gradient(135deg, #004DA6, #008F72);
+            color: #fff;
+            font-size: 22px;
+            font-weight: 800;
+            border-radius: 16px;
+            margin-bottom: 20px;
+        }
+        .exvar-process-card h3 {
+            font-size: 20px;
+            font-weight: 800;
+            color: #111827;
+            margin-bottom: 12px;
+        }
+        .exvar-process-card p {
+            font-size: 15px;
+            color: #4A5568;
+            line-height: 1.7;
+        }
+
+        /* CORE vs APEX 비교 */
+        .exvar-compare {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            margin-top: 48px;
+        }
+        .exvar-model-card {
+            border-radius: 24px;
+            padding: 44px 36px;
+            position: relative;
+            overflow: hidden;
+        }
+        .exvar-model-card.core {
+            background: linear-gradient(135deg, #0D1B3E 0%, #1A3360 100%);
+            color: #fff;
+        }
+        .exvar-model-card.apex {
+            background: linear-gradient(135deg, #0A2A1A 0%, #134A2C 100%);
+            color: #fff;
+        }
+        .model-badge {
+            display: inline-block;
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+        .core .model-badge { background: rgba(59,130,246,0.3); color: #93C5FD; }
+        .apex .model-badge { background: rgba(0,184,148,0.3); color: #55EFC4; }
+        .exvar-model-card h3 {
+            font-size: 26px;
+            font-weight: 900;
+            margin-bottom: 8px;
+        }
+        .exvar-model-card .model-subtitle {
+            font-size: 14px;
+            opacity: 0.7;
+            margin-bottom: 24px;
+        }
+        .model-specs {
+            list-style: none;
+            padding: 0;
+        }
+        .model-specs li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+        .model-specs li:last-child { border-bottom: none; }
+        .spec-icon {
+            flex-shrink: 0;
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+        .core .spec-icon { background: rgba(59,130,246,0.2); }
+        .apex .spec-icon { background: rgba(0,184,148,0.2); }
+
+        /* 경쟁력 데이터 */
+        .exvar-data-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-top: 48px;
+        }
+        .exvar-data-card {
+            background: #fff;
+            border-radius: 20px;
+            padding: 36px 28px;
+            text-align: center;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+            border: 1px solid #E2E8F0;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .exvar-data-card:hover { transform: translateY(-8px); }
+        .data-value {
+            font-size: 42px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #004DA6, #008F72);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+        }
+        .data-label {
+            font-size: 15px;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 8px;
+        }
+        .data-desc {
+            font-size: 13px;
+            color: #6B7280;
+            line-height: 1.6;
+        }
+
+        /* 적용 분야 */
+        .exvar-applications {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 48px;
+        }
+        .app-card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 32px 24px;
+            border: 1px solid #E2E8F0;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+        }
+        .app-card h4 {
+            font-size: 17px;
+            font-weight: 800;
+            color: #111827;
+            margin-bottom: 10px;
+        }
+        .app-card p {
+            font-size: 14px;
+            color: #4A5568;
+            line-height: 1.7;
+        }
+        .app-icon {
+            font-size: 36px;
+            margin-bottom: 16px;
+        }
+
+        /* 안전성 섹션 */
+        .safety-banner {
+            background: linear-gradient(135deg, #0D1B3E 0%, #1A3360 40%, #0A2A4A 100%);
+            border-radius: 24px;
+            padding: 48px 52px;
+            margin-top: 48px;
+            color: #fff;
+        }
+        .safety-banner h3 {
+            font-size: 24px;
+            font-weight: 900;
+            margin-bottom: 16px;
+        }
+        .safety-banner p {
+            font-size: 15px;
+            line-height: 1.8;
+            color: #A8C4E0;
+            max-width: 700px;
+        }
+        .safety-items {
+            display: flex;
+            gap: 16px;
+            margin-top: 24px;
+            flex-wrap: wrap;
+        }
+        .safety-items span {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: #C8DEFA;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 8px 18px;
+            border-radius: 12px;
+        }
+
+        @media (max-width: 992px) {
+            .exvar-process-grid { grid-template-columns: 1fr; }
+            .exvar-compare { grid-template-columns: 1fr; }
+            .exvar-data-grid { grid-template-columns: repeat(2, 1fr); }
+            .exvar-applications { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 768px) {
+            .exvar-data-grid { grid-template-columns: 1fr; }
+            .safety-banner { padding: 32px 24px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- 헤더 -->
+    <header class="header" id="header">
+        <div class="header-container">
+            <a href="../index.html" class="logo">
+                <span class="logo-icon">🧬</span>
+                <span class="logo-text">RegenMed<span class="logo-highlight">Consulting</span></span>
+            </a>
+            <nav class="nav">
+                <a href="why-us.html" class="nav-link">왜 우리인가</a>
+                <div class="nav-dropdown">
+                    <a href="services.html" class="nav-link">서비스 <span class="nav-arrow">▾</span></a>
+                    <div class="nav-dropdown-menu">
+                        <a href="services.html" class="dropdown-link">서비스 소개</a>
+                        <a href="diagnosis.html" class="dropdown-link">비즈니스 진단</a>
+                        <a href="results.html" class="dropdown-link">진단 결과 보기</a>
+                    </div>
+                </div>
+                <a href="exvar.html" class="nav-link active">ExVAR 셀테라피</a>
+                <a href="process.html" class="nav-link">프로세스</a>
+                <a href="expertise.html" class="nav-link">전문분야</a>
+                <a href="requirements.html" class="nav-link">시설요건</a>
+                <a href="results.html" class="nav-link nav-cta">진단 결과 보기</a>
+            </nav>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- 모바일 메뉴 -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="why-us.html" class="mobile-nav-link">왜 우리인가</a>
+        <a href="services.html" class="mobile-nav-link">서비스</a>
+        <a href="diagnosis.html" class="mobile-nav-link mobile-sub-link">↳ 비즈니스 진단</a>
+        <a href="results.html" class="mobile-nav-link mobile-sub-link">↳ 진단 결과 보기</a>
+        <a href="exvar.html" class="mobile-nav-link">ExVAR 셀테라피</a>
+        <a href="process.html" class="mobile-nav-link">프로세스</a>
+        <a href="expertise.html" class="mobile-nav-link">전문분야</a>
+        <a href="requirements.html" class="mobile-nav-link">시설요건</a>
+        <a href="results.html" class="mobile-nav-link nav-cta-mobile">진단 결과 보기</a>
+    </div>
+
+    <!-- 페이지 히어로 -->
+    <section class="page-hero">
+        <div class="hero-bg">
+            <div class="hero-gradient"></div>
+            <div class="hero-pattern"></div>
+        </div>
+        <div class="page-hero-content">
+            <span class="section-badge">ExVAR Cell Therapy</span>
+            <h1 class="page-hero-title">ExVAR 셀테라피</h1>
+            <p class="page-hero-desc">Cell Ex vivo Activation & Reinfusion — NK세포 면역 셀테라피의 새로운 기준</p>
+        </div>
+    </section>
+
+    <!-- ExVAR 개요 3단계 -->
+    <section class="services-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Overview</span>
+                <h2 class="section-title">ExVAR 3단계 프로세스</h2>
+                <p class="section-desc">체외에서 면역세포를 활성화하고 다시 체내로 주입하는 혁신적 치료 기술</p>
+            </div>
+            <div class="exvar-process-grid">
+                <div class="exvar-process-card">
+                    <div class="exvar-step-num">01</div>
+                    <h3>채혈 (Ex vivo)</h3>
+                    <p>환자의 말초혈액에서 NK세포를 포함한 면역세포를 채취합니다. 안전한 성분채혈 방식으로 진행됩니다.</p>
+                </div>
+                <div class="exvar-process-card">
+                    <div class="exvar-step-num">02</div>
+                    <h3>활성화 (Activation)</h3>
+                    <p>채취한 NK세포를 체외에서 배양·활성화합니다. CORE 모델은 4~48시간, APEX 모델은 14~21일간 배양합니다.</p>
+                </div>
+                <div class="exvar-process-card">
+                    <div class="exvar-step-num">03</div>
+                    <h3>재주입 (Reinfusion)</h3>
+                    <p>활성화된 NK세포를 환자에게 다시 주입합니다. 자가세포를 사용하므로 면역 거부반응 위험이 없습니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CORE vs APEX 비교 -->
+    <section class="problem-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Models</span>
+                <h2 class="section-title">CORE vs APEX 모델</h2>
+                <p class="section-desc">목적과 규모에 맞는 최적의 ExVAR 모델을 선택하세요</p>
+            </div>
+            <div class="exvar-compare">
+                <div class="exvar-model-card core">
+                    <span class="model-badge">CORE MODEL</span>
+                    <h3>ExVAR CORE</h3>
+                    <p class="model-subtitle">최소 조작 · 신속 처리 모델</p>
+                    <ul class="model-specs">
+                        <li><span class="spec-icon">⏱</span>처리 시간: 4~48시간 이내</li>
+                        <li><span class="spec-icon">🔬</span>최소한의 세포 조작 (Minimal Manipulation)</li>
+                        <li><span class="spec-icon">🏥</span>병원 내 자체세포처리시설에서 운영</li>
+                        <li><span class="spec-icon">📋</span>첨단재생의료법 실시기관 지정 필요</li>
+                        <li><span class="spec-icon">💰</span>소규모 시설 (20~30평), 초기 투자 최소화</li>
+                        <li><span class="spec-icon">🎯</span>면역력 증강, 항암 보조 치료에 적합</li>
+                    </ul>
+                </div>
+                <div class="exvar-model-card apex">
+                    <span class="model-badge">APEX MODEL</span>
+                    <h3>ExVAR APEX</h3>
+                    <p class="model-subtitle">대량 배양 · 고효능 모델</p>
+                    <ul class="model-specs">
+                        <li><span class="spec-icon">⏱</span>배양 기간: 14~21일</li>
+                        <li><span class="spec-icon">🔬</span>세포 배양 및 증폭 (Cell Culture & Expansion)</li>
+                        <li><span class="spec-icon">🏭</span>GMP 수준 전문 배양시설 필요</li>
+                        <li><span class="spec-icon">📋</span>세포치료제 제조 허가 필요</li>
+                        <li><span class="spec-icon">💰</span>대규모 시설, 높은 초기 투자</li>
+                        <li><span class="spec-icon">🎯</span>고형암, 혈액암 등 난치성 질환 치료</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 핵심 경쟁력 데이터 -->
+    <section class="services-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Performance Data</span>
+                <h2 class="section-title">ExVAR 핵심 경쟁력 데이터</h2>
+                <p class="section-desc">NKCL Bio Group의 전임상 및 임상 데이터 기반 검증 결과</p>
+            </div>
+            <div class="exvar-data-grid">
+                <div class="exvar-data-card">
+                    <div class="data-value">20x</div>
+                    <div class="data-label">NK세포 활성도 증가</div>
+                    <div class="data-desc">배양 후 NK세포의 세포독성 활성도가 배양 전 대비 최대 20배 증가</div>
+                </div>
+                <div class="exvar-data-card">
+                    <div class="data-value">95%+</div>
+                    <div class="data-label">NK세포 순도</div>
+                    <div class="data-desc">배양 완료 후 CD3-CD56+ NK세포 순도 95% 이상 달성</div>
+                </div>
+                <div class="exvar-data-card">
+                    <div class="data-value">98%</div>
+                    <div class="data-label">세포 생존율</div>
+                    <div class="data-desc">주입 시점 기준 세포 생존율 98% 이상 유지</div>
+                </div>
+                <div class="exvar-data-card">
+                    <div class="data-value">4개국</div>
+                    <div class="data-label">국제 특허 보유</div>
+                    <div class="data-desc">한국·미국·일본·중국 4개국 NK세포 배양 기술 특허 등록</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 적용 분야 -->
+    <section class="problem-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Applications</span>
+                <h2 class="section-title">ExVAR 적용 분야</h2>
+                <p class="section-desc">다양한 의료 분야에서 ExVAR 기술이 활용됩니다</p>
+            </div>
+            <div class="exvar-applications">
+                <div class="app-card">
+                    <div class="app-icon">🎗️</div>
+                    <h4>항암 면역치료</h4>
+                    <p>NK세포의 자연적 암세포 살상 능력을 활용한 면역 항암 보조 치료. 수술 후 재발 방지 및 항암 치료 병행에 효과적입니다.</p>
+                </div>
+                <div class="app-card">
+                    <div class="app-icon">🛡️</div>
+                    <h4>면역력 증강</h4>
+                    <p>면역력 저하 환자를 위한 NK세포 면역 증강 프로그램. 만성 피로, 반복 감염 등 면역 관련 증상 개선에 도움을 줍니다.</p>
+                </div>
+                <div class="app-card">
+                    <div class="app-icon">🔄</div>
+                    <h4>재생의료 병행</h4>
+                    <p>줄기세포 치료 등 다른 재생의료 기술과 병행하여 치료 효과를 극대화합니다. 복합 치료 프로토콜 수립이 가능합니다.</p>
+                </div>
+            </div>
+
+            <!-- 안전성 배너 -->
+            <div class="safety-banner">
+                <h3>검증된 안전성과 품질 관리</h3>
+                <p>NKCL Bio Group의 GMP 인증 시설에서 개발된 ExVAR 기술은 엄격한 품질 관리 체계를 거칩니다. 자가세포를 사용하여 면역 거부반응 위험이 없으며, 전 과정 무균 관리가 이루어집니다.</p>
+                <div class="safety-items">
+                    <span>GMP 인증 시설</span>
+                    <span>자가세포 사용</span>
+                    <span>무균 공정 관리</span>
+                    <span>전임상 데이터 보유</span>
+                    <span>품질관리 시스템(QMS)</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA 섹션 -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>ExVAR 시설 구축 상담을 신청하세요</h2>
+                <p>NK세포 면역 셀테라피 시설 구축, NKCL 기술 파트너십 기반으로 확실하게 지원합니다</p>
+                <a href="contact.html" class="btn btn-white">
+                    <span>무료 상담 신청</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 푸터 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="../index.html" class="logo">
+                        <span class="logo-icon">🧬</span>
+                        <span class="logo-text">RegenMed<span class="logo-highlight">Consulting</span></span>
+                    </a>
+                    <p class="footer-desc">첨단재생의료 실시기관 인허가 전문 컨설팅<br>복잡한 인허가 절차를 쉽고 빠르게</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <a href="services.html">서비스</a>
+                    <a href="process.html">컨설팅 프로세스</a>
+                    <a href="expertise.html">전문분야</a>
+                    <a href="contact.html">무료상담</a>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact</h4>
+                    <p>📞 010-1234-5678</p>
+                    <p>📧 consulting@regenmed.co.kr</p>
+                    <p>📍 서울특별시 강남구</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 RegenMed Consulting. All rights reserved.</p>
+                <a href="admin.html" class="admin-footer-btn" title="관리자 대시보드">&#9881; 관리자</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 맨 위로 버튼 -->
+    <button class="back-to-top" id="backToTop">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 15l-6-6-6 6"/>
+        </svg>
+    </button>
+
+    <script src="../script.js"></script>
+    <script src="https://chatbot-sdk.aitalker.co.kr/talker-sdk.umd.js"></script>
+    <script>
+        TalkerSDK.initializeTalkerSDK({ code: "jws", position: "right" });
+    </script>
+</body>
+</html>

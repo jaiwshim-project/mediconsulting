@@ -3880,3 +3880,63 @@ button {
         display: none !important;
     }
 }
+
+/* ========================================
+   NKCL 기술 파트너십 섹션
+======================================== */
+.nkcl-partnership-section {
+    padding: var(--section-padding);
+    background: linear-gradient(180deg, #080810 0%, #0D1B2E 50%, #080810 100%);
+}
+
+.nkcl-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-top: 48px;
+}
+
+.nkcl-card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    padding: 36px 28px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.nkcl-card:hover {
+    transform: translateY(-8px);
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(0, 102, 204, 0.3);
+    box-shadow: 0 12px 40px rgba(0, 102, 204, 0.15);
+}
+
+.nkcl-card-icon {
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+.nkcl-card h3 {
+    font-size: 18px;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 12px;
+}
+
+.nkcl-card p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: #A8C4E0;
+}
+
+@media (max-width: 992px) {
+    .nkcl-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .nkcl-cards {
+        grid-template-columns: 1fr;
+    }
+}
