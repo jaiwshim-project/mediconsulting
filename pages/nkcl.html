@@ -850,9 +850,83 @@
     </button>
 
     <script src="../script.js"></script>
-    <script src="https://chatbot-sdk.aitalker.co.kr/talker-sdk.umd.js"></script>
-    <script>
-        TalkerSDK.initializeTalkerSDK({ code: "jws", position: "right" });
-    </script>
+    <!-- 리젠메드AI상담톡 -->
+    <button class="ai-chat-btn" onclick="document.getElementById('aiChatPanel').classList.toggle('open')">리젠메드AI상담톡</button>
+    <div class="ai-chat-panel" id="aiChatPanel">
+        <div class="ai-chat-header">
+            <span>리젠메드AI상담톡</span>
+            <button class="ai-chat-close" onclick="document.getElementById('aiChatPanel').classList.remove('open')">&times;</button>
+        </div>
+        <iframe src="https://aitalker.co.kr/biz020" class="ai-chat-iframe"></iframe>
+    </div>
+    <style>
+        .ai-chat-btn {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: linear-gradient(135deg, #0066CC, #00B894);
+            color: #fff;
+            font-size: 15px;
+            font-weight: 700;
+            padding: 14px 28px;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 6px 24px rgba(0,102,204,0.4);
+            z-index: 9999;
+            transition: all 0.3s;
+            font-family: var(--font-primary);
+        }
+        .ai-chat-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 32px rgba(0,102,204,0.5);
+        }
+        .ai-chat-panel {
+            position: fixed;
+            bottom: 80px;
+            right: 24px;
+            width: 400px;
+            height: 600px;
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 12px 48px rgba(0,0,0,0.2);
+            z-index: 10000;
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        .ai-chat-panel.open { display: flex; }
+        .ai-chat-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 20px;
+            background: linear-gradient(135deg, #0066CC, #00B894);
+            color: #fff;
+            font-size: 15px;
+            font-weight: 700;
+        }
+        .ai-chat-close {
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 24px;
+            cursor: pointer;
+            line-height: 1;
+        }
+        .ai-chat-iframe {
+            flex: 1;
+            width: 100%;
+            border: none;
+        }
+        @media (max-width: 480px) {
+            .ai-chat-panel {
+                width: calc(100vw - 32px);
+                height: calc(100vh - 120px);
+                right: 16px;
+                bottom: 72px;
+            }
+        }
+    </style>
 </body>
 </html>
