@@ -180,7 +180,13 @@
                         <a href="results.html" class="dropdown-link">진단 결과 보기</a>
                     </div>
                 </div>
-                <a href="exvar.html" class="nav-link">ExVAR 셀테라피</a>
+                <div class="nav-dropdown">
+                    <a href="nkcl.html" class="nav-link">파트너 <span class="nav-arrow">▾</span></a>
+                    <div class="nav-dropdown-menu">
+                        <a href="nkcl.html" class="dropdown-link">NKCL Bio Group</a>
+                        <a href="exvar.html" class="dropdown-link">ExVAR 셀테라피</a>
+                    </div>
+                </div>
                 <a href="process.html" class="nav-link">프로세스</a>
                 <a href="expertise.html" class="nav-link">전문분야</a>
                 <a href="requirements.html" class="nav-link">시설요건</a>
@@ -200,7 +206,9 @@
         <a href="services.html" class="mobile-nav-link">서비스</a>
         <a href="diagnosis.html" class="mobile-nav-link mobile-sub-link">↳ 비즈니스 진단</a>
         <a href="results.html" class="mobile-nav-link mobile-sub-link">↳ 진단 결과 보기</a>
-        <a href="exvar.html" class="mobile-nav-link">ExVAR 셀테라피</a>
+        <a href="nkcl.html" class="mobile-nav-link">파트너</a>
+        <a href="nkcl.html" class="mobile-nav-link mobile-sub-link">↳ NKCL Bio Group</a>
+        <a href="exvar.html" class="mobile-nav-link mobile-sub-link">↳ ExVAR 셀테라피</a>
         <a href="process.html" class="mobile-nav-link">프로세스</a>
         <a href="expertise.html" class="mobile-nav-link">전문분야</a>
         <a href="requirements.html" class="mobile-nav-link">시설요건</a>
@@ -315,12 +323,12 @@
                 <p class="section-desc">첨단재생의료 실시기관 인허가 성공을 위한 가이드를 확인하세요</p>
             </div>
             <div class="pdf-tab-nav">
-                <button class="pdf-tab-btn active" onclick="switchPdf(this, '../RegenMed_Business_Success_Blueprint_compressed.pdf')">비즈니스 블루프린트</button>
+                <button class="pdf-tab-btn active" onclick="switchPdf(this, '../리젠메드컨설팅 사업제안서.pdf')">비즈니스 블루프린트</button>
                 <button class="pdf-tab-btn" onclick="switchPdf(this, '../ExVAR_Introduction.pdf')">ExVAR 셀테라피 소개</button>
                 <button class="pdf-tab-btn" onclick="switchPdf(this, '../NK_Cell_Facility_Guide.pdf')">NK세포 시설 구축 가이드</button>
             </div>
             <div class="pdf-viewer-wrap">
-                <iframe id="pdfFrame" src="../RegenMed_Business_Success_Blueprint_compressed.pdf#toolbar=0&navpanes=0&scrollbar=1" class="pdf-iframe"></iframe>
+                <iframe id="pdfFrame" src="../리젠메드컨설팅 사업제안서.pdf#toolbar=0&navpanes=0&scrollbar=1" class="pdf-iframe"></iframe>
             </div>
             <script>
             function switchPdf(btn, src) {

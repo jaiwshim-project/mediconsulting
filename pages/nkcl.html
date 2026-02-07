@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NKCL Bio Group 파트너십 | 첨단재생의료 인허가 컨설팅</title>
+    <meta name="description" content="NKCL Bio Group 기술 파트너십. GMP 인증 4,000㎡ 시설, 4개국 특허 기술, 전임상 4개 암종 검증 완료. NK세포 면역치료 글로벌 리더.">
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* NKCL 페이지 전용 스타일 */
+
+        /* 회사 개요 카드 */
+        .company-overview {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            margin-top: 48px;
+        }
+        .company-info-card {
+            background: linear-gradient(135deg, #0D1B3E 0%, #1A3360 100%);
+            border-radius: 24px;
+            padding: 44px 36px;
+            color: #fff;
+        }
+        .company-info-card h3 {
+            font-size: 24px;
+            font-weight: 900;
+            margin-bottom: 24px;
+            color: #55EFC4;
+        }
+        .info-table {
+            width: 100%;
+        }
+        .info-table tr {
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+        .info-table td {
+            padding: 12px 0;
+            font-size: 14px;
+            vertical-align: top;
+        }
+        .info-table td:first-child {
+            font-weight: 700;
+            color: #93C5FD;
+            width: 120px;
+            white-space: nowrap;
+        }
+        .info-table td:last-child {
+            color: #CBD5E1;
+            line-height: 1.6;
+        }
+        .company-highlights-card {
+            background: #fff;
+            border-radius: 24px;
+            padding: 44px 36px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+            border: 1px solid #E2E8F0;
+        }
+        .company-highlights-card h3 {
+            font-size: 24px;
+            font-weight: 900;
+            color: #111827;
+            margin-bottom: 24px;
+        }
+        .highlight-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            padding: 14px 0;
+            border-bottom: 1px solid #F1F5F9;
+        }
+        .highlight-item:last-child { border-bottom: none; }
+        .highlight-check {
+            flex-shrink: 0;
+            width: 28px; height: 28px;
+            background: linear-gradient(135deg, #004DA6, #008F72);
+            color: #fff;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 800;
+        }
+        .highlight-item p {
+            font-size: 14px;
+            color: #374151;
+            line-height: 1.6;
+        }
+        .highlight-item strong {
+            color: #004DA6;
+        }
+
+        /* 사업 영역 */
+        .business-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 48px;
+        }
+        .business-card {
+            background: #fff;
+            border-radius: 20px;
+            padding: 36px 28px;
+            text-align: center;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+            border: 1px solid #E2E8F0;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .business-card:hover { transform: translateY(-8px); }
+        .business-icon {
+            width: 72px; height: 72px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(0,77,166,0.08), rgba(0,143,114,0.08));
+            border-radius: 20px;
+            font-size: 32px;
+        }
+        .business-card h4 {
+            font-size: 18px;
+            font-weight: 800;
+            color: #111827;
+            margin-bottom: 12px;
+        }
+        .business-card p {
+            font-size: 14px;
+            color: #4A5568;
+            line-height: 1.7;
+        }
+        .business-card ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 16px;
+            text-align: left;
+        }
+        .business-card ul li {
+            font-size: 13px;
+            color: #4A5568;
+            padding: 4px 0;
+            padding-left: 18px;
+            position: relative;
+        }
+        .business-card ul li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #008F72;
+            font-weight: 800;
+        }
+
+        /* 핵심 기술 */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin-top: 48px;
+        }
+        .tech-card {
+            background: #fff;
+            border-radius: 20px;
+            padding: 36px 32px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+            border: 1px solid #E2E8F0;
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .tech-card:hover { transform: translateY(-6px); }
+        .tech-icon-wrap {
+            flex-shrink: 0;
+            width: 56px; height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #004DA6, #008F72);
+            border-radius: 16px;
+            font-size: 24px;
+        }
+        .tech-card h4 {
+            font-size: 18px;
+            font-weight: 800;
+            color: #111827;
+            margin-bottom: 8px;
+        }
+        .tech-highlight {
+            display: inline-block;
+            background: linear-gradient(135deg, rgba(0,77,166,0.1), rgba(0,143,114,0.1));
+            color: #004DA6;
+            font-size: 14px;
+            font-weight: 800;
+            padding: 4px 12px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+        }
+        .tech-card p {
+            font-size: 14px;
+            color: #4A5568;
+            line-height: 1.7;
+        }
+
+        /* 전임상 결과 */
+        .preclinical-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-top: 48px;
+        }
+        .preclinical-card {
+            background: #fff;
+            border-radius: 20px;
+            padding: 36px 24px;
+            text-align: center;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+            border: 1px solid #E2E8F0;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .preclinical-card:hover { transform: translateY(-8px); }
+        .preclinical-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, #004DA6, #008F72);
+        }
+        .cancer-type {
+            font-size: 13px;
+            font-weight: 700;
+            color: #6B7280;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+        .efficacy-value {
+            font-size: 48px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #004DA6, #008F72);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.1;
+            margin-bottom: 8px;
+        }
+        .efficacy-label {
+            font-size: 14px;
+            color: #4A5568;
+            line-height: 1.5;
+        }
+        .preclinical-note {
+            text-align: center;
+            margin-top: 32px;
+            padding: 20px 32px;
+            background: linear-gradient(135deg, rgba(0,77,166,0.05), rgba(0,143,114,0.05));
+            border-radius: 16px;
+            border: 1px solid rgba(0,77,166,0.1);
+        }
+        .preclinical-note p {
+            font-size: 14px;
+            color: #4A5568;
+            line-height: 1.7;
+        }
+        .preclinical-note strong {
+            color: #004DA6;
+        }
+
+        /* 경쟁력 데이터 */
+        .data-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-top: 48px;
+        }
+        .data-card {
+            background: #fff;
+            border-radius: 20px;
+            padding: 36px 28px;
+            text-align: center;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+            border: 1px solid #E2E8F0;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .data-card:hover { transform: translateY(-8px); }
+        .data-value {
+            font-size: 42px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #004DA6, #008F72);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+        }
+        .data-label {
+            font-size: 15px;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 8px;
+        }
+        .data-desc {
+            font-size: 13px;
+            color: #6B7280;
+            line-height: 1.6;
+        }
+
+        /* 시장 규모 */
+        .market-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 48px;
+        }
+        .market-card {
+            background: linear-gradient(135deg, #0D1B3E 0%, #1A3360 100%);
+            border-radius: 20px;
+            padding: 36px 28px;
+            text-align: center;
+            color: #fff;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .market-card:hover { transform: translateY(-8px); }
+        .market-value {
+            font-size: 40px;
+            font-weight: 900;
+            color: #55EFC4;
+            margin-bottom: 8px;
+        }
+        .market-label {
+            font-size: 16px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+        .market-desc {
+            font-size: 13px;
+            color: #A8C4E0;
+            line-height: 1.6;
+        }
+        .market-badge {
+            display: inline-block;
+            background: rgba(85,239,196,0.15);
+            color: #55EFC4;
+            font-size: 12px;
+            font-weight: 800;
+            padding: 4px 12px;
+            border-radius: 8px;
+            margin-top: 12px;
+        }
+
+        /* 인증 뱃지 */
+        .cert-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 36px;
+            justify-content: center;
+        }
+        .cert-tag {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.15);
+            color: #C8DEFA;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 10px 20px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* 타임라인 */
+        .timeline-bar {
+            display: flex;
+            gap: 0;
+            margin-top: 48px;
+            overflow-x: auto;
+            padding-bottom: 8px;
+        }
+        .timeline-item {
+            flex: 1;
+            min-width: 160px;
+            text-align: center;
+            position: relative;
+            padding: 0 8px;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            top: 24px;
+            left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #004DA6, #008F72);
+        }
+        .timeline-item:first-child::before { left: 50%; }
+        .timeline-item:last-child::before { right: 50%; }
+        .timeline-dot {
+            width: 48px; height: 48px;
+            background: linear-gradient(135deg, #004DA6, #008F72);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 16px;
+            font-weight: 800;
+            margin: 0 auto 16px;
+            position: relative;
+            z-index: 2;
+        }
+        .timeline-item h5 {
+            font-size: 14px;
+            font-weight: 800;
+            color: #111827;
+            margin-bottom: 6px;
+        }
+        .timeline-item p {
+            font-size: 12px;
+            color: #6B7280;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 992px) {
+            .company-overview { grid-template-columns: 1fr; }
+            .business-grid { grid-template-columns: 1fr; }
+            .tech-grid { grid-template-columns: 1fr; }
+            .preclinical-grid { grid-template-columns: repeat(2, 1fr); }
+            .data-grid { grid-template-columns: repeat(2, 1fr); }
+            .market-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 768px) {
+            .preclinical-grid { grid-template-columns: 1fr; }
+            .data-grid { grid-template-columns: 1fr; }
+            .timeline-bar { flex-direction: column; gap: 16px; }
+            .timeline-item::before { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <!-- 헤더 -->
+    <header class="header" id="header">
+        <div class="header-container">
+            <a href="../index.html" class="logo">
+                <span class="logo-icon">🧬</span>
+                <span class="logo-text">RegenMed<span class="logo-highlight">Consulting</span></span>
+            </a>
+            <nav class="nav">
+                <a href="why-us.html" class="nav-link">왜 우리인가</a>
+                <div class="nav-dropdown">
+                    <a href="services.html" class="nav-link">서비스 <span class="nav-arrow">▾</span></a>
+                    <div class="nav-dropdown-menu">
+                        <a href="services.html" class="dropdown-link">서비스 소개</a>
+                        <a href="diagnosis.html" class="dropdown-link">비즈니스 진단</a>
+                        <a href="results.html" class="dropdown-link">진단 결과 보기</a>
+                    </div>
+                </div>
+                <div class="nav-dropdown">
+                    <a href="nkcl.html" class="nav-link active">파트너 <span class="nav-arrow">▾</span></a>
+                    <div class="nav-dropdown-menu">
+                        <a href="nkcl.html" class="dropdown-link">NKCL Bio Group</a>
+                        <a href="exvar.html" class="dropdown-link">ExVAR 셀테라피</a>
+                    </div>
+                </div>
+                <a href="process.html" class="nav-link">프로세스</a>
+                <a href="expertise.html" class="nav-link">전문분야</a>
+                <a href="requirements.html" class="nav-link">시설요건</a>
+                <a href="results.html" class="nav-link nav-cta">진단 결과 보기</a>
+            </nav>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- 모바일 메뉴 -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="why-us.html" class="mobile-nav-link">왜 우리인가</a>
+        <a href="services.html" class="mobile-nav-link">서비스</a>
+        <a href="diagnosis.html" class="mobile-nav-link mobile-sub-link">↳ 비즈니스 진단</a>
+        <a href="results.html" class="mobile-nav-link mobile-sub-link">↳ 진단 결과 보기</a>
+        <a href="nkcl.html" class="mobile-nav-link">파트너</a>
+        <a href="nkcl.html" class="mobile-nav-link mobile-sub-link">↳ NKCL Bio Group</a>
+        <a href="exvar.html" class="mobile-nav-link mobile-sub-link">↳ ExVAR 셀테라피</a>
+        <a href="process.html" class="mobile-nav-link">프로세스</a>
+        <a href="expertise.html" class="mobile-nav-link">전문분야</a>
+        <a href="requirements.html" class="mobile-nav-link">시설요건</a>
+        <a href="results.html" class="mobile-nav-link nav-cta-mobile">진단 결과 보기</a>
+    </div>
+
+    <!-- 페이지 히어로 -->
+    <section class="page-hero">
+        <div class="hero-bg">
+            <div class="hero-gradient"></div>
+            <div class="hero-pattern"></div>
+        </div>
+        <div class="page-hero-content">
+            <span class="section-badge">Technology Partner</span>
+            <h1 class="page-hero-title">NKCL Bio Group</h1>
+            <p class="page-hero-desc">NK Cell & Immune Biotechnology Global Leader — NK세포 면역 바이오 글로벌 리더</p>
+        </div>
+    </section>
+
+    <!-- 회사 개요 -->
+    <section class="services-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Company Overview</span>
+                <h2 class="section-title">회사 개요</h2>
+                <p class="section-desc">NK세포 배양기술 기반, 항암면역 세포치료제 개발 바이오기업</p>
+            </div>
+            <div class="company-overview">
+                <div class="company-info-card">
+                    <h3>기업 정보</h3>
+                    <table class="info-table">
+                        <tr><td>회사명</td><td>(주)엔케이씨엘바이오그룹</td></tr>
+                        <tr><td>대표이사</td><td>신동화</td></tr>
+                        <tr><td>설립연도</td><td>2019년 11월 (GK Medical Group 2008~)</td></tr>
+                        <tr><td>소재지</td><td>경기 화성시 동탄첨단산업1로 51-9, 동탄엠타워 14층</td></tr>
+                        <tr><td>기술분야</td><td>의학 및 약학 연구개발업, 관련 제조업, 시스템 구축</td></tr>
+                        <tr><td>시설 규모</td><td>GMP 인증 NK세포 배양센터 4,000㎡</td></tr>
+                    </table>
+                </div>
+                <div class="company-highlights-card">
+                    <h3>주요 성과</h3>
+                    <div class="highlight-item">
+                        <span class="highlight-check">✓</span>
+                        <p><strong>GMP 인증</strong> — 한국 최대 규모 NK세포 배양센터 보유. 첨단바이오의약품 제조업 허가 / 세포처리시설 허가 (KFDA)</p>
+                    </div>
+                    <div class="highlight-item">
+                        <span class="highlight-check">✓</span>
+                        <p><strong>특허 현황</strong> — 한·중·미·일 4개국 특허등록 13건(해외 4건), 출원 중 14건(해외 13건), 전용실시권 3건, 상표권 37건</p>
+                    </div>
+                    <div class="highlight-item">
+                        <span class="highlight-check">✓</span>
+                        <p><strong>4개 암종 전임상 완료</strong> — 간암, 폐암, 유방암, 신장암 대상 전임상 약효시험 완료</p>
+                    </div>
+                    <div class="highlight-item">
+                        <span class="highlight-check">✓</span>
+                        <p><strong>자동배양기 출시</strong> — RK-NKTM ACS I (NK세포 자동배양기) KC, CE 인증 완료</p>
+                    </div>
+                    <div class="highlight-item">
+                        <span class="highlight-check">✓</span>
+                        <p><strong>정부 수상</strong> — 2022 중기부 장관상, 2023 식약처 장관상, 2023 과기부 장관상</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 사업 영역 -->
+    <section class="problem-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Business Areas</span>
+                <h2 class="section-title">3대 사업 영역</h2>
+                <p class="section-desc">NK세포치료제 개발부터 자동화 시스템, H&B 제품까지</p>
+            </div>
+            <div class="business-grid">
+                <div class="business-card">
+                    <div class="business-icon">💊</div>
+                    <h4>NK세포치료제 개발</h4>
+                    <p>NK세포 배양 독자적 기술을 기반한 차세대 항암 면역치료제</p>
+                    <ul>
+                        <li>100억셀 이상 고효율 수득률 확보</li>
+                        <li>위암, 유방암, 대장암, 폐암, 간암 등 적용</li>
+                        <li>노인성질환, 감염성 질환, 자가면역질환</li>
+                    </ul>
+                </div>
+                <div class="business-card">
+                    <div class="business-icon">🤖</div>
+                    <h4>NK세포배양 자동화 시스템</h4>
+                    <p>GMP 인증 시설 기반의 자동배양 솔루션</p>
+                    <ul>
+                        <li>GMP 인증 / 첨단의약품 제조 허가</li>
+                        <li>세포처리시설 허가 (2023년)</li>
+                        <li>포터블 1인용 자동배양기 (KC, CE 인증)</li>
+                        <li>모듈형 대량생산 시스템 구축</li>
+                    </ul>
+                </div>
+                <div class="business-card">
+                    <div class="business-icon">🧴</div>
+                    <h4>H&B 상품</h4>
+                    <p>면역기능 기반의 다양한 제품군 개발 및 제조</p>
+                    <ul>
+                        <li>NK세포 배양액 원료 (국제화장품원료사전 등재)</li>
+                        <li>사이토카인 스킨부스터 (Cyto-Khan)</li>
+                        <li>마이크로바이옴 기반 장기능 개선식품</li>
+                        <li>코디세핀 기반 면역활성식품</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 핵심 기술 경쟁력 -->
+    <section class="services-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Core Technology</span>
+                <h2 class="section-title">핵심 기술 경쟁력</h2>
+                <p class="section-desc">독자적 배양 원천기술로 글로벌 경쟁력을 확보한 4대 핵심 기술</p>
+            </div>
+            <div class="tech-grid">
+                <div class="tech-card">
+                    <div class="tech-icon-wrap">🧫</div>
+                    <div>
+                        <h4>세포배양 수득률</h4>
+                        <span class="tech-highlight">80~100억셀 (최대 400억셀)</span>
+                        <p>14일 배양으로 안정적 고효율 수득률 달성. 타사 10~40억셀 대비 압도적 기술력. 말기암 환자 면역세포에서도 100~400억개 활성화 세포 수득 가능</p>
+                    </div>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-icon-wrap">🎯</div>
+                    <div>
+                        <h4>세포활성도 조절</h4>
+                        <span class="tech-highlight">30% ~ 90% 맞춤 조절</span>
+                        <p>환자 혈액 상태 체크 후 최적의 NK세포 공격력을 위한 개인맞춤형 활성화 배양 기술. 병원 MSO 운영 임상경험 기반의 노하우 보유</p>
+                    </div>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-icon-wrap">⚗️</div>
+                    <div>
+                        <h4>사이토카인 조절</h4>
+                        <span class="tech-highlight">사이토카인 스톰 예방</span>
+                        <p>세포 배양 단계에서 사이토카인 분비량을 조절하여 인체 투입 시 부작용 예방. 수많은 임상 단계의 풍부한 경험 기반 핵심경쟁력</p>
+                    </div>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-icon-wrap">🤖</div>
+                    <div>
+                        <h4>세포배양 자동화 기술</h4>
+                        <span class="tech-highlight">일반 대비 최대 100배 생산성</span>
+                        <p>AI 기반 배양 데이터 딥러닝, 개인맞춤형 배양환경 조성, 24시간 가동으로 휴먼에러 방지. 연구원 1인당 환자 3명에서 300명으로 효율 혁신</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 핵심 수치 데이터 -->
+    <section class="problem-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Key Figures</span>
+                <h2 class="section-title">핵심 기술 데이터</h2>
+                <p class="section-desc">NKCL Bio Group의 배양 기술력을 증명하는 핵심 수치</p>
+            </div>
+            <div class="data-grid">
+                <div class="data-card">
+                    <div class="data-value">100억+</div>
+                    <div class="data-label">NK세포 수득률</div>
+                    <div class="data-desc">14일 배양으로 안정적 80~100억셀 달성 (최대 400억셀)</div>
+                </div>
+                <div class="data-card">
+                    <div class="data-value">97.7%</div>
+                    <div class="data-label">NK세포 순도</div>
+                    <div class="data-desc">배양 후 NK+NKT 세포 비율 최대 97.7% 달성</div>
+                </div>
+                <div class="data-card">
+                    <div class="data-value">14일</div>
+                    <div class="data-label">최적 배양 기간</div>
+                    <div class="data-desc">타사 18~21일 대비 짧은 기간 내 목표 수득률 달성</div>
+                </div>
+                <div class="data-card">
+                    <div class="data-value">4개국</div>
+                    <div class="data-label">국제 특허</div>
+                    <div class="data-desc">한·미·일·중 특허 13건, 출원 14건, 상표권 37건</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 전임상 결과 -->
+    <section class="services-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Preclinical Results</span>
+                <h2 class="section-title">NK세포치료제 전임상 약효시험 결과</h2>
+                <p class="section-desc">화학항암제(Cisplatin) 대비 RK-NKTM 자가면역세포의 항암 억제 효과</p>
+            </div>
+            <div class="preclinical-grid">
+                <div class="preclinical-card">
+                    <div class="cancer-type">유방암</div>
+                    <div class="efficacy-value">96.3%</div>
+                    <div class="efficacy-label">화학항암제 대비<br>항암 억제 효과</div>
+                </div>
+                <div class="preclinical-card">
+                    <div class="cancer-type">폐암</div>
+                    <div class="efficacy-value">62.9%</div>
+                    <div class="efficacy-label">화학항암제 대비<br>항암 억제 효과</div>
+                </div>
+                <div class="preclinical-card">
+                    <div class="cancer-type">간암</div>
+                    <div class="efficacy-value">99.5%</div>
+                    <div class="efficacy-label">화학항암제 대비<br>항암 억제 효과</div>
+                </div>
+                <div class="preclinical-card">
+                    <div class="cancer-type">신장암</div>
+                    <div class="efficacy-value">90.9%</div>
+                    <div class="efficacy-label">화학항암제 대비<br>항암 억제 효과</div>
+                </div>
+            </div>
+            <div class="preclinical-note">
+                <p><strong>RK-NKTM으로 활성화된 NK면역세포</strong>는 자가면역세포로 부작용이 거의 없고, 내성이 생기지 않으며, 유방암·폐암·간암 및 신장암에서 화학항암제 대비 높은 항암 효과를 나타냈습니다. 식약처 인증 기관에 의뢰한 6주 반복 독성 및 회복 실험에서 안전성이 입증되었습니다.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 임상 로드맵 -->
+    <section class="problem-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">R&D Roadmap</span>
+                <h2 class="section-title">NK세포치료제 개발 로드맵</h2>
+                <p class="section-desc">2008년 창업부터 2030년 신약 허가까지의 여정</p>
+            </div>
+            <div class="timeline-bar">
+                <div class="timeline-item">
+                    <div class="timeline-dot">1</div>
+                    <h5>2008~2019</h5>
+                    <p>GK Medical Group 설립<br>NK세포치료제 R&D<br>바이오부문 분사</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot">2</div>
+                    <h5>~2023</h5>
+                    <p>세포처리시설 허가<br>전임상 독성·효력시험<br>자동배양기 출시</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot">3</div>
+                    <h5>2025~</h5>
+                    <p>IND/IRB 제출<br>임상 1상/2상 진행<br>자동배양솔루션 런칭</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot">4</div>
+                    <h5>2028~</h5>
+                    <p>임상 2상 완료<br>조건부 품목허가 신청<br>임상 3상 / 기술수출</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot">5</div>
+                    <h5>~2030</h5>
+                    <p>신약허가 승인<br>시판 후 조사 (4상)<br>글로벌 파트너 협력</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 시장 규모 -->
+    <section class="expertise-section">
+        <div class="container">
+            <div class="section-header light">
+                <span class="section-badge">Market Opportunity</span>
+                <h2 class="section-title">NK세포 면역치료 시장 전망</h2>
+                <p class="section-desc">급속히 성장하는 글로벌 세포치료제 및 면역항암제 시장</p>
+            </div>
+            <div class="market-grid">
+                <div class="market-card">
+                    <div class="market-value">14조원</div>
+                    <div class="market-label">글로벌 세포치료제 시장</div>
+                    <div class="market-desc">2026년 기준 글로벌 세포치료제 의약품 시장 규모 전망 (국내 1조원)</div>
+                    <span class="market-badge">Evaluate Ltd</span>
+                </div>
+                <div class="market-card">
+                    <div class="market-value">120조원</div>
+                    <div class="market-label">글로벌 면역항암제 시장</div>
+                    <div class="market-desc">2030년 기준 글로벌 TOP 10 바이오기업 면역항암제 시장 전망</div>
+                    <span class="market-badge">CAGR 19%</span>
+                </div>
+                <div class="market-card">
+                    <div class="market-value">12조원</div>
+                    <div class="market-label">세포치료제 CDMO 시장</div>
+                    <div class="market-desc">2026년 글로벌 세포치료제 위탁개발생산(CDMO) 시장 규모 전망</div>
+                    <span class="market-badge">Frost & Sullivan</span>
+                </div>
+            </div>
+            <div class="cert-items">
+                <span class="cert-tag">🏅 2022 중기부 장관상</span>
+                <span class="cert-tag">🏅 2023 식약처 장관상</span>
+                <span class="cert-tag">🏅 2023 과기부 장관상</span>
+                <span class="cert-tag">📜 특허 등록 13건 (해외 4건)</span>
+                <span class="cert-tag">📋 상표권 37건</span>
+                <span class="cert-tag">🏭 GMP 인증 시설 4,000㎡</span>
+                <span class="cert-tag">✅ KFDA 세포처리시설 허가</span>
+                <span class="cert-tag">🔬 KC·CE 인증 자동배양기</span>
+                <span class="cert-tag">🌏 인도네시아·중국·일본·미국 진출</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA 섹션 -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>NKCL 기술 파트너십 기반 시설 구축 상담</h2>
+                <p>NK세포 면역치료 시설 구축부터 인허가까지, NKCL Bio Group의 검증된 기술력으로 지원합니다</p>
+                <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+                    <a href="exvar.html" class="btn btn-secondary" style="border-color: rgba(255,255,255,0.3); color: #fff;">
+                        <span>ExVAR 셀테라피 보기</span>
+                    </a>
+                    <a href="contact.html" class="btn btn-white">
+                        <span>무료 상담 신청</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 푸터 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="../index.html" class="logo">
+                        <span class="logo-icon">🧬</span>
+                        <span class="logo-text">RegenMed<span class="logo-highlight">Consulting</span></span>
+                    </a>
+                    <p class="footer-desc">첨단재생의료 실시기관 인허가 전문 컨설팅<br>복잡한 인허가 절차를 쉽고 빠르게</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <a href="services.html">서비스</a>
+                    <a href="process.html">컨설팅 프로세스</a>
+                    <a href="expertise.html">전문분야</a>
+                    <a href="contact.html">무료상담</a>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact</h4>
+                    <p>📞 010-1234-5678</p>
+                    <p>📧 consulting@regenmed.co.kr</p>
+                    <p>📍 서울특별시 강남구</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 RegenMed Consulting. All rights reserved.</p>
+                <a href="admin.html" class="admin-footer-btn" title="관리자 대시보드">&#9881; 관리자</a>
+            </div>
+        </div>
+    </footer>
+
+    <button class="back-to-top" id="backToTop">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 15l-6-6-6 6"/>
+        </svg>
+    </button>
+
+    <script src="../script.js"></script>
+    <script src="https://chatbot-sdk.aitalker.co.kr/talker-sdk.umd.js"></script>
+    <script>
+        TalkerSDK.initializeTalkerSDK({ code: "jws", position: "right" });
+    </script>
+</body>
+</html>
