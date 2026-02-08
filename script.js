@@ -238,32 +238,47 @@ function initContactForm() {
             submitBtn.innerHTML = '<span>전송 중...</span>';
             submitBtn.disabled = true;
 
+            // Supabase DB 저장 + Resend 이메일 전송 동시 실행
+            const tasks = [];
+
             // Supabase에 문의사항 저장
             if (typeof supabaseInsertInquiry === 'function') {
-                supabaseInsertInquiry({
+                tasks.push(supabaseInsertInquiry({
                     name: data.name || '',
                     company: data.company || '',
                     phone: data.phone || '',
                     email: data.email || '',
                     service: data.service || '',
                     message: data.message || ''
-                }).then(() => {
-                    showNotification('상담 신청이 완료되었습니다. 빠른 시일 내에 연락드리겠습니다.', 'success');
-                    form.reset();
-                }).catch(() => {
-                    showNotification('전송에 실패했습니다. 다시 시도해주세요.', 'error');
-                }).finally(() => {
+                }));
+            }
+
+            // Resend 이메일 전송
+            tasks.push(
+                fetch('/api/send-email', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data),
+                }).then(response => response.json().then(body => ({ ok: response.ok, body })))
+            );
+
+            Promise.all(tasks)
+                .then((results) => {
+                    const emailResult = results[results.length - 1];
+                    if (emailResult.ok) {
+                        showNotification('상담 신청이 완료되었습니다. 빠른 시일 내에 연락드리겠습니다.', 'success');
+                        form.reset();
+                    } else {
+                        showNotification(emailResult.body.error || '전송에 실패했습니다. 다시 시도해주세요.', 'error');
+                    }
+                })
+                .catch(() => {
+                    showNotification('네트워크 오류가 발생했습니다. 잠시 후 다시 시도해주세요.', 'error');
+                })
+                .finally(() => {
                     submitBtn.innerHTML = originalText;
                     submitBtn.disabled = false;
                 });
-            } else {
-                setTimeout(() => {
-                    showNotification('상담 신청이 완료되었습니다. 빠른 시일 내에 연락드리겠습니다.', 'success');
-                    form.reset();
-                    submitBtn.innerHTML = originalText;
-                    submitBtn.disabled = false;
-                }, 1500);
-            }
         });
     }
 }

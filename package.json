@@ -1,0 +1,12 @@
+{
+  "name": "regenmed-consulting-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "첨단재생의료 인허가 컨설팅 웹사이트",
+  "dependencies": {
+    "resend": "^4.1.2"
+  },
+  "devDependencies": {
+    "dotenv": "^17.2.4"
+  }
+}
