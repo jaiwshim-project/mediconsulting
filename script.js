@@ -119,7 +119,9 @@ function initBackToTop() {
 function initAnimations() {
     const animatedElements = document.querySelectorAll(
         '.problem-card, .service-card, .process-step, .expertise-card, ' +
-        '.requirement-category, .contact-card, .section-header'
+        '.requirement-category, .contact-card, .section-header, ' +
+        '.philosophy-card, .package-step, .roadmap-card, .pyramid-level, ' +
+        '.prp-prf-card, .advantage-item, .sop-card, .product-card, .growth-stage'
     );
 
     const observerOptions = {
@@ -145,7 +147,7 @@ function initAnimations() {
     });
 
     // Add staggered delay for grid items
-    const grids = document.querySelectorAll('.services-grid, .problem-grid, .process-timeline, .expertise-grid');
+    const grids = document.querySelectorAll('.services-grid, .problem-grid, .process-timeline, .expertise-grid, .philosophy-grid, .package-timeline, .roadmap-levels, .pyramid-container, .prp-prf-grid, .advantage-grid, .sop-grid, .product-grid, .growth-stages');
     grids.forEach(grid => {
         const items = grid.children;
         Array.from(items).forEach((item, index) => {
