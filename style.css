@@ -156,12 +156,12 @@ button {
     display: flex;
     align-items: center;
     gap: 10px;
-    font-size: 1.5rem;
+    font-size: 1.375rem;
     font-weight: 700;
 }
 
 .logo-icon {
-    font-size: 1.8rem;
+    font-size: 1.675rem;
 }
 
 .logo-text {
@@ -184,7 +184,7 @@ button {
 }
 
 .nav-link {
-    font-size: 0.95rem;
+    font-size: 0.825rem;
     font-weight: 600;
     color: #FFFFFF;
     position: relative;
@@ -277,6 +277,7 @@ button {
 
 .mobile-nav-link {
     padding: 16px;
+    font-size: 0.825rem;
     font-weight: 500;
     color: var(--gray-700);
     border-bottom: 1px solid var(--gray-200);
@@ -3812,7 +3813,7 @@ button {
 .dropdown-link {
     display: block;
     padding: 10px 20px;
-    font-size: 0.9rem;
+    font-size: 0.775rem;
     font-weight: 500;
     color: var(--gray-700);
     transition: all 0.2s ease;

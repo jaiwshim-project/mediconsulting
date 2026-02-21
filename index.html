@@ -403,7 +403,7 @@
     <!-- PRP vs PRF 기술 비교 섹션 -->
     <section class="prp-prf-section" id="prp-prf">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header light">
                 <span class="section-badge">Dual Regeneration</span>
                 <h2 class="section-title">PRP + PRF 통합 재생 프로토콜</h2>
                 <p class="section-desc">단일 기술이 아닌, 두 가지 재생 메커니즘의 시너지</p>
@@ -1252,6 +1252,41 @@
     </button>
 
     <script src="script.js"></script>
+    <!-- 사용자 매뉴얼 버튼 -->
+    <a href="pages/manual.html" class="manual-float-btn" title="사용자 매뉴얼">
+        <span class="manual-btn-icon">📖</span>
+        <span class="manual-btn-text">사용자 매뉴얼</span>
+    </a>
+    <style>
+        .manual-float-btn {
+            position: fixed;
+            bottom: 24px;
+            left: 24px;
+            background: linear-gradient(135deg, #0D1B3E, #1A3360);
+            color: #fff;
+            font-size: 13px;
+            font-weight: 700;
+            padding: 12px 20px;
+            border-radius: 50px;
+            border: 1px solid rgba(255,255,255,0.15);
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(13,27,62,0.4);
+            z-index: 9999;
+            transition: all 0.3s;
+            font-family: var(--font-primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .manual-float-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 28px rgba(13,27,62,0.5);
+            background: linear-gradient(135deg, #1A3360, #0066CC);
+        }
+        .manual-btn-icon { font-size: 16px; }
+    </style>
+
     <!-- 리젠메드AI상담톡 -->
     <button class="ai-chat-btn" onclick="document.getElementById('aiChatPanel').classList.toggle('open')">리젠메드<span style="color:#FFD600">AI</span>상담톡</button>
     <div class="ai-chat-panel" id="aiChatPanel">
