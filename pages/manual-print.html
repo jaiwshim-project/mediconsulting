@@ -1,0 +1,1354 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RegenMed Consulting 사용자 매뉴얼 - PDF</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #0066CC;
+            --dark: #0D1B3E;
+            --text: #1a1a2e;
+            --text-light: #555;
+            --border: #ddd;
+            --bg-light: #f5f7fa;
+            --accent: #00B894;
+        }
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: 9pt;
+            color: var(--text);
+            background: #fff;
+            line-height: 1.5;
+        }
+
+        /* === 상단 컨트롤 바 (인쇄 시 숨김) === */
+        .print-controls {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: #0D1B3E;
+            color: #fff;
+            padding: 10px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+        .print-controls-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        .print-controls-right {
+            display: flex;
+            gap: 8px;
+        }
+        .ctrl-btn {
+            padding: 7px 16px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 700;
+            cursor: pointer;
+            border: none;
+            font-family: 'Noto Sans KR', sans-serif;
+            transition: all 0.2s;
+        }
+        .ctrl-btn.print {
+            background: linear-gradient(135deg, #e53e3e, #c53030);
+            color: #fff;
+        }
+        .ctrl-btn.print:hover { background: linear-gradient(135deg, #c53030, #9b2c2c); }
+        .ctrl-btn.close {
+            background: rgba(255,255,255,0.15);
+            color: #fff;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .ctrl-btn.close:hover { background: rgba(255,255,255,0.25); }
+
+        /* === 본문 래퍼 === */
+        .doc-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 70px 40px 40px;
+        }
+
+        /* === 표지 === */
+        .cover-page {
+            text-align: center;
+            padding: 60px 0 40px;
+            border-bottom: 2px solid var(--primary);
+            margin-bottom: 32px;
+            page-break-after: always;
+        }
+        .cover-logo {
+            font-size: 18pt;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 6px;
+        }
+        .cover-logo span { color: var(--primary); }
+        .cover-tagline {
+            font-size: 9pt;
+            color: var(--text-light);
+            margin-bottom: 24px;
+        }
+        .cover-title {
+            font-size: 22pt;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+        .cover-subtitle {
+            font-size: 11pt;
+            color: var(--text-light);
+            margin-bottom: 32px;
+        }
+        .cover-meta {
+            display: inline-flex;
+            flex-direction: column;
+            gap: 4px;
+            background: var(--bg-light);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 16px 32px;
+            font-size: 8.5pt;
+            color: var(--text-light);
+            text-align: left;
+        }
+        .cover-meta strong { color: var(--dark); }
+
+        /* === 목차 === */
+        .toc-page {
+            margin-bottom: 32px;
+            page-break-after: always;
+        }
+        .toc-title {
+            font-size: 14pt;
+            font-weight: 800;
+            color: var(--dark);
+            border-left: 4px solid var(--primary);
+            padding-left: 12px;
+            margin-bottom: 16px;
+        }
+        .toc-list { list-style: none; }
+        .toc-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 5px 0;
+            border-bottom: 1px dotted #ddd;
+            font-size: 9pt;
+        }
+        .toc-item .toc-num {
+            min-width: 28px;
+            color: var(--primary);
+            font-weight: 700;
+        }
+        .toc-item .toc-name { flex: 1; color: var(--text); }
+        .toc-item .toc-page-num { color: var(--text-light); font-size: 8pt; }
+        .toc-sub-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 3px 0 3px 20px;
+            border-bottom: 1px dotted #eee;
+            font-size: 8.5pt;
+            color: var(--text-light);
+        }
+        .toc-sub-item .sub-dot {
+            width: 4px; height: 4px;
+            border-radius: 50%;
+            background: #aaa;
+            flex-shrink: 0;
+        }
+
+        /* === 섹션 공통 === */
+        .section {
+            margin-bottom: 24px;
+            page-break-inside: avoid;
+        }
+        .section-break {
+            page-break-before: always;
+        }
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, var(--dark), #1A3360);
+            color: #fff;
+            padding: 10px 16px;
+            border-radius: 8px 8px 0 0;
+            margin-bottom: 0;
+        }
+        .section-num {
+            font-size: 9pt;
+            font-weight: 400;
+            color: rgba(255,255,255,0.6);
+            min-width: 24px;
+        }
+        .section-icon { font-size: 14pt; }
+        .section-title-text {
+            font-size: 12pt;
+            font-weight: 700;
+        }
+        .section-subtitle-text {
+            font-size: 8pt;
+            color: rgba(255,255,255,0.7);
+            font-weight: 400;
+        }
+        .section-body {
+            border: 1px solid var(--border);
+            border-top: none;
+            border-radius: 0 0 8px 8px;
+            padding: 16px;
+            background: #fff;
+        }
+
+        /* === 히어로 배너 === */
+        .hero-banner {
+            background: linear-gradient(135deg, #0D1B3E 0%, #1A3360 60%, #0066CC 100%);
+            color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 14px;
+        }
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.25);
+            border-radius: 20px;
+            padding: 3px 10px;
+            font-size: 7.5pt;
+            color: #adf;
+            margin-bottom: 8px;
+        }
+        .hero-heading {
+            font-size: 14pt;
+            font-weight: 800;
+            line-height: 1.3;
+            margin-bottom: 8px;
+        }
+        .hero-desc {
+            font-size: 8.5pt;
+            color: rgba(255,255,255,0.85);
+            line-height: 1.6;
+        }
+        .hero-metrics {
+            display: flex;
+            gap: 20px;
+            margin-top: 12px;
+            flex-wrap: wrap;
+        }
+        .metric-item {
+            text-align: center;
+        }
+        .metric-value {
+            font-size: 16pt;
+            font-weight: 800;
+            color: #7df;
+        }
+        .metric-label {
+            font-size: 7pt;
+            color: rgba(255,255,255,0.7);
+        }
+
+        /* === 카드 그리드 === */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-bottom: 14px;
+        }
+        .card-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+        .card-grid.cols-4 { grid-template-columns: repeat(4, 1fr); }
+        .card {
+            background: var(--bg-light);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 12px;
+        }
+        .card-icon { font-size: 16pt; margin-bottom: 6px; }
+        .card-num {
+            font-size: 7.5pt;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 2px;
+        }
+        .card-title {
+            font-size: 9pt;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 4px;
+        }
+        .card-desc {
+            font-size: 7.5pt;
+            color: var(--text-light);
+            line-height: 1.5;
+        }
+        .card-badge {
+            display: inline-block;
+            background: var(--primary);
+            color: #fff;
+            font-size: 6.5pt;
+            font-weight: 700;
+            padding: 1px 6px;
+            border-radius: 4px;
+            margin-bottom: 4px;
+        }
+        .card-badge.accent { background: var(--accent); }
+        .card-badge.orange { background: #e67e22; }
+
+        /* === 특징 목록 === */
+        .feature-list {
+            list-style: none;
+            margin-top: 8px;
+        }
+        .feature-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 6px;
+            padding: 3px 0;
+            font-size: 8pt;
+            color: var(--text-light);
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .feature-list li::before {
+            content: '✓';
+            color: var(--accent);
+            font-weight: 700;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        /* === 프로세스 스텝 === */
+        .process-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .process-step {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            padding: 10px;
+            background: var(--bg-light);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+        }
+        .step-num {
+            min-width: 28px;
+            height: 28px;
+            background: var(--primary);
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8pt;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        .step-content .step-title {
+            font-size: 9pt;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 2px;
+        }
+        .step-content .step-desc {
+            font-size: 8pt;
+            color: var(--text-light);
+        }
+
+        /* === 비교 테이블 === */
+        .compare-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 8pt;
+            margin-bottom: 14px;
+        }
+        .compare-table th {
+            background: var(--dark);
+            color: #fff;
+            padding: 7px 10px;
+            text-align: left;
+            font-weight: 600;
+        }
+        .compare-table td {
+            padding: 6px 10px;
+            border-bottom: 1px solid #eee;
+            vertical-align: top;
+        }
+        .compare-table tr:nth-child(even) td { background: #f9f9f9; }
+        .compare-table tr:hover td { background: #f0f6ff; }
+
+        /* === 섹션 구분자 === */
+        .sub-section-title {
+            font-size: 10pt;
+            font-weight: 700;
+            color: var(--dark);
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 4px;
+            margin: 14px 0 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .inline-badge {
+            background: var(--primary);
+            color: #fff;
+            font-size: 7pt;
+            padding: 1px 6px;
+            border-radius: 4px;
+        }
+        .inline-badge.green { background: var(--accent); }
+
+        /* === 두 컬럼 레이아웃 === */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+        .col-box {
+            background: var(--bg-light);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 12px;
+        }
+        .col-box-title {
+            font-size: 9pt;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* === 하이라이트 박스 === */
+        .highlight-box {
+            background: linear-gradient(135deg, #e8f4fd, #f0fafb);
+            border: 1px solid #bee3f8;
+            border-left: 3px solid var(--primary);
+            border-radius: 6px;
+            padding: 10px 14px;
+            margin-bottom: 12px;
+        }
+        .highlight-box .hl-title {
+            font-size: 9pt;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 4px;
+        }
+        .highlight-box .hl-text {
+            font-size: 8pt;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+        .info-box {
+            background: #fff8e1;
+            border: 1px solid #ffe082;
+            border-left: 3px solid #f59e0b;
+            border-radius: 6px;
+            padding: 10px 14px;
+            margin-bottom: 12px;
+            font-size: 8pt;
+            color: #5a4000;
+        }
+
+        /* === 점수 차트 === */
+        .score-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+        .score-card {
+            text-align: center;
+            background: var(--bg-light);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 14px 10px;
+        }
+        .score-value {
+            font-size: 20pt;
+            font-weight: 800;
+            color: var(--primary);
+        }
+        .score-label {
+            font-size: 7.5pt;
+            color: var(--text-light);
+            margin-top: 2px;
+        }
+        .score-grade {
+            display: inline-block;
+            background: var(--accent);
+            color: #fff;
+            font-size: 7pt;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 10px;
+            margin-top: 4px;
+        }
+
+        /* === 수평 플로우 === */
+        .flow-steps {
+            display: flex;
+            gap: 6px;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 12px;
+        }
+        .flow-step {
+            background: var(--dark);
+            color: #fff;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 8pt;
+            font-weight: 600;
+            text-align: center;
+        }
+        .flow-arrow {
+            color: var(--primary);
+            font-size: 14pt;
+            font-weight: 700;
+        }
+
+        /* === 페이지 번호 === */
+        @media screen {
+            .page-break { height: 32px; border-bottom: 2px dashed #e2e8f0; margin: 24px 0; }
+        }
+
+        /* === 인쇄 스타일 === */
+        @media print {
+            @page {
+                size: A4;
+                margin: 15mm 15mm 18mm 15mm;
+            }
+            .print-controls { display: none !important; }
+            .doc-wrapper { padding: 0; max-width: 100%; }
+            body { font-size: 8pt; }
+            .section-break { page-break-before: always; }
+            .page-break { display: none; }
+            .cover-page { page-break-after: always; }
+            .toc-page { page-break-after: always; }
+            .section { page-break-inside: avoid; }
+            .card-grid { page-break-inside: avoid; }
+            .process-steps { page-break-inside: avoid; }
+            .hero-banner { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .section-header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .step-num { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .card-badge { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .inline-badge { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .score-grade { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- 인쇄 컨트롤 바 -->
+<div class="print-controls">
+    <div class="print-controls-left">
+        <span>🧬</span>
+        <span>RegenMed Consulting — 사용자 매뉴얼 PDF</span>
+    </div>
+    <div class="print-controls-right">
+        <button class="ctrl-btn close" onclick="window.close()">✕ 닫기</button>
+        <button class="ctrl-btn print" onclick="window.print()">📄 PDF로 저장 / 인쇄</button>
+    </div>
+</div>
+
+<div class="doc-wrapper">
+
+<!-- ==================== 표지 ==================== -->
+<div class="cover-page">
+    <div class="cover-logo">🧬 RegenMed<span>Consulting</span></div>
+    <div class="cover-tagline">첨단재생의료 실시기관 인허가 전문 컨설팅</div>
+    <div class="cover-title">사용자 매뉴얼</div>
+    <img src="리젠메드 메뉴.jpg" alt="리젠메드컨설팅 네비게이션 메뉴" style="max-width:100%;border-radius:8px;box-shadow:0 4px 16px rgba(0,0,0,0.15);margin:16px 0;">
+    <div class="cover-subtitle">전체 서비스 안내 · 페이지별 가이드</div>
+    <div class="cover-meta">
+        <div><strong>문서 구성</strong> &nbsp; 랜딩 페이지 + 7개 메뉴 + 서브메뉴 전체</div>
+        <div><strong>총 섹션</strong> &nbsp; 10개 페이지 상세 안내</div>
+        <div><strong>발행처</strong> &nbsp; RegenMed Consulting</div>
+    </div>
+</div>
+
+<!-- ==================== 목차 ==================== -->
+<div class="toc-page">
+    <div class="toc-title">목차</div>
+    <ul class="toc-list">
+        <li class="toc-item"><span class="toc-num">1.</span><span class="toc-name">랜딩 페이지 (홈)</span></li>
+        <li class="toc-sub-item"><span class="sub-dot"></span>서비스 개요 / 핵심 솔루션 / 차별화 철학</li>
+        <li class="toc-sub-item"><span class="sub-dot"></span>4단계 통합 패키지 / PRP+PRF 기술 / 성장 로드맵</li>
+        <li class="toc-item"><span class="toc-num">2.</span><span class="toc-name">왜 우리인가</span></li>
+        <li class="toc-sub-item"><span class="sub-dot"></span>문제 인식 / 해결책 / 경쟁우위</li>
+        <li class="toc-item"><span class="toc-num">3.</span><span class="toc-name">통합 솔루션</span></li>
+        <li class="toc-sub-item"><span class="sub-dot"></span>차별화 철학 / 4단계 패키지 / PRP+PRF / 치료 상품 / 성장 모델 / SOP</li>
+        <li class="toc-item"><span class="toc-num">4.</span><span class="toc-name">서비스</span></li>
+        <li class="toc-sub-item"><span class="sub-dot"></span>서비스 소개 / 비즈니스 진단 / 진단 결과</li>
+        <li class="toc-item"><span class="toc-num">5.</span><span class="toc-name">파트너</span></li>
+        <li class="toc-sub-item"><span class="sub-dot"></span>NKCL Bio Group / ExVAR 셀테라피</li>
+        <li class="toc-item"><span class="toc-num">6.</span><span class="toc-name">프로세스</span></li>
+        <li class="toc-sub-item"><span class="sub-dot"></span>6단계 컨설팅 프로세스</li>
+        <li class="toc-item"><span class="toc-num">7.</span><span class="toc-name">전문분야</span></li>
+        <li class="toc-sub-item"><span class="sub-dot"></span>6개 전문 분야 상세</li>
+        <li class="toc-item"><span class="toc-num">8.</span><span class="toc-name">시설요건</span></li>
+        <li class="toc-sub-item"><span class="sub-dot"></span>공간 설계 / 필수 장비 / 법규 준수</li>
+        <li class="toc-item"><span class="toc-num">9.</span><span class="toc-name">비즈니스 진단</span></li>
+        <li class="toc-sub-item"><span class="sub-dot"></span>30문항 진단 / 3개 파트 / 점수 기준</li>
+        <li class="toc-item"><span class="toc-num">10.</span><span class="toc-name">진단 결과 보기</span></li>
+        <li class="toc-sub-item"><span class="sub-dot"></span>AI 리포트 / 레이더 차트 / 전문가 피드백</li>
+    </ul>
+</div>
+
+<!-- ==================== 1. 랜딩 페이지 ==================== -->
+<div class="section section-break">
+    <div class="section-header">
+        <span class="section-num">01</span>
+        <span class="section-icon">🏠</span>
+        <div>
+            <div class="section-title-text">랜딩 페이지 (홈)</div>
+            <div class="section-subtitle-text">index.html · 메인 홈 화면</div>
+        </div>
+    </div>
+    <div class="section-body">
+        <div class="hero-banner">
+            <div class="hero-badge">✓ NK세포 ExVAR 시설 구축 전문 파트너</div>
+            <div class="hero-heading">NK세포 면역치료 시설,<br>ExVAR 기술 기반으로 확실하게 구축합니다</div>
+            <div class="hero-desc">NKCL Bio Group 기술 파트너십 기반 ExVAR 셀테라피 시설 구축부터<br>첨단재생의료 실시기관 인허가까지 원스톱 컨설팅</div>
+            <div class="hero-metrics">
+                <div class="metric-item"><div class="metric-value">100+</div><div class="metric-label">컨설팅 사례</div></div>
+                <div class="metric-item"><div class="metric-value">98%</div><div class="metric-label">인허가 성공률</div></div>
+                <div class="metric-item"><div class="metric-value">15+</div><div class="metric-label">년 전문 경험</div></div>
+            </div>
+        </div>
+
+        <div class="sub-section-title">🔗 핵심 솔루션 플로우</div>
+        <div class="flow-steps">
+            <div class="flow-step">📋 인허가</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step">🔧 장비·기술</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step">📄 SOP·운영</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step">💰 마케팅·수익화</div>
+        </div>
+
+        <div class="sub-section-title">💡 차별화 철학 <span class="inline-badge">우리는 다릅니다</span></div>
+        <div class="highlight-box">
+            <div class="hl-title">단순한 공급자가 아닌, 병원 성장의 설계사입니다</div>
+            <div class="hl-text">장비 판매가 아닌 생태계 구축 · 인허가 대행이 아닌 지속 가능한 운영 · 재생의료 플랫폼으로의 설계 · 인허가·장비·SOP·마케팅 통합 솔루션</div>
+        </div>
+
+        <div class="sub-section-title">📦 4단계 통합 패키지</div>
+        <div class="card-grid cols-4">
+            <div class="card">
+                <div class="card-num">STAGE 01</div>
+                <div class="card-title">📋 허가 받는 병원</div>
+                <div class="card-desc">첨단재생의료기관 지정 신청 및 승인</div>
+            </div>
+            <div class="card">
+                <div class="card-num">STAGE 02</div>
+                <div class="card-title">🔬 운영 가능한 병원</div>
+                <div class="card-desc">PRP/PRF/SVF 표준작업지침서(SOP) 구축</div>
+            </div>
+            <div class="card">
+                <div class="card-num">STAGE 03</div>
+                <div class="card-title">🛡️ 안전한 병원</div>
+                <div class="card-desc">식약처 규제 대응 체계 구축</div>
+            </div>
+            <div class="card">
+                <div class="card-num">STAGE 04</div>
+                <div class="card-title">💰 수익 나는 병원</div>
+                <div class="card-desc">치료 상품 포트폴리오 구성 (PRP/PRF/SVF/NK)</div>
+            </div>
+        </div>
+
+        <div class="sub-section-title">💉 PRP + PRF 통합 재생 프로토콜</div>
+        <table class="compare-table">
+            <tr>
+                <th>구분</th>
+                <th>PRP (Platelet-Rich Plasma)</th>
+                <th>PRF (Platelet-Rich Fibrin)</th>
+            </tr>
+            <tr>
+                <td>성장인자 방출</td>
+                <td>빠른 집중 방출</td>
+                <td>7~14일 지속 방출</td>
+            </tr>
+            <tr>
+                <td>형태</td>
+                <td>액상 주입형</td>
+                <td>피브린 매트릭스</td>
+            </tr>
+            <tr>
+                <td>적용 분야</td>
+                <td>관절·통증·피부</td>
+                <td>치과·피부·재건</td>
+            </tr>
+        </table>
+
+        <div class="sub-section-title">📈 병원 성장 로드맵 (3단계)</div>
+        <div class="card-grid cols-3">
+            <div class="card">
+                <div class="card-badge">Level 1</div>
+                <div class="card-title">의원급 PRP/PRF 재생 클리닉</div>
+                <div class="card-desc">투자 수준: 낮음<br>ROI 기간: 6~12개월</div>
+            </div>
+            <div class="card">
+                <div class="card-badge">Level 2</div>
+                <div class="card-title">전문 재생 클리닉 (SVF)</div>
+                <div class="card-desc">투자 수준: 중간<br>ROI 기간: 12~18개월</div>
+            </div>
+            <div class="card">
+                <div class="card-badge">Level 3</div>
+                <div class="card-title">재생의료 센터 (NK세포)</div>
+                <div class="card-desc">투자 수준: 높음<br>ROI 기간: 18~36개월</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== 2. 왜 우리인가 ==================== -->
+<div class="section section-break">
+    <div class="section-header">
+        <span class="section-num">02</span>
+        <span class="section-icon">💡</span>
+        <div>
+            <div class="section-title-text">왜 우리인가</div>
+            <div class="section-subtitle-text">pages/why-us.html · 컨설팅 차별점</div>
+        </div>
+    </div>
+    <div class="section-body">
+        <div class="hero-banner">
+            <div class="hero-heading">첨단재생의료 인허가의 어려움,<br>전문가와 함께 해결하세요</div>
+        </div>
+
+        <div class="sub-section-title">🚧 4가지 주요 문제점</div>
+        <div class="card-grid">
+            <div class="card">
+                <div class="card-title">⚖️ 복잡한 법규 요건</div>
+                <div class="card-desc">첨단재생의료법, 건축법, 소방법, 개인정보보호법 등 다양한 법규 동시 충족 필요</div>
+            </div>
+            <div class="card">
+                <div class="card-title">🏗️ 시설 설계의 어려움</div>
+                <div class="card-desc">클린룸, 차압 관리, 공조 시스템 등 전문 기술 지식 필요</div>
+            </div>
+            <div class="card">
+                <div class="card-title">💸 예산과 시간의 낭비</div>
+                <div class="card-desc">잘못된 설계로 인한 재시공 및 인허가 반려로 비용·시간 손실</div>
+            </div>
+            <div class="card">
+                <div class="card-title">📋 정보 부족</div>
+                <div class="card-desc">실시기관 지정에 필요한 정확한 정보 부재로 방향 설정 어려움</div>
+            </div>
+        </div>
+
+        <div class="sub-section-title">✅ 4가지 해결책</div>
+        <div class="card-grid">
+            <div class="card">
+                <div class="card-num">01</div>
+                <div class="card-title">전문가 직접 컨설팅</div>
+                <div class="card-desc">첨단재생의료법 전문가가 직접 모든 과정을 함께합니다</div>
+            </div>
+            <div class="card">
+                <div class="card-num">02</div>
+                <div class="card-title">검증된 설계 노하우</div>
+                <div class="card-desc">100건 이상의 성공 사례로부터 축적된 노하우 제공</div>
+            </div>
+            <div class="card">
+                <div class="card-num">03</div>
+                <div class="card-title">비용 최적화</div>
+                <div class="card-desc">한 번에 통과하는 설계로 시간과 비용 절약</div>
+            </div>
+            <div class="card">
+                <div class="card-num">04</div>
+                <div class="card-title">인허가 성공 보장</div>
+                <div class="card-desc">98%의 인허가 성공률 보장 및 사후 지원</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== 3. 서비스 ==================== -->
+<div class="section section-break">
+    <div class="section-header">
+        <span class="section-num">03</span>
+        <span class="section-icon">⚙️</span>
+        <div>
+            <div class="section-title-text">서비스</div>
+            <div class="section-subtitle-text">pages/services.html · 4개 핵심 서비스</div>
+        </div>
+    </div>
+    <div class="section-body">
+        <div class="hero-banner">
+            <div class="hero-heading">첨단재생의료 실시기관 인허가의<br>모든 과정을 함께합니다</div>
+        </div>
+
+        <div class="card-grid">
+            <div class="card">
+                <div class="card-badge">BEST</div>
+                <div class="card-title">📐 시설 설계 컨설팅</div>
+                <div class="card-desc">법규 요건을 충족하는 최적의 시설 설계 및 평면도 검토</div>
+                <ul class="feature-list">
+                    <li>세포처리시설 평면도 설계</li>
+                    <li>클린룸 등급별 구역 설정</li>
+                    <li>차압 및 공조 시스템 설계</li>
+                    <li>동선 분리 (인체조직/폐기물)</li>
+                    <li>에어샤워 및 패스박스 배치</li>
+                    <li>HEPA 필터 시스템 구성</li>
+                </ul>
+            </div>
+            <div class="card">
+                <div class="card-title">🔧 장비 구축 컨설팅</div>
+                <div class="card-desc">필수 장비 선정부터 설치, 밸리데이션까지</div>
+                <ul class="feature-list">
+                    <li>필수 장비 목록 및 사양 검토</li>
+                    <li>고압증기멸균기 (Autoclave)</li>
+                    <li>생물안전작업대 (BSC Class II)</li>
+                    <li>초저온냉동고 (-80°C)</li>
+                    <li>CO₂ 인큐베이터</li>
+                    <li>액체질소탱크 및 모니터링</li>
+                </ul>
+            </div>
+            <div class="card">
+                <div class="card-title">⚖️ 법규 검토 컨설팅</div>
+                <div class="card-desc">관련 법규 검토 및 요건 충족 체크리스트 제공</div>
+                <ul class="feature-list">
+                    <li>첨단재생의료법 요건 검토</li>
+                    <li>건축법/소방법 적합성 확인</li>
+                    <li>CCTV 설치 기준 (30fps/60일)</li>
+                    <li>개인정보보호법 준수 방안</li>
+                    <li>의료폐기물 관리 규정</li>
+                    <li>생물안전 등급 요건</li>
+                </ul>
+            </div>
+            <div class="card">
+                <div class="card-title">📄 인허가 절차 대행</div>
+                <div class="card-desc">신청서 작성부터 승인까지 전 과정 지원</div>
+                <ul class="feature-list">
+                    <li>실시기관 지정 신청서 작성</li>
+                    <li>필수 서류 준비 가이드</li>
+                    <li>보건복지부 심사 대응</li>
+                    <li>보완 요청 사항 처리</li>
+                    <li>현장 실사 대비</li>
+                    <li>사후 관리 지원</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== 4. 파트너 - NKCL ==================== -->
+<div class="section section-break">
+    <div class="section-header">
+        <span class="section-num">04</span>
+        <span class="section-icon">🤝</span>
+        <div>
+            <div class="section-title-text">파트너 — NKCL Bio Group</div>
+            <div class="section-subtitle-text">pages/nkcl.html · NK세포 바이오 기술 파트너</div>
+        </div>
+    </div>
+    <div class="section-body">
+        <div class="hero-banner">
+            <div class="hero-heading">NK Cell &amp; Immune Biotechnology<br>Global Leader</div>
+            <div class="hero-desc">(주)엔케이씨엘바이오그룹 · 설립 2019년 (GK Medical Group 2008~) · GMP 인증 NK세포 배양센터 4,000㎡</div>
+        </div>
+
+        <div class="sub-section-title">🏆 주요 성과</div>
+        <ul class="feature-list">
+            <li>GMP 인증 - 한국 최대 규모 NK세포 배양센터 (4,000㎡)</li>
+            <li>특허 현황 - 4개국 13건 등록, 14건 출원 중</li>
+            <li>4개 암종 전임상 완료 - 간암, 폐암, 유방암, 신장암</li>
+            <li>자동배양기 출시 - RK-NKTM ACS I (KC, CE 인증)</li>
+            <li>정부 수상 - 2022 중기부, 2023 식약처, 2023 과기부 장관상</li>
+        </ul>
+
+        <div class="sub-section-title">🔬 3대 사업 영역</div>
+        <div class="card-grid cols-3">
+            <div class="card">
+                <div class="card-icon">💊</div>
+                <div class="card-title">NK세포치료제 개발</div>
+                <div class="card-desc">100억셀 이상 고효율 수득률 · 위암, 유방암, 대장암, 폐암 적용 · 노인성·감염성·자가면역질환</div>
+            </div>
+            <div class="card">
+                <div class="card-icon">🤖</div>
+                <div class="card-title">NK세포 자동화 시스템</div>
+                <div class="card-desc">GMP 인증 시설 · 세포처리시설 허가 (2023) · 포터블 자동배양기 (KC, CE 인증)</div>
+            </div>
+            <div class="card">
+                <div class="card-icon">🧴</div>
+                <div class="card-title">H&amp;B 상품</div>
+                <div class="card-desc">NK세포 배양액 원료 · 사이토카인 스킨부스터 · 마이크로바이옴 기반 식품</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== 5. 파트너 - ExVAR ==================== -->
+<div class="section section-break">
+    <div class="section-header">
+        <span class="section-num">05</span>
+        <span class="section-icon">🧬</span>
+        <div>
+            <div class="section-title-text">파트너 — ExVAR 셀테라피</div>
+            <div class="section-subtitle-text">pages/exvar.html · NK세포 면역 셀테라피</div>
+        </div>
+    </div>
+    <div class="section-body">
+        <div class="hero-banner">
+            <div class="hero-badge">Cell Ex vivo Activation &amp; Reinfusion</div>
+            <div class="hero-heading">NK세포 면역 셀테라피의 새로운 기준</div>
+        </div>
+
+        <div class="sub-section-title">⚙️ ExVAR 3단계 프로세스</div>
+        <div class="flow-steps">
+            <div class="flow-step">01 채혈<br><small style="font-weight:400;">말초혈액 NK세포 채취</small></div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step">02 활성화<br><small style="font-weight:400;">체외 배양·활성화</small></div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step">03 재주입<br><small style="font-weight:400;">활성화 NK세포 투여</small></div>
+        </div>
+
+        <div class="sub-section-title">📊 성능 지표</div>
+        <div class="card-grid cols-4">
+            <div class="card" style="text-align:center;">
+                <div style="font-size:16pt;font-weight:800;color:#0066CC;">100억+</div>
+                <div style="font-size:7.5pt;color:#555;">NK세포 수득률</div>
+            </div>
+            <div class="card" style="text-align:center;">
+                <div style="font-size:16pt;font-weight:800;color:#0066CC;">97.7%</div>
+                <div style="font-size:7.5pt;color:#555;">NK세포 순도</div>
+            </div>
+            <div class="card" style="text-align:center;">
+                <div style="font-size:16pt;font-weight:800;color:#0066CC;">14일</div>
+                <div style="font-size:7.5pt;color:#555;">최적 배양 기간</div>
+            </div>
+            <div class="card" style="text-align:center;">
+                <div style="font-size:16pt;font-weight:800;color:#0066CC;">4개국</div>
+                <div style="font-size:7.5pt;color:#555;">국제 특허 보유</div>
+            </div>
+        </div>
+
+        <div class="sub-section-title">🔀 두 가지 모델 비교</div>
+        <table class="compare-table">
+            <tr>
+                <th>구분</th>
+                <th>ExVAR CORE — 소규모 신속 모델</th>
+                <th>ExVAR APEX — 대량 배양 모델</th>
+            </tr>
+            <tr>
+                <td>처리 기간</td>
+                <td>4~48시간 이내</td>
+                <td>14~21일</td>
+            </tr>
+            <tr>
+                <td>시설 유형</td>
+                <td>병원 내 자체 세포처리시설</td>
+                <td>GMP 수준 전문 배양시설</td>
+            </tr>
+            <tr>
+                <td>투자 규모</td>
+                <td>소규모 시설 (20~30평), 초기 투자 최소화</td>
+                <td>대규모 시설, 높은 초기 투자</td>
+            </tr>
+            <tr>
+                <td>적용 대상</td>
+                <td>면역력 증강, 항암 보조 치료</td>
+                <td>고형암, 혈액암 등 난치성 질환</td>
+            </tr>
+        </table>
+
+        <div class="sub-section-title">🎯 주요 적용 분야</div>
+        <div class="card-grid cols-3">
+            <div class="card">
+                <div class="card-icon">🎗️</div>
+                <div class="card-title">항암 면역치료</div>
+                <div class="card-desc">NK세포의 자연적 암세포 살상 능력을 활용한 면역 항암 보조 치료</div>
+            </div>
+            <div class="card">
+                <div class="card-icon">🛡️</div>
+                <div class="card-title">면역력 증강</div>
+                <div class="card-desc">면역력 저하 환자를 위한 NK세포 면역 증강 프로그램</div>
+            </div>
+            <div class="card">
+                <div class="card-icon">🔄</div>
+                <div class="card-title">재생의료 병행</div>
+                <div class="card-desc">줄기세포 치료 등 다른 재생의료 기술과 병행 치료</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== 6. 프로세스 ==================== -->
+<div class="section section-break">
+    <div class="section-header">
+        <span class="section-num">06</span>
+        <span class="section-icon">📋</span>
+        <div>
+            <div class="section-title-text">프로세스</div>
+            <div class="section-subtitle-text">pages/process.html · 6단계 컨설팅 절차</div>
+        </div>
+    </div>
+    <div class="section-body">
+        <div class="hero-banner">
+            <div class="hero-heading">체계적인 단계별 프로세스로<br>인허가 성공을 보장합니다</div>
+        </div>
+        <div class="process-steps">
+            <div class="process-step">
+                <div class="step-num">01</div>
+                <div class="step-content">
+                    <div class="step-title">초기 상담</div>
+                    <div class="step-desc">현재 상황 파악 및 목표 설정, 필요 서비스 범위 확정</div>
+                </div>
+            </div>
+            <div class="process-step">
+                <div class="step-num">02</div>
+                <div class="step-content">
+                    <div class="step-title">현장 실사</div>
+                    <div class="step-desc">시설 현장 방문, 기존 인프라 분석, 개선점 도출</div>
+                </div>
+            </div>
+            <div class="process-step">
+                <div class="step-num">03</div>
+                <div class="step-content">
+                    <div class="step-title">설계 및 계획</div>
+                    <div class="step-desc">시설 설계안 제시, 장비 목록 확정, 예산 수립</div>
+                </div>
+            </div>
+            <div class="process-step">
+                <div class="step-num">04</div>
+                <div class="step-content">
+                    <div class="step-title">시공 감리</div>
+                    <div class="step-desc">시설 구축 과정 감독, 품질 관리, 일정 관리</div>
+                </div>
+            </div>
+            <div class="process-step">
+                <div class="step-num">05</div>
+                <div class="step-content">
+                    <div class="step-title">인허가 신청</div>
+                    <div class="step-desc">서류 작성 및 제출, 심사 대응, 보완 처리</div>
+                </div>
+            </div>
+            <div class="process-step">
+                <div class="step-num">06</div>
+                <div class="step-content">
+                    <div class="step-title">승인 및 사후관리</div>
+                    <div class="step-desc">실시기관 지정 완료, 운영 가이드, 지속 지원</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== 7. 전문분야 ==================== -->
+<div class="section section-break">
+    <div class="section-header">
+        <span class="section-num">07</span>
+        <span class="section-icon">🔬</span>
+        <div>
+            <div class="section-title-text">전문분야</div>
+            <div class="section-subtitle-text">pages/expertise.html · 6개 전문 분야</div>
+        </div>
+    </div>
+    <div class="section-body">
+        <div class="hero-banner">
+            <div class="hero-heading">다양한 재생의료 및 세포치료 분야의<br>전문성을 갖추고 있습니다</div>
+        </div>
+        <div class="card-grid cols-3">
+            <div class="card">
+                <div class="card-icon">💉</div>
+                <div class="card-title">PRP/PRF/SVF 재생의료</div>
+                <ul class="feature-list">
+                    <li>PRP 혈소판풍부혈장 시술</li>
+                    <li>PRF 혈소판풍부섬유소 프로토콜</li>
+                    <li>SVF 지방유래 줄기세포 추출</li>
+                    <li>복합 재생의료 프로토콜</li>
+                </ul>
+            </div>
+            <div class="card">
+                <div class="card-icon">🧬</div>
+                <div class="card-title">면역세포 치료</div>
+                <ul class="feature-list">
+                    <li>NK세포 배양 및 시술</li>
+                    <li>CAR-T 세포 치료</li>
+                    <li>수지상세포 (DC) 치료</li>
+                    <li>TIL 종양침윤림프구 치료</li>
+                </ul>
+            </div>
+            <div class="card">
+                <div class="card-icon">🔬</div>
+                <div class="card-title">유전자 치료</div>
+                <ul class="feature-list">
+                    <li>바이러스 벡터 생산 시설</li>
+                    <li>유전자 편집 (CRISPR) 시설</li>
+                    <li>유전자 치료제 제조</li>
+                    <li>품질관리 (QC) 시설</li>
+                </ul>
+            </div>
+            <div class="card">
+                <div class="card-icon">🦴</div>
+                <div class="card-title">조직공학</div>
+                <ul class="feature-list">
+                    <li>연골/뼈 조직 공학</li>
+                    <li>피부 조직 배양</li>
+                    <li>오가노이드 배양 시설</li>
+                    <li>3D 바이오프린팅</li>
+                </ul>
+            </div>
+            <div class="card">
+                <div class="card-icon">💉</div>
+                <div class="card-title">세포치료제 GMP</div>
+                <ul class="feature-list">
+                    <li>GMP 제조시설 설계</li>
+                    <li>품질관리 (QC/QA) 시스템</li>
+                    <li>밸리데이션 프로토콜</li>
+                    <li>문서화 체계 구축</li>
+                </ul>
+            </div>
+            <div class="card">
+                <div class="card-icon">🏥</div>
+                <div class="card-title">병원 내 세포치료실</div>
+                <ul class="feature-list">
+                    <li>병원 내 세포치료센터</li>
+                    <li>자가세포 처리 시설</li>
+                    <li>동종세포 보관/처리</li>
+                    <li>임상시험 지원 시설</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== 8. 시설요건 ==================== -->
+<div class="section section-break">
+    <div class="section-header">
+        <span class="section-num">08</span>
+        <span class="section-icon">🏗️</span>
+        <div>
+            <div class="section-title-text">시설요건</div>
+            <div class="section-subtitle-text">pages/requirements.html · 인허가 필수 요건</div>
+        </div>
+    </div>
+    <div class="section-body">
+        <div class="hero-banner">
+            <div class="hero-heading">첨단재생의료 실시기관으로 지정받기 위한<br>필수 시설 요건을 확인하세요</div>
+        </div>
+
+        <div class="sub-section-title">🏗️ 공간 설계 요건</div>
+        <table class="compare-table">
+            <tr><th style="width:25%;">항목</th><th>세부 요건</th></tr>
+            <tr><td>세포처리시설 면적</td><td>최소 30~50평 이상의 전용 공간 필요</td></tr>
+            <tr><td>클린룸 등급</td><td>ISO 7 (Class 10,000) 이상 청정도 요구</td></tr>
+            <tr><td>에어샤워 및 패스박스</td><td>인원 출입 시 에어샤워, 물품 반입 시 패스박스 설치 필수</td></tr>
+            <tr><td>HEPA 필터 공조</td><td>99.97% 이상 효율, 시간당 20회 이상 환기</td></tr>
+            <tr><td>동선 분리</td><td>인체조직, 시약, 폐기물 동선 완전 분리 및 교차 오염 방지</td></tr>
+        </table>
+
+        <div class="sub-section-title">🔧 필수 장비 요건</div>
+        <table class="compare-table">
+            <tr><th style="width:25%;">장비</th><th>세부 기준</th></tr>
+            <tr><td>고압증기멸균기 (Autoclave)</td><td>121°C, 15분 이상 멸균 가능. 밸리데이션 및 정기 점검 필수</td></tr>
+            <tr><td>생물안전작업대 (BSC Class II)</td><td>Type A2 또는 B2 권장. 연간 인증 및 HEPA 필터 교체 관리</td></tr>
+            <tr><td>CO₂ 인큐베이터</td><td>37°C, 5% CO₂ 유지. 온도/CO₂ 모니터링 및 알람 시스템</td></tr>
+            <tr><td>초저온냉동고 (-80°C)</td><td>세포 장기 보관용. 온도 모니터링 및 백업 전원 필수</td></tr>
+            <tr><td>액체질소탱크</td><td>-196°C 극저온 보관. 자동 충전 시스템 및 레벨 모니터링</td></tr>
+        </table>
+
+        <div class="sub-section-title">⚖️ 법규 준수 요건</div>
+        <table class="compare-table">
+            <tr><th style="width:25%;">항목</th><th>세부 기준</th></tr>
+            <tr><td>CCTV 설치 기준</td><td>30fps 이상 화질, 60일 이상 영상 보관. 세포처리 전 과정 녹화</td></tr>
+            <tr><td>소방법 준수</td><td>스프링클러, 소화기 설치. 피난 동선 확보 및 방화구획</td></tr>
+            <tr><td>건축법 적합성</td><td>용도변경 허가, 구조 안전성 확인. 위생시설 기준 충족</td></tr>
+            <tr><td>개인정보보호법</td><td>CCTV 영상정보 관리 규정 준수. 안내판 설치 및 접근 제한</td></tr>
+        </table>
+    </div>
+</div>
+
+<!-- ==================== 9. 비즈니스 진단 ==================== -->
+<div class="section section-break">
+    <div class="section-header">
+        <span class="section-num">09</span>
+        <span class="section-icon">📊</span>
+        <div>
+            <div class="section-title-text">비즈니스 진단</div>
+            <div class="section-subtitle-text">pages/diagnosis.html · AI 기반 30문항 진단</div>
+        </div>
+    </div>
+    <div class="section-body">
+        <div class="hero-banner">
+            <div class="hero-heading">비즈니스 진단 서비스</div>
+            <div class="hero-desc">30개 문항으로 입지 분석, 시설 인허가, 운영 전략을 AI가 정밀 분석합니다</div>
+        </div>
+
+        <div class="card-grid cols-3">
+            <div class="card">
+                <div class="card-badge">PART 1</div>
+                <div class="card-title">입지 분석 및 수익성 잠재력</div>
+                <div class="card-desc">Location &amp; Profitability<br>문항 수: 10문항</div>
+                <ul class="feature-list">
+                    <li>소득 수준 / 고객 연령대</li>
+                    <li>유입 인프라 / 글로벌 접근성</li>
+                    <li>경쟁사 밀도 / 시술 단가</li>
+                    <li>연계 병과 / 건물 이미지</li>
+                    <li>주차 및 발렛 / 마케팅 키워드</li>
+                </ul>
+            </div>
+            <div class="card">
+                <div class="card-badge accent">PART 2</div>
+                <div class="card-title">시설 인허가 및 엔지니어링</div>
+                <div class="card-desc">Infrastructure &amp; GMP<br>문항 수: 10문항</div>
+                <ul class="feature-list">
+                    <li>순수 층고 / 공간 격리</li>
+                    <li>공조기 위치 / 전력 용량</li>
+                    <li>배수 시스템 / 마감재 적합성</li>
+                    <li>비상 통로 / 가스 안전</li>
+                    <li>CCTV/보안 / 패스박스</li>
+                </ul>
+            </div>
+            <div class="card">
+                <div class="card-badge orange">PART 3</div>
+                <div class="card-title">운영 전략 및 팀빌딩</div>
+                <div class="card-desc">Operation &amp; Team Building<br>문항 수: 10문항</div>
+                <ul class="feature-list">
+                    <li>필수 인력 확보</li>
+                    <li>원장의 비전</li>
+                    <li>AI 매뉴얼 도입</li>
+                    <li>팀빌딩 문화</li>
+                    <li>환자 사후 관리</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="sub-section-title">🎯 점수별 판정 기준</div>
+        <table class="compare-table">
+            <tr><th>점수</th><th>판정</th><th>권장 조치</th></tr>
+            <tr><td style="font-weight:700;color:#00B894;">80점 이상</td><td>최우수</td><td>즉시 인허가 착수 가능 및 수익성 매우 높음</td></tr>
+            <tr><td style="font-weight:700;color:#f59e0b;">60~79점</td><td>우수</td><td>시설 및 운영 전략 일부 보완 후 추진 권장</td></tr>
+            <tr><td style="font-weight:700;color:#e53e3e;">60점 미만</td><td>재검토</td><td>입지 재검토 혹은 대대적 구조조정 필요</td></tr>
+        </table>
+    </div>
+</div>
+
+<!-- ==================== 10. 진단 결과 ==================== -->
+<div class="section section-break">
+    <div class="section-header">
+        <span class="section-num">10</span>
+        <span class="section-icon">📈</span>
+        <div>
+            <div class="section-title-text">진단 결과 보기</div>
+            <div class="section-subtitle-text">pages/results.html · AI 기반 진단 리포트</div>
+        </div>
+    </div>
+    <div class="section-body">
+        <div class="hero-banner">
+            <div class="hero-heading">AI 비즈니스 진단 리포트</div>
+            <div class="hero-desc">30문항 진단 결과를 AI가 분석하여 종합 점수, 파트별 상세 분석, 전문가 피드백을 제공합니다</div>
+        </div>
+
+        <div class="sub-section-title">📋 리포트 구성</div>
+        <div class="card-grid">
+            <div class="card">
+                <div class="card-title">🏥 신청자 정보</div>
+                <ul class="feature-list">
+                    <li>신청 기관명</li>
+                    <li>시설 위치</li>
+                    <li>신청 날짜</li>
+                    <li>분석 대상</li>
+                </ul>
+            </div>
+            <div class="card">
+                <div class="card-title">🎯 총점 분석</div>
+                <ul class="feature-list">
+                    <li>종합 점수 (0~100점)</li>
+                    <li>등급 (A/B/C)</li>
+                    <li>진단 요약문</li>
+                    <li>레이더 차트 시각화</li>
+                </ul>
+            </div>
+            <div class="card">
+                <div class="card-title">📊 파트별 상세 분석</div>
+                <ul class="feature-list">
+                    <li>Part 1: 입지 분석 및 수익성</li>
+                    <li>Part 2: 시설 인허가 및 엔지니어링</li>
+                    <li>Part 3: 운영 전략 및 팀빌딩</li>
+                    <li>각 항목 개별 점수 + 피드백</li>
+                </ul>
+            </div>
+            <div class="card">
+                <div class="card-title">💬 전문가 피드백</div>
+                <ul class="feature-list">
+                    <li>강점 분석</li>
+                    <li>개선점 제시</li>
+                    <li>권장 실행 계획</li>
+                    <li>다음 단계 안내</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="info-box">
+            📌 진단을 시작하려면 <strong>서비스 → 비즈니스 진단</strong> 메뉴에서 30개 문항에 답변하세요. AI가 자동으로 분석하여 본 리포트를 생성합니다.
+        </div>
+    </div>
+</div>
+
+<!-- ==================== 네비게이션 구조 요약 ==================== -->
+<div class="section section-break">
+    <div class="section-header">
+        <span class="section-num">+</span>
+        <span class="section-icon">🗂️</span>
+        <div>
+            <div class="section-title-text">사이트 네비게이션 구조</div>
+            <div class="section-subtitle-text">전체 메뉴 및 서브메뉴 구성</div>
+        </div>
+    </div>
+    <div class="section-body">
+        <table class="compare-table">
+            <tr>
+                <th>메뉴</th>
+                <th>서브메뉴</th>
+                <th>파일 경로</th>
+            </tr>
+            <tr><td rowspan="1">홈</td><td>랜딩 페이지</td><td>index.html</td></tr>
+            <tr><td>왜 우리인가</td><td>—</td><td>pages/why-us.html</td></tr>
+            <tr><td rowspan="6">통합 솔루션</td><td>차별화 철학</td><td>index.html#philosophy</td></tr>
+            <tr><td>4단계 통합 패키지</td><td>index.html#package</td></tr>
+            <tr><td>PRP + PRF 기술</td><td>index.html#prp-prf</td></tr>
+            <tr><td>치료 상품 패키지</td><td>index.html#product</td></tr>
+            <tr><td>3단계 성장 모델</td><td>index.html#growth-model</td></tr>
+            <tr><td>SOP 패키지</td><td>index.html#sop</td></tr>
+            <tr><td rowspan="3">서비스</td><td>서비스 소개</td><td>pages/services.html</td></tr>
+            <tr><td>비즈니스 진단</td><td>pages/diagnosis.html</td></tr>
+            <tr><td>진단 결과 보기</td><td>pages/results.html</td></tr>
+            <tr><td rowspan="2">파트너</td><td>NKCL Bio Group</td><td>pages/nkcl.html</td></tr>
+            <tr><td>ExVAR 셀테라피</td><td>pages/exvar.html</td></tr>
+            <tr><td>프로세스</td><td>—</td><td>pages/process.html</td></tr>
+            <tr><td>전문분야</td><td>—</td><td>pages/expertise.html</td></tr>
+            <tr><td>시설요건</td><td>—</td><td>pages/requirements.html</td></tr>
+        </table>
+    </div>
+</div>
+
+</div><!-- /doc-wrapper -->
+
+<script>
+    // 페이지 로드 시 자동 인쇄 여부 (URL에 ?autoprint=1 추가 시)
+    if (window.location.search.includes('autoprint=1')) {
+        window.addEventListener('load', function() {
+            setTimeout(function() { window.print(); }, 500);
+        });
+    }
+</script>
+
+</body>
+</html>
