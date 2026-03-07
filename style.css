@@ -177,6 +177,13 @@ button {
     color: var(--secondary-light);
 }
 
+.logo-sub {
+    font-size: 0.96rem;
+    font-weight: 600;
+    color: #FFD600;
+    white-space: nowrap;
+}
+
 .nav {
     display: flex;
     align-items: center;
