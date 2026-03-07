@@ -592,31 +592,34 @@
     </section>
 
     <!-- 유튜브 모달 -->
-    <div id="youtubeModal" onclick="closeYoutubeModal(event)" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85); z-index:99999; align-items:center; justify-content:center;">
-        <div style="position:relative; width:90%; max-width:900px; aspect-ratio:16/9;" onclick="event.stopPropagation()">
-            <button onclick="closeYoutubeModal()" style="position:absolute; top:-44px; right:0; background:none; border:none; color:#fff; font-size:32px; cursor:pointer; line-height:1;">&times;</button>
-            <iframe id="youtubeFrame" src="" width="100%" height="100%" style="border:none; border-radius:12px;" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    <div id="youtubeModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85); z-index:99999; align-items:center; justify-content:center;">
+        <div style="position:relative; width:90%; max-width:900px;" onclick="event.stopPropagation()">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+                <span style="color:#fff; font-weight:700; font-size:1rem;">줄기세포 시술 영상</span>
+                <div style="display:flex; gap:10px; align-items:center;">
+                    <a href="https://youtu.be/S7JTbc0Gk-8" target="_blank" rel="noopener" style="color:#FFD600; font-size:0.85rem; font-weight:600; text-decoration:none;">▶ YouTube에서 보기</a>
+                    <button onclick="closeYoutubeModal()" style="background:none; border:none; color:#fff; font-size:32px; cursor:pointer; line-height:1; padding:0;">&times;</button>
+                </div>
+            </div>
+            <div style="aspect-ratio:16/9; background:#000; border-radius:12px; overflow:hidden;">
+                <iframe id="youtubeFrame" src="" width="100%" height="100%" style="border:none; display:block;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            </div>
         </div>
+        <div id="youtubeModalBg" style="position:absolute; inset:0; z-index:-1;" onclick="closeYoutubeModal()"></div>
     </div>
     <script>
         function openYoutubeModal() {
-            const modal = document.getElementById('youtubeModal');
-            document.getElementById('youtubeFrame').src = 'https://www.youtube.com/embed/S7JTbc0Gk-8?autoplay=1';
-            modal.style.display = 'flex';
+            document.getElementById('youtubeFrame').src = 'https://www.youtube.com/embed/S7JTbc0Gk-8?autoplay=1&rel=0';
+            document.getElementById('youtubeModal').style.display = 'flex';
             document.body.style.overflow = 'hidden';
         }
-        function closeYoutubeModal(e) {
-            if (e && e.target !== document.getElementById('youtubeModal')) return;
+        function closeYoutubeModal() {
             document.getElementById('youtubeModal').style.display = 'none';
             document.getElementById('youtubeFrame').src = '';
             document.body.style.overflow = '';
         }
         document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                document.getElementById('youtubeModal').style.display = 'none';
-                document.getElementById('youtubeFrame').src = '';
-                document.body.style.overflow = '';
-            }
+            if (e.key === 'Escape') closeYoutubeModal();
         });
     </script>
 
