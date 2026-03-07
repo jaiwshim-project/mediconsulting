@@ -583,45 +583,14 @@
                 <img src="stemcell-diagram.png" alt="Stem Cell-Based Regenerative Therapy for Reversing Skin Aging">
             </div>
             <div style="margin-top: 32px;">
-                <button onclick="openYoutubeModal()" style="display:inline-flex; align-items:center; gap:12px; background:linear-gradient(135deg,#C8A050,#E8C070); color:#1C1C2E; font-size:1rem; font-weight:800; padding:16px 32px; border-radius:50px; border:none; cursor:pointer; box-shadow:0 8px 24px rgba(200,160,80,0.4); transition:all 0.3s;">
+                <a href="https://youtu.be/S7JTbc0Gk-8" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:12px; background:linear-gradient(135deg,#C8A050,#E8C070); color:#1C1C2E; font-size:1rem; font-weight:800; padding:16px 32px; border-radius:50px; text-decoration:none; box-shadow:0 8px 24px rgba(200,160,80,0.4); transition:all 0.3s;">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="#1C1C2E"><path d="M8 5v14l11-7z"/></svg>
                     줄기세포 시술 영상 보기
-                </button>
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- 유튜브 모달 -->
-    <div id="youtubeModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85); z-index:99999; align-items:center; justify-content:center;">
-        <div style="position:relative; width:90%; max-width:900px;" onclick="event.stopPropagation()">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
-                <span style="color:#fff; font-weight:700; font-size:1rem;">줄기세포 시술 영상</span>
-                <div style="display:flex; gap:10px; align-items:center;">
-                    <a href="https://youtu.be/S7JTbc0Gk-8" target="_blank" rel="noopener" style="color:#FFD600; font-size:0.85rem; font-weight:600; text-decoration:none;">▶ YouTube에서 보기</a>
-                    <button onclick="closeYoutubeModal()" style="background:none; border:none; color:#fff; font-size:32px; cursor:pointer; line-height:1; padding:0;">&times;</button>
-                </div>
-            </div>
-            <div style="aspect-ratio:16/9; background:#000; border-radius:12px; overflow:hidden;">
-                <iframe id="youtubeFrame" src="" width="100%" height="100%" style="border:none; display:block;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
-            </div>
-        </div>
-        <div id="youtubeModalBg" style="position:absolute; inset:0; z-index:-1;" onclick="closeYoutubeModal()"></div>
-    </div>
-    <script>
-        function openYoutubeModal() {
-            document.getElementById('youtubeFrame').src = 'https://www.youtube.com/embed/S7JTbc0Gk-8?autoplay=1&rel=0';
-            document.getElementById('youtubeModal').style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-        }
-        function closeYoutubeModal() {
-            document.getElementById('youtubeModal').style.display = 'none';
-            document.getElementById('youtubeFrame').src = '';
-            document.body.style.overflow = '';
-        }
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') closeYoutubeModal();
-        });
-    </script>
 
     <!-- 줄기세포란 -->
     <section class="kjr-section bg-white">
