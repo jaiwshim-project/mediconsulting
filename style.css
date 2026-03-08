@@ -3173,12 +3173,32 @@ button {
     display: block;
 }
 
+.solution-pdf-mobile {
+    display: none;
+}
+
 @media (max-width: 768px) {
     .solution-pdf-section {
         padding: 48px 0;
     }
-    .solution-pdf-iframe {
-        height: 600px;
+    .solution-pdf-wrap {
+        display: none;
+    }
+    .solution-pdf-mobile {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+        padding: 40px 24px;
+        text-align: center;
+        background: #fff;
+        border-radius: 16px;
+        border: 1px solid rgba(0,0,0,0.08);
+        box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    }
+    .solution-pdf-mobile p {
+        font-size: 1rem;
+        color: var(--gray-600);
     }
 }
 
