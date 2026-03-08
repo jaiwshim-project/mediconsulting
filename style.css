@@ -3835,6 +3835,21 @@ button {
     position: relative;
     overflow: hidden;
     padding: 60px 24px;
+    background: linear-gradient(135deg, #0D1B3E 0%, #0F2A50 40%, #0A3060 70%, #0D1B3E 100%);
+}
+
+.page-hero-badge {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.15);
+    color: #FFD600;
+    border: 1px solid rgba(255, 215, 0, 0.4);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
 }
 
 .page-hero-content {
@@ -3868,6 +3883,22 @@ button {
 }
 
 /* Page-specific Hero Backgrounds */
+.page-hero.philosophy-hero {
+    background: linear-gradient(135deg, #0D1B3E 0%, #163060 50%, #0A2040 100%);
+}
+
+.page-hero.package-hero {
+    background: linear-gradient(135deg, #0A2540 0%, #0D3D5C 50%, #072030 100%);
+}
+
+.page-hero.prp-hero {
+    background: linear-gradient(135deg, #0D2E1B 0%, #1A4A30 50%, #0A2018 100%);
+}
+
+.page-hero.sop-hero {
+    background: linear-gradient(135deg, #1A0D2E 0%, #2D1550 50%, #100820 100%);
+}
+
 .page-hero.why-us-hero .hero-bg::before {
     background-image: url('https://images.unsplash.com/photo-1576086213369-97a306d36557?q=80&w=1920&auto=format&fit=crop');
 }
