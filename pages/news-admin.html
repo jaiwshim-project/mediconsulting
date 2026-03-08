@@ -9,15 +9,11 @@
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Noto Sans KR', sans-serif; background: #f0f4f8; min-height: 100vh; }
 
-        /* ── 로그인 화면 ── */
-        #loginScreen {
-            display: flex; align-items: center; justify-content: center;
-            min-height: 100vh;
-        }
+        /* ── 로그인 ── */
+        #loginScreen { display: flex; align-items: center; justify-content: center; min-height: 100vh; }
         .login-box {
             background: #fff; border-radius: 16px; padding: 48px 40px;
-            box-shadow: 0 8px 40px rgba(0,0,0,0.12); width: 100%; max-width: 380px;
-            text-align: center;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.12); width: 100%; max-width: 380px; text-align: center;
         }
         .login-logo { font-size: 2.2rem; margin-bottom: 8px; }
         .login-title { font-size: 1.2rem; font-weight: 700; color: #0D1B3E; margin-bottom: 4px; }
@@ -53,7 +49,7 @@
         }
         .admin-body { max-width: 900px; margin: 0 auto; padding: 32px 20px; }
 
-        /* ── 추가 폼 ── */
+        /* ── 폼 ── */
         .add-form {
             background: #fff; border-radius: 14px; padding: 28px;
             box-shadow: 0 2px 12px rgba(0,0,0,0.07); margin-bottom: 32px;
@@ -76,12 +72,15 @@
             margin-top: 8px; transition: opacity 0.2s;
         }
         .btn-add:hover { opacity: 0.9; }
+        .btn-add:disabled { opacity: 0.5; cursor: not-allowed; }
 
-        /* ── 기사 목록 ── */
+        /* ── 목록 ── */
         .article-list { background: #fff; border-radius: 14px; padding: 28px; box-shadow: 0 2px 12px rgba(0,0,0,0.07); }
-        .article-list h2 { font-size: 1rem; font-weight: 700; color: #0D1B3E; margin-bottom: 20px; }
+        .article-list-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+        .article-list h2 { font-size: 1rem; font-weight: 700; color: #0D1B3E; }
         .article-count { font-size: 0.82rem; color: #888; font-weight: 400; margin-left: 8px; }
         .empty-msg { text-align: center; color: #bbb; font-size: 0.9rem; padding: 40px 0; }
+        .loading-msg { text-align: center; color: #1a73e8; font-size: 0.9rem; padding: 40px 0; }
         .article-item {
             display: flex; align-items: flex-start; gap: 14px;
             padding: 16px 0; border-bottom: 1px solid #f0f0f0;
@@ -99,34 +98,36 @@
         }
         .article-info .title {
             font-size: 0.9rem; font-weight: 600; color: #222;
-            white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-            margin-bottom: 3px;
+            white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 3px;
         }
         .article-info .meta { font-size: 0.78rem; color: #888; }
         .article-info .meta a { color: #1a73e8; text-decoration: none; }
         .btn-delete {
             background: none; border: 1px solid #fcc; color: #e53935;
             padding: 5px 12px; border-radius: 7px; cursor: pointer;
-            font-size: 0.78rem; font-family: inherit; flex-shrink: 0;
-            transition: background 0.2s;
+            font-size: 0.78rem; font-family: inherit; flex-shrink: 0; transition: background 0.2s;
         }
         .btn-delete:hover { background: #fee; }
-        .preview-link {
-            display: inline-block; margin-top: 16px;
-            color: #1a73e8; font-size: 0.85rem; text-decoration: none;
+        .toast {
+            position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%);
+            background: #0D1B3E; color: #fff; padding: 12px 24px; border-radius: 10px;
+            font-size: 0.9rem; font-weight: 500; opacity: 0; transition: opacity 0.3s;
+            pointer-events: none; z-index: 999;
         }
+        .toast.show { opacity: 1; }
+        .preview-link { display: inline-block; margin-top: 20px; color: #1a73e8; font-size: 0.85rem; text-decoration: none; }
         .preview-link:hover { text-decoration: underline; }
 
         @media (max-width: 600px) {
             .form-row { grid-template-columns: 1fr; }
-            .admin-header { padding: 16px 20px; }
+            .admin-header { padding: 16px 20px; flex-wrap: wrap; gap: 10px; }
             .admin-body { padding: 20px 16px; }
         }
     </style>
 </head>
 <body>
 
-<!-- 로그인 화면 -->
+<!-- 로그인 -->
 <div id="loginScreen">
     <div class="login-box">
         <div class="login-logo">🧬</div>
@@ -144,7 +145,7 @@
     <div class="admin-header">
         <div>
             <h1>🧬 기사 관리 대시보드</h1>
-            <span>RegenMed Consulting · 기사 보기 페이지 관리</span>
+            <span>RegenMed Consulting · Supabase 연동</span>
         </div>
         <button class="btn-logout" onclick="logout()">로그아웃</button>
     </div>
@@ -185,28 +186,36 @@
                     <input type="url" id="f-thumb" placeholder="이미지 주소 (없으면 기본 이미지)">
                 </div>
             </div>
-            <button class="btn-add" onclick="addArticle()">기사 추가하기</button>
+            <button class="btn-add" id="btnAdd" onclick="addArticle()">기사 추가하기</button>
         </div>
 
         <!-- 기사 목록 -->
         <div class="article-list">
-            <h2>등록된 기사 <span class="article-count" id="countLabel"></span></h2>
-            <div id="articleList"></div>
+            <div class="article-list-header">
+                <h2>등록된 기사 <span class="article-count" id="countLabel"></span></h2>
+            </div>
+            <div id="articleList"><div class="loading-msg">불러오는 중...</div></div>
             <a href="news.html" target="_blank" class="preview-link">→ 기사 보기 페이지에서 확인</a>
         </div>
     </div>
 </div>
 
+<div class="toast" id="toast"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 <script>
-    const STORAGE_KEY = 'regenmed_news';
+    const SUPABASE_URL = 'https://haxcktfnuudlqciyljtp.supabase.co';
+    const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhheGNrdGZudXVkbHFjaXlsanRwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjkzMDUwNDAsImV4cCI6MjA4NDg4MTA0MH0.suN7BeaHx3MjaNlMDQa0940P-rMl2XPyk4ksoQEU3YM';
     const PASSWORD = '9633';
+
+    const _sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
     function login() {
         const pw = document.getElementById('pwInput').value;
         if (pw === PASSWORD) {
             document.getElementById('loginScreen').style.display = 'none';
             document.getElementById('adminPanel').style.display = 'block';
-            renderList();
+            loadArticles();
         } else {
             document.getElementById('loginError').style.display = 'block';
             document.getElementById('pwInput').value = '';
@@ -221,46 +230,53 @@
         document.getElementById('loginError').style.display = 'none';
     }
 
-    function getArticles() {
-        return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+    async function loadArticles() {
+        const { data, error } = await _sb
+            .from('news_articles')
+            .select('*')
+            .order('created_at', { ascending: false });
+        if (error) { showToast('불러오기 실패: ' + error.message); return; }
+        renderList(data || []);
     }
 
-    function saveArticles(arr) {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(arr));
-    }
-
-    function addArticle() {
+    async function addArticle() {
         const title  = document.getElementById('f-title').value.trim();
         const url    = document.getElementById('f-url').value.trim();
         const tag    = document.getElementById('f-tag').value.trim() || '블로그';
         const source = document.getElementById('f-source').value.trim() || '네이버 블로그';
-        const date   = document.getElementById('f-date').value.trim() || new Date().toLocaleDateString('ko-KR').replace(/\. /g,'.').replace('.','');
-        const thumb  = document.getElementById('f-thumb').value.trim();
+        const date   = document.getElementById('f-date').value.trim() || '';
+        const thumb  = document.getElementById('f-thumb').value.trim() || null;
 
         if (!title) { alert('기사 제목을 입력하세요.'); document.getElementById('f-title').focus(); return; }
         if (!url)   { alert('링크 주소를 입력하세요.'); document.getElementById('f-url').focus(); return; }
 
-        const articles = getArticles();
-        articles.unshift({ title, url, tag, source, date, thumb });
-        saveArticles(articles);
-        renderList();
+        const btn = document.getElementById('btnAdd');
+        btn.disabled = true;
+        btn.textContent = '저장 중...';
+
+        const { error } = await _sb.from('news_articles').insert({ title, url, tag, source, date, thumb });
+
+        btn.disabled = false;
+        btn.textContent = '기사 추가하기';
+
+        if (error) { showToast('저장 실패: ' + error.message); return; }
 
         ['f-title','f-url','f-tag','f-source','f-date','f-thumb'].forEach(id => {
             document.getElementById(id).value = '';
         });
-        document.getElementById('f-title').focus();
+        showToast('✅ 기사가 추가되었습니다!');
+        loadArticles();
     }
 
-    function deleteArticle(idx) {
+    async function deleteArticle(id) {
         if (!confirm('이 기사를 삭제하시겠습니까?')) return;
-        const articles = getArticles();
-        articles.splice(idx, 1);
-        saveArticles(articles);
-        renderList();
+        const { error } = await _sb.from('news_articles').delete().eq('id', id);
+        if (error) { showToast('삭제 실패: ' + error.message); return; }
+        showToast('🗑️ 삭제되었습니다.');
+        loadArticles();
     }
 
-    function renderList() {
-        const articles = getArticles();
+    function renderList(articles) {
         const container = document.getElementById('articleList');
         document.getElementById('countLabel').textContent = '총 ' + articles.length + '개';
 
@@ -273,18 +289,25 @@
             return '<div class="article-item">' +
                 '<div class="article-num">' + (i + 1) + '</div>' +
                 '<div class="article-info">' +
-                    '<span class="tag">' + escHtml(a.tag || '') + '</span>' +
-                    '<div class="title" title="' + escHtml(a.title) + '">' + escHtml(a.title) + '</div>' +
-                    '<div class="meta">' + escHtml(a.source || '') + ' · ' + escHtml(a.date || '') +
-                    ' · <a href="' + escHtml(a.url) + '" target="_blank">링크 열기</a></div>' +
+                    '<span class="tag">' + esc(a.tag || '') + '</span>' +
+                    '<div class="title" title="' + esc(a.title) + '">' + esc(a.title) + '</div>' +
+                    '<div class="meta">' + esc(a.source || '') + ' · ' + esc(a.date || '') +
+                    ' · <a href="' + esc(a.url) + '" target="_blank">링크 열기</a></div>' +
                 '</div>' +
-                '<button class="btn-delete" onclick="deleteArticle(' + i + ')">삭제</button>' +
+                '<button class="btn-delete" onclick="deleteArticle(' + a.id + ')">삭제</button>' +
             '</div>';
         }).join('');
     }
 
-    function escHtml(str) {
-        return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    function showToast(msg) {
+        const t = document.getElementById('toast');
+        t.textContent = msg;
+        t.classList.add('show');
+        setTimeout(() => t.classList.remove('show'), 2800);
+    }
+
+    function esc(s) {
+        return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
     }
 </script>
 </body>

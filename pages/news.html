@@ -206,28 +206,40 @@
     </footer>
 
     <script src="../script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
     <script>
-        (function() {
-            const articles = JSON.parse(localStorage.getItem('regenmed_news') || '[]');
+        const _sb = supabase.createClient(
+            'https://haxcktfnuudlqciyljtp.supabase.co',
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhheGNrdGZudXVkbHFjaXlsanRwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjkzMDUwNDAsImV4cCI6MjA4NDg4MTA0MH0.suN7BeaHx3MjaNlMDQa0940P-rMl2XPyk4ksoQEU3YM'
+        );
+        const defaultThumbs = [
+            'https://images.unsplash.com/photo-1576086213369-97a306d36557?w=400&h=240&fit=crop',
+            'https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=400&h=240&fit=crop',
+            'https://images.unsplash.com/photo-1579154204601-01588f351e67?w=400&h=240&fit=crop',
+            'https://images.unsplash.com/photo-1507413245164-6160d8298b31?w=400&h=240&fit=crop',
+            'https://images.unsplash.com/photo-1530026405186-ed1f139313f8?w=400&h=240&fit=crop',
+            'https://images.unsplash.com/photo-1582719471384-894fbb16e074?w=400&h=240&fit=crop'
+        ];
+        (async function() {
             const container = document.getElementById('dynamic-news');
-            const defaultThumbs = [
-                'https://images.unsplash.com/photo-1576086213369-97a306d36557?w=400&h=240&fit=crop',
-                'https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=400&h=240&fit=crop',
-                'https://images.unsplash.com/photo-1579154204601-01588f351e67?w=400&h=240&fit=crop',
-                'https://images.unsplash.com/photo-1507413245164-6160d8298b31?w=400&h=240&fit=crop',
-                'https://images.unsplash.com/photo-1530026405186-ed1f139313f8?w=400&h=240&fit=crop',
-                'https://images.unsplash.com/photo-1582719471384-894fbb16e074?w=400&h=240&fit=crop'
-            ];
-            articles.forEach(function(a, i) {
+            const { data, error } = await _sb
+                .from('news_articles')
+                .select('*')
+                .order('created_at', { ascending: false });
+            if (error || !data) return;
+            data.forEach(function(a, i) {
                 const thumb = a.thumb || defaultThumbs[i % defaultThumbs.length];
                 const card = document.createElement('a');
                 card.href = a.url;
                 card.target = '_blank';
                 card.className = 'news-card';
-                card.innerHTML = '<div class="news-thumb"><img src="' + thumb + '" alt="기사 썸네일"><span class="news-tag">' + (a.tag || '블로그') + '</span></div><div class="news-body"><p class="news-source">' + (a.source || '블로그') + '</p><h3 class="news-title">' + a.title + '</h3><p class="news-date">' + (a.date || '') + '</p></div>';
+                card.innerHTML =
+                    '<div class="news-thumb"><img src="' + thumb + '" alt="기사 썸네일"><span class="news-tag">' + esc(a.tag || '블로그') + '</span></div>' +
+                    '<div class="news-body"><p class="news-source">' + esc(a.source || '') + '</p><h3 class="news-title">' + esc(a.title) + '</h3><p class="news-date">' + esc(a.date || '') + '</p></div>';
                 container.appendChild(card);
             });
         })();
+        function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
     </script>
 </body>
 </html>
