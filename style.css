@@ -2961,13 +2961,28 @@ button {
 }
 
 .roadmap-note p {
-    color: rgba(255, 255, 255, 0.9);
+    color: #fff;
     font-size: 0.95rem;
     line-height: 1.7;
 }
 
 .roadmap-note strong {
     color: #FFE44D;
+}
+
+/* 로드맵 섹션 헤더 텍스트 흰색 */
+.roadmap-section .section-badge {
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.roadmap-section .section-title {
+    color: #fff;
+}
+
+.roadmap-section .section-desc {
+    color: rgba(255, 255, 255, 1);
 }
 
 @media (max-width: 992px) {
