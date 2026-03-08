@@ -170,6 +170,76 @@
         </div>
     </section>
 
+    <!-- 관리자 패널 -->
+    <div id="adminToggleWrap" style="text-align:center; padding: 12px 0 0;">
+        <button onclick="showAdminLogin()" id="adminToggleBtn"
+            style="background:none;border:none;color:#bbb;font-size:0.78rem;cursor:pointer;font-family:inherit;">
+            ⚙ 관리자
+        </button>
+    </div>
+
+    <!-- 비밀번호 입력 -->
+    <div id="adminLoginBox" style="display:none; max-width:360px; margin:0 auto 24px; padding:24px; background:#fff; border-radius:14px; box-shadow:0 4px 20px rgba(0,0,0,0.1); text-align:center;">
+        <p style="font-size:0.9rem;font-weight:600;color:#0D1B3E;margin-bottom:14px;">관리자 비밀번호</p>
+        <input type="password" id="adminPw" maxlength="10" placeholder="비밀번호 입력"
+            style="width:100%;padding:10px 14px;border:1.5px solid #dde;border-radius:8px;font-size:1rem;text-align:center;letter-spacing:0.3em;outline:none;font-family:inherit;margin-bottom:10px;"
+            onkeydown="if(event.key==='Enter') adminLogin()">
+        <button onclick="adminLogin()"
+            style="width:100%;padding:11px;background:linear-gradient(135deg,#0D1B3E,#1a73e8);color:#fff;border:none;border-radius:8px;font-size:0.9rem;font-weight:600;cursor:pointer;font-family:inherit;">
+            확인
+        </button>
+        <div id="adminPwError" style="color:#e53935;font-size:0.8rem;margin-top:8px;display:none;">비밀번호가 올바르지 않습니다.</div>
+    </div>
+
+    <!-- 기사 추가 폼 -->
+    <div id="adminForm" style="display:none; max-width:700px; margin:0 auto 40px; padding:28px; background:#fff; border-radius:14px; box-shadow:0 4px 20px rgba(0,0,0,0.1);">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">
+            <h3 style="font-size:1rem;font-weight:700;color:#0D1B3E;">+ 기사 추가</h3>
+            <button onclick="adminClose()" style="background:none;border:none;font-size:1.2rem;cursor:pointer;color:#999;">✕</button>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+            <div>
+                <label style="font-size:0.8rem;font-weight:600;color:#555;display:block;margin-bottom:5px;">기사 제목 *</label>
+                <input type="text" id="af-title" placeholder="기사 제목을 입력하세요"
+                    style="width:100%;padding:10px 14px;border:1.5px solid #e0e6ef;border-radius:8px;font-size:0.9rem;outline:none;font-family:inherit;">
+            </div>
+            <div>
+                <label style="font-size:0.8rem;font-weight:600;color:#555;display:block;margin-bottom:5px;">링크 주소 (URL) *</label>
+                <input type="url" id="af-url" placeholder="https://blog.naver.com/..."
+                    style="width:100%;padding:10px 14px;border:1.5px solid #e0e6ef;border-radius:8px;font-size:0.9rem;outline:none;font-family:inherit;">
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+                <div>
+                    <label style="font-size:0.8rem;font-weight:600;color:#555;display:block;margin-bottom:5px;">태그</label>
+                    <input type="text" id="af-tag" placeholder="예: 첨단재생의료"
+                        style="width:100%;padding:10px 14px;border:1.5px solid #e0e6ef;border-radius:8px;font-size:0.9rem;outline:none;font-family:inherit;">
+                </div>
+                <div>
+                    <label style="font-size:0.8rem;font-weight:600;color:#555;display:block;margin-bottom:5px;">출처</label>
+                    <input type="text" id="af-source" placeholder="예: 네이버 블로그"
+                        style="width:100%;padding:10px 14px;border:1.5px solid #e0e6ef;border-radius:8px;font-size:0.9rem;outline:none;font-family:inherit;">
+                </div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+                <div>
+                    <label style="font-size:0.8rem;font-weight:600;color:#555;display:block;margin-bottom:5px;">날짜</label>
+                    <input type="text" id="af-date" placeholder="예: 2026.03.08"
+                        style="width:100%;padding:10px 14px;border:1.5px solid #e0e6ef;border-radius:8px;font-size:0.9rem;outline:none;font-family:inherit;">
+                </div>
+                <div>
+                    <label style="font-size:0.8rem;font-weight:600;color:#555;display:block;margin-bottom:5px;">썸네일 URL (선택)</label>
+                    <input type="url" id="af-thumb" placeholder="이미지 주소"
+                        style="width:100%;padding:10px 14px;border:1.5px solid #e0e6ef;border-radius:8px;font-size:0.9rem;outline:none;font-family:inherit;">
+                </div>
+            </div>
+            <button id="afAddBtn" onclick="adminAddArticle()"
+                style="padding:13px;background:linear-gradient(135deg,#0D1B3E,#1a73e8);color:#fff;border:none;border-radius:10px;font-size:0.95rem;font-weight:600;cursor:pointer;font-family:inherit;">
+                기사 추가하기
+            </button>
+        </div>
+        <div id="afToast" style="display:none;margin-top:12px;padding:10px;background:#e8f5e9;color:#2e7d32;border-radius:8px;font-size:0.85rem;text-align:center;"></div>
+    </div>
+
     <!-- 푸터 -->
     <footer class="footer">
         <div class="container">
@@ -240,6 +310,61 @@
             });
         })();
         function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+        // ── 관리자 기능 ──
+        const ADMIN_PW = '9633';
+
+        function showAdminLogin() {
+            document.getElementById('adminToggleBtn').style.display = 'none';
+            document.getElementById('adminLoginBox').style.display = 'block';
+            document.getElementById('adminPw').focus();
+        }
+        function adminLogin() {
+            if (document.getElementById('adminPw').value === ADMIN_PW) {
+                document.getElementById('adminLoginBox').style.display = 'none';
+                document.getElementById('adminForm').style.display = 'block';
+                document.getElementById('af-title').focus();
+            } else {
+                document.getElementById('adminPwError').style.display = 'block';
+                document.getElementById('adminPw').value = '';
+            }
+        }
+        function adminClose() {
+            document.getElementById('adminForm').style.display = 'none';
+            document.getElementById('adminToggleBtn').style.display = 'inline-block';
+            document.getElementById('adminPw').value = '';
+        }
+        async function adminAddArticle() {
+            const title  = document.getElementById('af-title').value.trim();
+            const url    = document.getElementById('af-url').value.trim();
+            const tag    = document.getElementById('af-tag').value.trim() || '블로그';
+            const source = document.getElementById('af-source').value.trim() || '네이버 블로그';
+            const date   = document.getElementById('af-date').value.trim() || '';
+            const thumb  = document.getElementById('af-thumb').value.trim() || null;
+            if (!title) { alert('기사 제목을 입력하세요.'); return; }
+            if (!url)   { alert('링크 주소를 입력하세요.'); return; }
+            const btn = document.getElementById('afAddBtn');
+            btn.disabled = true; btn.textContent = '저장 중...';
+            const { error } = await _sb.from('news_articles').insert({ title, url, tag, source, date, thumb });
+            btn.disabled = false; btn.textContent = '기사 추가하기';
+            if (error) { alert('저장 실패: ' + error.message); return; }
+            ['af-title','af-url','af-tag','af-source','af-date','af-thumb'].forEach(id => document.getElementById(id).value = '');
+            const toast = document.getElementById('afToast');
+            toast.textContent = '✅ 기사가 추가되었습니다! 페이지를 새로고침하면 표시됩니다.';
+            toast.style.display = 'block';
+            setTimeout(() => { toast.style.display = 'none'; }, 3000);
+            // 동적 카드 새로고침
+            const container = document.getElementById('dynamic-news');
+            container.innerHTML = '';
+            const { data } = await _sb.from('news_articles').select('*').order('created_at', { ascending: false });
+            if (data) data.forEach(function(a, i) {
+                const th = a.thumb || defaultThumbs[i % defaultThumbs.length];
+                const card = document.createElement('a');
+                card.href = a.url; card.target = '_blank'; card.className = 'news-card';
+                card.innerHTML = '<div class="news-thumb"><img src="' + th + '" alt="기사 썸네일"><span class="news-tag">' + esc(a.tag||'블로그') + '</span></div><div class="news-body"><p class="news-source">' + esc(a.source||'') + '</p><h3 class="news-title">' + esc(a.title) + '</h3><p class="news-date">' + esc(a.date||'') + '</p></div>';
+                container.appendChild(card);
+            });
+        }
     </script>
 </body>
 </html>
