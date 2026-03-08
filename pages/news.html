@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>기사 보기 | 첨단재생의료 인허가 컨설팅</title>
+    <meta name="description" content="첨단재생의료 관련 최신 기사 및 블로그 모음">
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 헤더 -->
+    <header class="header" id="header">
+        <div class="header-container">
+            <div class="logo-group">
+                <a href="../index.html" class="logo">
+                    <span class="logo-icon">🧬</span>
+                    <span class="logo-text">RegenMed<span class="logo-highlight">Consulting</span></span>
+                </a>
+                <span class="logo-sub">첨단재생의료기관</span>
+            </div>
+            <nav class="nav">
+                <a href="why-us.html" class="nav-link">왜 우리인가</a>
+                <div class="nav-dropdown">
+                    <a href="philosophy.html" class="nav-link">통합 솔루션 <span class="nav-arrow">▾</span></a>
+                    <div class="nav-dropdown-menu">
+                        <a href="philosophy.html" class="dropdown-link">차별화 철학</a>
+                        <a href="package.html" class="dropdown-link">4단계 통합 패키지</a>
+                        <a href="prp-prf.html" class="dropdown-link">PRP + PRF 기술</a>
+                        <a href="sop.html" class="dropdown-link">SOP 패키지</a>
+                    </div>
+                </div>
+                <div class="nav-dropdown">
+                    <a href="services.html" class="nav-link">서비스 <span class="nav-arrow">▾</span></a>
+                    <div class="nav-dropdown-menu">
+                        <a href="diagnosis.html" class="dropdown-link">비즈니스 진단</a>
+                        <a href="results.html" class="dropdown-link">진단 결과 보기</a>
+                        <a href="https://jaiwshim-project.github.io/mediconsulting/pages/kimjaeryong.html" class="dropdown-link">김재룡성형외과</a>
+                    </div>
+                </div>
+                <div class="nav-dropdown">
+                    <a href="nkcl.html" class="nav-link">파트너 <span class="nav-arrow">▾</span></a>
+                    <div class="nav-dropdown-menu">
+                        <a href="nkcl.html" class="dropdown-link nkcl-link">NKCL Bio Group</a>
+                        <a href="exvar.html" class="dropdown-link">ExVAR 셀테라피</a>
+                    </div>
+                </div>
+                <a href="process.html" class="nav-link">프로세스</a>
+                <a href="requirements.html" class="nav-link">시설요건</a>
+                <a href="news.html" class="nav-link active">기사 보기</a>
+            </nav>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- 모바일 오버레이 -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+
+    <!-- 모바일 메뉴 -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="why-us.html" class="mobile-nav-link">왜 우리인가</a>
+        <div class="mobile-nav-accordion">
+            <button class="mobile-nav-accordion-btn">통합 솔루션 <span class="mobile-acc-arrow">▾</span></button>
+            <div class="mobile-nav-accordion-content">
+                <a href="philosophy.html" class="mobile-nav-sub-link">차별화 철학</a>
+                <a href="package.html" class="mobile-nav-sub-link">4단계 통합 패키지</a>
+                <a href="prp-prf.html" class="mobile-nav-sub-link">PRP + PRF 기술</a>
+                <a href="sop.html" class="mobile-nav-sub-link">SOP 패키지</a>
+            </div>
+        </div>
+        <div class="mobile-nav-accordion">
+            <button class="mobile-nav-accordion-btn">서비스 <span class="mobile-acc-arrow">▾</span></button>
+            <div class="mobile-nav-accordion-content">
+                <a href="services.html" class="mobile-nav-sub-link">서비스 전체보기</a>
+                <a href="diagnosis.html" class="mobile-nav-sub-link">비즈니스 진단</a>
+                <a href="results.html" class="mobile-nav-sub-link">진단 결과 보기</a>
+                <a href="https://jaiwshim-project.github.io/mediconsulting/pages/kimjaeryong.html" class="mobile-nav-sub-link">김재룡성형외과</a>
+            </div>
+        </div>
+        <div class="mobile-nav-accordion">
+            <button class="mobile-nav-accordion-btn">파트너 <span class="mobile-acc-arrow">▾</span></button>
+            <div class="mobile-nav-accordion-content">
+                <a href="nkcl.html" class="mobile-nav-sub-link nkcl-link">NKCL Bio Group</a>
+                <a href="exvar.html" class="mobile-nav-sub-link">ExVAR 셀테라피</a>
+            </div>
+        </div>
+        <a href="process.html" class="mobile-nav-link">프로세스</a>
+        <a href="requirements.html" class="mobile-nav-link">시설요건</a>
+        <a href="news.html" class="mobile-nav-link active">기사 보기</a>
+    </div>
+
+    <!-- 페이지 히어로 -->
+    <section class="page-hero news-hero">
+        <div class="page-hero-content">
+            <span class="page-hero-badge">News & Blog</span>
+            <h1 class="page-hero-title">기사 보기</h1>
+            <p class="page-hero-desc">첨단재생의료 관련 최신 기사 및 블로그 글을 모아 소개합니다</p>
+        </div>
+    </section>
+
+    <!-- 기사 그리드 -->
+    <section class="news-section">
+        <div class="container">
+
+            <!-- 샘플 카드 4개 × N행 -->
+            <div class="news-grid">
+
+                <!-- 카드 1 -->
+                <a href="#" target="_blank" class="news-card">
+                    <div class="news-thumb">
+                        <img src="https://images.unsplash.com/photo-1576086213369-97a306d36557?w=400&h=240&fit=crop" alt="기사 썸네일">
+                        <span class="news-tag">첨단재생의료</span>
+                    </div>
+                    <div class="news-body">
+                        <p class="news-source">의학신문</p>
+                        <h3 class="news-title">첨단재생의료 실시기관 지정 절차 및 요건 안내</h3>
+                        <p class="news-date">2026.03.01</p>
+                    </div>
+                </a>
+
+                <!-- 카드 2 -->
+                <a href="#" target="_blank" class="news-card">
+                    <div class="news-thumb">
+                        <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=400&h=240&fit=crop" alt="기사 썸네일">
+                        <span class="news-tag">NK세포</span>
+                    </div>
+                    <div class="news-body">
+                        <p class="news-source">바이오타임즈</p>
+                        <h3 class="news-title">NK세포 면역치료, 암 치료의 새로운 패러다임</h3>
+                        <p class="news-date">2026.02.20</p>
+                    </div>
+                </a>
+
+                <!-- 카드 3 -->
+                <a href="#" target="_blank" class="news-card">
+                    <div class="news-thumb">
+                        <img src="https://images.unsplash.com/photo-1579154204601-01588f351e67?w=400&h=240&fit=crop" alt="기사 썸네일">
+                        <span class="news-tag">PRP/PRF</span>
+                    </div>
+                    <div class="news-body">
+                        <p class="news-source">헬스코리아뉴스</p>
+                        <h3 class="news-title">PRP·PRF 재생치료, 관절부터 탈모까지 적용 범위 확대</h3>
+                        <p class="news-date">2026.02.10</p>
+                    </div>
+                </a>
+
+                <!-- 카드 4 -->
+                <a href="#" target="_blank" class="news-card">
+                    <div class="news-thumb">
+                        <img src="https://images.unsplash.com/photo-1507413245164-6160d8298b31?w=400&h=240&fit=crop" alt="기사 썸네일">
+                        <span class="news-tag">인허가</span>
+                    </div>
+                    <div class="news-body">
+                        <p class="news-source">메디칼타임즈</p>
+                        <h3 class="news-title">첨단재생의료법 개정안, 의원급 병원 진입 문턱 낮춰</h3>
+                        <p class="news-date">2026.01.28</p>
+                    </div>
+                </a>
+
+                <!-- 카드 5 -->
+                <a href="#" target="_blank" class="news-card">
+                    <div class="news-thumb">
+                        <img src="https://images.unsplash.com/photo-1530026405186-ed1f139313f8?w=400&h=240&fit=crop" alt="기사 썸네일">
+                        <span class="news-tag">줄기세포</span>
+                    </div>
+                    <div class="news-body">
+                        <p class="news-source">청년의사</p>
+                        <h3 class="news-title">줄기세포 치료, 정형외과·피부과 중심으로 확산 추세</h3>
+                        <p class="news-date">2026.01.15</p>
+                    </div>
+                </a>
+
+                <!-- 카드 6 -->
+                <a href="#" target="_blank" class="news-card">
+                    <div class="news-thumb">
+                        <img src="https://images.unsplash.com/photo-1581093458791-9d42e3c7e117?w=400&h=240&fit=crop" alt="기사 썸네일">
+                        <span class="news-tag">E-VAR</span>
+                    </div>
+                    <div class="news-body">
+                        <p class="news-source">바이오스펙테이터</p>
+                        <h3 class="news-title">E-VAR 셀테라피 기술, NKCL Bio Group 임상 성과 발표</h3>
+                        <p class="news-date">2026.01.05</p>
+                    </div>
+                </a>
+
+                <!-- 카드 7 -->
+                <a href="#" target="_blank" class="news-card">
+                    <div class="news-thumb">
+                        <img src="https://images.unsplash.com/photo-1559757175-5700dde675bc?w=400&h=240&fit=crop" alt="기사 썸네일">
+                        <span class="news-tag">재생의료</span>
+                    </div>
+                    <div class="news-body">
+                        <p class="news-source">의료기기뉴스라인</p>
+                        <h3 class="news-title">재생의료 시장 2030년까지 연평균 15% 성장 전망</h3>
+                        <p class="news-date">2025.12.20</p>
+                    </div>
+                </a>
+
+                <!-- 카드 8 -->
+                <a href="#" target="_blank" class="news-card">
+                    <div class="news-thumb">
+                        <img src="https://images.unsplash.com/photo-1582719471384-894fbb16e074?w=400&h=240&fit=crop" alt="기사 썸네일">
+                        <span class="news-tag">시설요건</span>
+                    </div>
+                    <div class="news-body">
+                        <p class="news-source">병원신문</p>
+                        <h3 class="news-title">첨단재생의료 시설 구축 가이드라인, 복지부 최신 개정판 공개</h3>
+                        <p class="news-date">2025.12.05</p>
+                    </div>
+                </a>
+
+            </div>
+            <!-- //news-grid -->
+
+        </div>
+    </section>
+
+    <!-- 푸터 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo-group">
+                        <a href="../index.html" class="logo">
+                            <span class="logo-icon">🧬</span>
+                            <span class="logo-text">RegenMed<span class="logo-highlight">Consulting</span></span>
+                        </a>
+                        <span class="logo-sub">첨단재생의료기관</span>
+                    </div>
+                    <p class="footer-desc">첨단재생의료 실시기관 인허가 전문 컨설팅<br>복잡한 인허가 절차를 쉽고 빠르게</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <a href="services.html">서비스</a>
+                    <a href="process.html">컨설팅 프로세스</a>
+                    <a href="requirements.html">시설요건</a>
+                    <a href="news.html">기사 보기</a>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact</h4>
+                    <p>📞 010-5592-5700 (이장춘 대표)</p>
+                    <p>📞 010-5012-2885 (이용식 회장)</p>
+                    <p>📧 jaiwshim@gmail.com</p>
+                    <p>📍 대전시</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 RegenMed Consulting. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>

@@ -11,7 +11,26 @@
       "Bash(git pull:*)",
       "Bash(git restore:*)",
       "Bash(ls:*)",
-      "Bash(grep:*)"
+      "Bash(grep:*)",
+      "Bash(for file in why-us.html exvar.html contact.html services.html results.html requirements.html process.html expertise.html diagnosis.html nkcl.html)",
+      "Bash(if [ -f \"$file\" ])",
+      "Bash(then grep -n \"talker-sdk\\\\|TalkerSDK\\\\|initializeTalkerSDK\" \"$file\")",
+      "Bash(else echo \"\\(FILE NOT FOUND\\)\")",
+      "Bash(fi)",
+      "Bash(done)",
+      "Bash(do sed -i '/<script src=\"\"https:\\\\/\\\\/chatbot-sdk\\\\.aitalker\\\\.co\\\\.kr\\\\/talker-sdk\\\\.umd\\\\.js\"\"><\\\\/script>/{\nN\nN\nN\ns|<script src=\"\"https://chatbot-sdk\\\\.aitalker\\\\.co\\\\.kr/talker-sdk\\\\.umd\\\\.js\"\"></script>\\\\n    <script>\\\\n        TalkerSDK\\\\.initializeTalkerSDK\\({ code: \"\"jws\"\", position: \"\"right\"\" }\\);\\\\n    </script>|<!-- AI 상담톡 플로팅 버튼 -->    <a href=\"\"https://aitalker.co.kr/biz020\"\" target=\"\"_blank\"\" rel=\"\"noopener\"\" class=\"\"ai-chat-btn\"\">AI 상담톡</a>    <style>        .ai-chat-btn {            position: fixed;            bottom: 24px;            right: 24px;            background: linear-gradient\\(135deg, #0066CC, #00B894\\);            color: #fff;            font-size: 15px;            font-weight: 700;            padding: 14px 28px;            border-radius: 50px;            text-decoration: none;            box-shadow: 0 6px 24px rgba\\(0,102,204,0.4\\);            z-index: 9999;            transition: all 0.3s;            font-family: var\\(--font-primary\\);        }        .ai-chat-btn:hover {            transform: translateY\\(-3px\\);            box-shadow: 0 10px 32px rgba\\(0,102,204,0.5\\);        }    </style>|\n}' \"$file\")",
+      "Bash(echo:*)",
+      "Bash(python3:*)",
+      "Bash(py:*)",
+      "Bash(/c/Python*/python.exe)",
+      "Bash(/c/Users/USER/AppData/Local/Programs/Python/Python*/python.exe)",
+      "Bash(node:*)",
+      "Bash(python:*)",
+      "Bash(git stash:*)",
+      "Bash(wc:*)",
+      "WebFetch(domain:objetps.com)",
+      "Bash(sed:*)",
+      "WebFetch(domain:youtu.be)"
     ]
   }
 }
