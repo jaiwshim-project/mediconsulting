@@ -2907,17 +2907,17 @@ button {
 
 .feature-value.low {
     background: rgba(0, 184, 148, 0.3);
-    color: #55EFC4;
+    color: #fff;
 }
 
 .feature-value.medium {
     background: rgba(255, 177, 66, 0.3);
-    color: #FFB142;
+    color: #fff;
 }
 
 .feature-value.high {
     background: rgba(255, 71, 87, 0.3);
-    color: #FF7675;
+    color: #fff;
 }
 
 .roadmap-desc {
