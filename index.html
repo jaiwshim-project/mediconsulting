@@ -7,6 +7,34 @@
     <meta name="description" content="첨단재생의료 실시기관 인허가 전문 컨설팅. 시설설계, 장비구축, 법규검토, 인허가절차까지 원스톱 솔루션을 제공합니다.">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* 로드맵 카드 텍스트 강제 흰색 */
+        .roadmap-section *,
+        .roadmap-card *,
+        .roadmap-card .feature-label,
+        .roadmap-card .feature-value,
+        .roadmap-card .roadmap-desc,
+        .roadmap-card h3,
+        .roadmap-card .level-badge,
+        .roadmap-card .highlight-text,
+        .roadmap-note p,
+        .roadmap-section .section-title,
+        .roadmap-section .section-desc {
+            color: #ffffff !important;
+        }
+        .roadmap-section .section-badge {
+            background: rgba(255,255,255,0.18) !important;
+            color: #ffffff !important;
+            border-color: rgba(255,255,255,0.45) !important;
+        }
+        .feature-value.low  { background: rgba(0,184,148,0.4) !important; }
+        .feature-value.medium { background: rgba(255,177,66,0.4) !important; }
+        .feature-value.high { background: rgba(255,71,87,0.4) !important; }
+        .feature-value:not(.low):not(.medium):not(.high) {
+            background: rgba(255,255,255,0.18) !important;
+        }
+        .roadmap-note strong { color: #FFD600 !important; }
+    </style>
 </head>
 <body>
     <!-- 헤더 -->
