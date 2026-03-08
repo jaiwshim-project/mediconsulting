@@ -3995,6 +3995,12 @@ button {
     font-weight: 700;
 }
 
+.nkcl-link {
+    font-size: 0.94rem !important;
+    color: #FFD600 !important;
+    font-weight: 600 !important;
+}
+
 /* Mobile Sub Link (legacy) */
 .mobile-sub-link {
     padding-left: 40px;
