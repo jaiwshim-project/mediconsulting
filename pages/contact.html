@@ -12,11 +12,13 @@
     <!-- 헤더 -->
     <header class="header" id="header">
         <div class="header-container">
-            <a href="../index.html" class="logo">
-                <span class="logo-icon">🧬</span>
-                <span class="logo-text">RegenMed<span class="logo-highlight">Consulting</span></span>
-            </a>
-            <span class="logo-sub">첨단재생의료기관지정</span>
+            <div class="logo-group">
+                <a href="../index.html" class="logo">
+                    <span class="logo-icon">🧬</span>
+                    <span class="logo-text">RegenMed<span class="logo-highlight">Consulting</span></span>
+                </a>
+                <span class="logo-sub">첨단재생의료기관</span>
+            </div>
                         <nav class="nav">
                 <a href="why-us.html" class="nav-link">왜 우리인가</a>
                 <div class="nav-dropdown">
@@ -45,7 +47,6 @@
                 </div>
                 <a href="process.html" class="nav-link">프로세스</a>
                 <a href="requirements.html" class="nav-link">시설요건</a>
-                <a href="results.html" class="nav-link nav-cta">진단 결과 보기</a>
             </nav>
             <button class="mobile-menu-btn" id="mobileMenuBtn">
                 <span></span>
@@ -55,19 +56,37 @@
         </div>
     </header>
 
+    <!-- 모바일 오버레이 -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+
     <!-- 모바일 메뉴 -->
-        <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu" id="mobileMenu">
         <a href="why-us.html" class="mobile-nav-link">왜 우리인가</a>
-        <a href="philosophy.html" class="mobile-nav-link">통합 솔루션</a>
-        <a href="package.html" class="mobile-nav-link mobile-sub-link">↳ 4단계 통합 패키지</a>
-        <a href="prp-prf.html" class="mobile-nav-link mobile-sub-link">↳ PRP + PRF 기술</a>
-        <a href="sop.html" class="mobile-nav-link mobile-sub-link">↳ SOP 패키지</a>
-        <a href="services.html" class="mobile-nav-link">서비스</a>
-        <a href="diagnosis.html" class="mobile-nav-link mobile-sub-link">↳ 비즈니스 진단</a>
-        <a href="results.html" class="mobile-nav-link mobile-sub-link">↳ 진단 결과 보기</a>
-        <a href="nkcl.html" class="mobile-nav-link">파트너</a>
-        <a href="nkcl.html" class="mobile-nav-link mobile-sub-link">↳ NKCL Bio Group</a>
-        <a href="exvar.html" class="mobile-nav-link mobile-sub-link">↳ ExVAR 셀테라피</a>
+        <div class="mobile-nav-accordion">
+            <button class="mobile-nav-accordion-btn">통합 솔루션 <span class="mobile-acc-arrow">▾</span></button>
+            <div class="mobile-nav-accordion-content">
+                <a href="philosophy.html" class="mobile-nav-sub-link">차별화 철학</a>
+                <a href="package.html" class="mobile-nav-sub-link">4단계 통합 패키지</a>
+                <a href="prp-prf.html" class="mobile-nav-sub-link">PRP + PRF 기술</a>
+                <a href="sop.html" class="mobile-nav-sub-link">SOP 패키지</a>
+            </div>
+        </div>
+        <div class="mobile-nav-accordion">
+            <button class="mobile-nav-accordion-btn">서비스 <span class="mobile-acc-arrow">▾</span></button>
+            <div class="mobile-nav-accordion-content">
+                <a href="services.html" class="mobile-nav-sub-link">서비스 전체보기</a>
+                <a href="diagnosis.html" class="mobile-nav-sub-link">비즈니스 진단</a>
+                <a href="results.html" class="mobile-nav-sub-link">진단 결과 보기</a>
+                <a href="kimjaeryong.html" class="mobile-nav-sub-link">김재룡성형외과</a>
+            </div>
+        </div>
+        <div class="mobile-nav-accordion">
+            <button class="mobile-nav-accordion-btn">파트너 <span class="mobile-acc-arrow">▾</span></button>
+            <div class="mobile-nav-accordion-content">
+                <a href="nkcl.html" class="mobile-nav-sub-link">NKCL Bio Group</a>
+                <a href="exvar.html" class="mobile-nav-sub-link">ExVAR 셀테라피</a>
+            </div>
+        </div>
         <a href="process.html" class="mobile-nav-link">프로세스</a>
         <a href="requirements.html" class="mobile-nav-link">시설요건</a>
         <a href="results.html" class="mobile-nav-link nav-cta-mobile">진단 결과 보기</a>
@@ -171,7 +190,7 @@
                         <span class="logo-icon">🧬</span>
                         <span class="logo-text">RegenMed<span class="logo-highlight">Consulting</span></span>
                     </a>
-            <span class="logo-sub">첨단재생의료기관지정</span>
+            <span class="logo-sub">첨단재생의료기관</span>
                     <p class="footer-desc">첨단재생의료 실시기관 인허가 전문 컨설팅<br>복잡한 인허가 절차를 쉽고 빠르게</p>
                 </div>
                 <div class="footer-links">

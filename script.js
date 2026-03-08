@@ -40,21 +40,48 @@ function initHeader() {
 function initMobileMenu() {
     const menuBtn = document.getElementById('mobileMenuBtn');
     const mobileMenu = document.getElementById('mobileMenu');
-    const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+    const overlay = document.getElementById('mobileMenuOverlay');
+
+    function openMenu() {
+        menuBtn.classList.add('active');
+        mobileMenu.classList.add('active');
+        if (overlay) overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeMenu() {
+        menuBtn.classList.remove('active');
+        mobileMenu.classList.remove('active');
+        if (overlay) overlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }
 
     if (menuBtn && mobileMenu) {
         menuBtn.addEventListener('click', function() {
-            this.classList.toggle('active');
-            mobileMenu.classList.toggle('active');
-            document.body.classList.toggle('menu-open');
+            mobileMenu.classList.contains('active') ? closeMenu() : openMenu();
         });
 
-        // Close menu when clicking a link
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                menuBtn.classList.remove('active');
-                mobileMenu.classList.remove('active');
-                document.body.classList.remove('menu-open');
+        // Close on overlay click
+        if (overlay) {
+            overlay.addEventListener('click', closeMenu);
+        }
+
+        // Close menu when clicking a nav link (not accordion buttons)
+        mobileMenu.addEventListener('click', function(e) {
+            if (e.target.tagName === 'A') {
+                closeMenu();
+            }
+        });
+
+        // Accordion toggle
+        document.querySelectorAll('.mobile-nav-accordion-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const accordion = this.closest('.mobile-nav-accordion');
+                const isOpen = accordion.classList.contains('open');
+                // Close all
+                document.querySelectorAll('.mobile-nav-accordion').forEach(a => a.classList.remove('open'));
+                // Open clicked if it was closed
+                if (!isOpen) accordion.classList.add('open');
             });
         });
     }
