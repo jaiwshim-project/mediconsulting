@@ -511,7 +511,7 @@ button {
     border: 1px solid rgba(255, 215, 0, 0.7);
     padding: 8px 20px;
     border-radius: var(--radius-xl);
-    font-size: 0.9rem;
+    font-size: 1.15rem;
     font-weight: 700;
     color: #FFE44D;
     margin-bottom: 24px;
