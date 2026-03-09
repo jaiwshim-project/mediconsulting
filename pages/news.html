@@ -108,10 +108,10 @@
 
             <!-- 뷰 전환 -->
             <div class="news-view-controls">
-                <button class="news-view-btn active" id="viewThumb" onclick="setView('thumb')" title="썸네일 보기">
+                <button class="news-view-btn" id="viewThumb" onclick="setView('thumb')" title="썸네일 보기">
                     ⊞ 썸네일
                 </button>
-                <button class="news-view-btn" id="viewBoard" onclick="setView('board')" title="게시판 보기">
+                <button class="news-view-btn active" id="viewBoard" onclick="setView('board')" title="게시판 보기">
                     ≡ 게시판
                 </button>
             </div>
@@ -344,9 +344,10 @@
                 localStorage.setItem('newsView', 'thumb');
             }
         }
-        // 저장된 뷰 복원
+        // 저장된 뷰 복원 (기본값: 게시판)
         (function() {
-            if (localStorage.getItem('newsView') === 'board') setView('board');
+            const saved = localStorage.getItem('newsView');
+            setView(saved === 'thumb' ? 'thumb' : 'board');
         })();
 
         // ── 관리자 기능 ──
