@@ -127,7 +127,7 @@
                     <div class="news-body">
                         <p class="news-source">네이버 블로그</p>
                         <h3 class="news-title">리젠메드컨설팅: 첨단재생의료기관 인증 획득 성공 스토리 및 의미 심층 분석</h3>
-                        <p class="news-date">2023.10</p>
+                        <p class="news-date">2026.03.09</p>
                     </div>
                 </a>
 
@@ -140,7 +140,7 @@
                     <div class="news-body">
                         <p class="news-source">네이버 블로그</p>
                         <h3 class="news-title">리젠메드컨설팅: 첨단재생의료기관 인증 획득, 혁신의 시작</h3>
-                        <p class="news-date">2023.10</p>
+                        <p class="news-date">2026.03.09</p>
                     </div>
                 </a>
 
@@ -153,7 +153,7 @@
                     <div class="news-body">
                         <p class="news-source">네이버 블로그</p>
                         <h3 class="news-title">리젠메드컨설팅, 첨단재생의료기관 인증 획득! 그 비하인드 스토리와 의미를 파헤쳐 봅니다!</h3>
-                        <p class="news-date">2023.10</p>
+                        <p class="news-date">2026.03.09</p>
                     </div>
                 </a>
 
@@ -166,7 +166,7 @@
                     <div class="news-body">
                         <p class="news-source">네이버 블로그</p>
                         <h3 class="news-title">리젠메드컨설팅: 첨단재생의료기관 인증 획득 과정 및 의미 완벽 분석</h3>
-                        <p class="news-date">2023.10</p>
+                        <p class="news-date">2026.03.09</p>
                     </div>
                 </a>
 
@@ -299,8 +299,15 @@
             'https://images.unsplash.com/photo-1530026405186-ed1f139313f8?w=400&h=240&fit=crop',
             'https://images.unsplash.com/photo-1582719471384-894fbb16e074?w=400&h=240&fit=crop'
         ];
+        function todayStr() {
+            const t = new Date();
+            return t.getFullYear() + '.' +
+                String(t.getMonth() + 1).padStart(2, '0') + '.' +
+                String(t.getDate()).padStart(2, '0');
+        }
         function makeDynamicCard(a, i) {
             const thumb = a.thumb || defaultThumbs[i % defaultThumbs.length];
+            const date = a.date || todayStr();
             const card = document.createElement('a');
             card.href = a.url;
             card.target = '_blank';
@@ -308,7 +315,7 @@
             card.dataset.dynamic = '1';
             card.innerHTML =
                 '<div class="news-thumb"><img src="' + thumb + '" alt="기사 썸네일"><span class="news-tag">' + esc(a.tag || '블로그') + '</span></div>' +
-                '<div class="news-body"><p class="news-source">' + esc(a.source || '') + '</p><h3 class="news-title">' + esc(a.title) + '</h3><p class="news-date">' + esc(a.date || '') + '</p></div>';
+                '<div class="news-body"><p class="news-source">' + esc(a.source || '') + '</p><h3 class="news-title">' + esc(a.title) + '</h3><p class="news-date">' + esc(date) + '</p></div>';
             return card;
         }
         function clearDynamicCards() {
