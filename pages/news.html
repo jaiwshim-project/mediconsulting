@@ -170,8 +170,7 @@
                     </div>
                 </a>
 
-                <!-- 동적 기사 (관리자 페이지에서 추가) -->
-                <div id="dynamic-news"></div>
+                <!-- 동적 기사는 JS에서 newsGrid에 직접 추가 -->
 
 
             </div>
@@ -300,23 +299,30 @@
             'https://images.unsplash.com/photo-1530026405186-ed1f139313f8?w=400&h=240&fit=crop',
             'https://images.unsplash.com/photo-1582719471384-894fbb16e074?w=400&h=240&fit=crop'
         ];
+        function makeDynamicCard(a, i) {
+            const thumb = a.thumb || defaultThumbs[i % defaultThumbs.length];
+            const card = document.createElement('a');
+            card.href = a.url;
+            card.target = '_blank';
+            card.className = 'news-card';
+            card.dataset.dynamic = '1';
+            card.innerHTML =
+                '<div class="news-thumb"><img src="' + thumb + '" alt="기사 썸네일"><span class="news-tag">' + esc(a.tag || '블로그') + '</span></div>' +
+                '<div class="news-body"><p class="news-source">' + esc(a.source || '') + '</p><h3 class="news-title">' + esc(a.title) + '</h3><p class="news-date">' + esc(a.date || '') + '</p></div>';
+            return card;
+        }
+        function clearDynamicCards() {
+            document.querySelectorAll('#newsGrid [data-dynamic]').forEach(el => el.remove());
+        }
         (async function() {
-            const container = document.getElementById('dynamic-news');
+            const grid = document.getElementById('newsGrid');
             const { data, error } = await _sb
                 .from('news_articles')
                 .select('*')
                 .order('created_at', { ascending: false });
             if (error || !data) return;
             data.forEach(function(a, i) {
-                const thumb = a.thumb || defaultThumbs[i % defaultThumbs.length];
-                const card = document.createElement('a');
-                card.href = a.url;
-                card.target = '_blank';
-                card.className = 'news-card';
-                card.innerHTML =
-                    '<div class="news-thumb"><img src="' + thumb + '" alt="기사 썸네일"><span class="news-tag">' + esc(a.tag || '블로그') + '</span></div>' +
-                    '<div class="news-body"><p class="news-source">' + esc(a.source || '') + '</p><h3 class="news-title">' + esc(a.title) + '</h3><p class="news-date">' + esc(a.date || '') + '</p></div>';
-                container.appendChild(card);
+                grid.appendChild(makeDynamicCard(a, i));
             });
         })();
         function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
@@ -393,15 +399,11 @@
             toast.style.display = 'block';
             setTimeout(() => { toast.style.display = 'none'; }, 3000);
             // 동적 카드 새로고침
-            const container = document.getElementById('dynamic-news');
-            container.innerHTML = '';
+            clearDynamicCards();
+            const grid = document.getElementById('newsGrid');
             const { data } = await _sb.from('news_articles').select('*').order('created_at', { ascending: false });
             if (data) data.forEach(function(a, i) {
-                const th = a.thumb || defaultThumbs[i % defaultThumbs.length];
-                const card = document.createElement('a');
-                card.href = a.url; card.target = '_blank'; card.className = 'news-card';
-                card.innerHTML = '<div class="news-thumb"><img src="' + th + '" alt="기사 썸네일"><span class="news-tag">' + esc(a.tag||'블로그') + '</span></div><div class="news-body"><p class="news-source">' + esc(a.source||'') + '</p><h3 class="news-title">' + esc(a.title) + '</h3><p class="news-date">' + esc(a.date||'') + '</p></div>';
-                container.appendChild(card);
+                grid.appendChild(makeDynamicCard(a, i));
             });
         }
     </script>
