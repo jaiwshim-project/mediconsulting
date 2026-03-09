@@ -106,7 +106,17 @@
     <section class="news-section">
         <div class="container">
 
-            <div class="news-grid">
+            <!-- 뷰 전환 -->
+            <div class="news-view-controls">
+                <button class="news-view-btn active" id="viewThumb" onclick="setView('thumb')" title="썸네일 보기">
+                    ⊞ 썸네일
+                </button>
+                <button class="news-view-btn" id="viewBoard" onclick="setView('board')" title="게시판 보기">
+                    ≡ 게시판
+                </button>
+            </div>
+
+            <div class="news-grid" id="newsGrid">
 
                 <!-- 네이버 블로그 카드 1 -->
                 <a href="https://blog.naver.com/jaiwooshim/224208938834" target="_blank" class="news-card">
@@ -311,6 +321,28 @@
         })();
         function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 
+        // ── 뷰 전환 ──
+        function setView(mode) {
+            const grid = document.getElementById('newsGrid');
+            const btnThumb = document.getElementById('viewThumb');
+            const btnBoard = document.getElementById('viewBoard');
+            if (mode === 'board') {
+                grid.classList.add('board-view');
+                btnBoard.classList.add('active');
+                btnThumb.classList.remove('active');
+                localStorage.setItem('newsView', 'board');
+            } else {
+                grid.classList.remove('board-view');
+                btnThumb.classList.add('active');
+                btnBoard.classList.remove('active');
+                localStorage.setItem('newsView', 'thumb');
+            }
+        }
+        // 저장된 뷰 복원
+        (function() {
+            if (localStorage.getItem('newsView') === 'board') setView('board');
+        })();
+
         // ── 관리자 기능 ──
         const ADMIN_PW = '9633';
 
@@ -323,6 +355,13 @@
             if (document.getElementById('adminPw').value === ADMIN_PW) {
                 document.getElementById('adminLoginBox').style.display = 'none';
                 document.getElementById('adminForm').style.display = 'block';
+                // 오늘 날짜 자동 입력
+                const today = new Date();
+                const yy = today.getFullYear();
+                const mm = String(today.getMonth() + 1).padStart(2, '0');
+                const dd = String(today.getDate()).padStart(2, '0');
+                const dateEl = document.getElementById('af-date');
+                if (!dateEl.value) dateEl.value = yy + '.' + mm + '.' + dd;
                 document.getElementById('af-title').focus();
             } else {
                 document.getElementById('adminPwError').style.display = 'block';

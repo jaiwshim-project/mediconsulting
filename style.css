@@ -3196,10 +3196,143 @@ button {
     background: #f4f6f9;
 }
 
+/* 뷰 전환 컨트롤 */
+.news-view-controls {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 20px;
+}
+
+.news-view-btn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 7px 14px;
+    border: 1.5px solid #dde;
+    border-radius: 8px;
+    background: #fff;
+    color: #888;
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.2s ease;
+    line-height: 1;
+}
+
+.news-view-btn.active {
+    border-color: var(--primary);
+    background: var(--primary);
+    color: #fff;
+}
+
+.news-view-btn:hover:not(.active) {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
 .news-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 24px;
+}
+
+/* ── 게시판 뷰 ── */
+.news-grid.board-view {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    background: #fff;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+
+.news-grid.board-view .news-card {
+    flex-direction: row;
+    align-items: center;
+    border-radius: 0;
+    box-shadow: none;
+    border-bottom: 1px solid #f0f3f8;
+    padding: 0;
+    gap: 0;
+}
+
+.news-grid.board-view .news-card:last-child {
+    border-bottom: none;
+}
+
+.news-grid.board-view .news-card:hover {
+    transform: none;
+    background: #f5f8ff;
+    box-shadow: none;
+}
+
+.news-grid.board-view .news-thumb {
+    flex-shrink: 0;
+    width: 90px;
+    height: 64px;
+    aspect-ratio: unset;
+    border-radius: 0;
+    overflow: hidden;
+}
+
+.news-grid.board-view .news-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.news-grid.board-view .news-card:hover .news-thumb img {
+    transform: scale(1.08);
+}
+
+.news-grid.board-view .news-tag {
+    font-size: 0.64rem;
+    padding: 2px 7px;
+    top: 6px;
+    left: 6px;
+}
+
+.news-grid.board-view .news-body {
+    flex-direction: row;
+    align-items: center;
+    padding: 0 18px;
+    gap: 12px;
+    flex: 1;
+    min-width: 0;
+}
+
+.news-grid.board-view .news-source {
+    flex-shrink: 0;
+    min-width: 90px;
+    font-size: 0.73rem;
+}
+
+.news-grid.board-view .news-title {
+    flex: 1;
+    font-size: 0.88rem;
+    -webkit-line-clamp: 1;
+    min-width: 0;
+}
+
+.news-grid.board-view .news-date {
+    flex-shrink: 0;
+    margin-top: 0;
+    font-size: 0.73rem;
+    white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+    .news-grid.board-view .news-source {
+        display: none;
+    }
+    .news-grid.board-view .news-thumb {
+        width: 70px;
+        height: 52px;
+    }
 }
 
 .news-card {
