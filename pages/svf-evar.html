@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVF + E-VAR 기술 | 첨단재생의료 인허가 컨설팅</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        .svf-hero {
+            background: linear-gradient(135deg, #0D1B3E 0%, #134A2C 60%, #0A3322 100%);
+        }
+        .svf-evar-section {
+            padding: 100px 0;
+            background: #F8FAFC;
+        }
+        .svf-evar-grid {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 0;
+            align-items: center;
+            margin-top: 64px;
+        }
+        .svf-evar-card {
+            background: #fff;
+            border-radius: 24px;
+            padding: 48px 40px;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.08);
+            border: 1px solid #E2E8F0;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .svf-evar-card:hover {
+            transform: translateY(-8px);
+        }
+        .svf-card {
+            border-top: 4px solid #0066CC;
+        }
+        .evar-card {
+            border-top: 4px solid #00B894;
+        }
+        .svf-evar-badge {
+            display: inline-block;
+            padding: 6px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+            background: #EBF5FF;
+            color: #0066CC;
+        }
+        .evar-badge {
+            background: #E6FBF5;
+            color: #00875A;
+        }
+        .svf-evar-card h3 {
+            font-size: 26px;
+            font-weight: 900;
+            color: #111827;
+            margin-bottom: 6px;
+        }
+        .svf-evar-subtitle {
+            font-size: 14px;
+            color: #6B7280;
+            margin-bottom: 28px;
+            font-style: italic;
+        }
+        .svf-evar-features {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            margin-bottom: 24px;
+        }
+        .svf-evar-feature {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #F1F5F9;
+        }
+        .svf-evar-feature:last-child { border-bottom: none; }
+        .svf-evar-label {
+            font-size: 13px;
+            color: #6B7280;
+            font-weight: 500;
+        }
+        .svf-evar-value {
+            font-size: 13px;
+            font-weight: 700;
+            color: #111827;
+            text-align: right;
+        }
+        .svf-evar-desc {
+            font-size: 14px;
+            color: #4A5568;
+            line-height: 1.75;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #F1F5F9;
+        }
+        .svf-evar-vs {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 0 32px;
+            gap: 12px;
+        }
+        .vs-circle {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, #0066CC, #00B894);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 28px;
+            font-weight: 900;
+            box-shadow: 0 8px 24px rgba(0,102,204,0.3);
+        }
+        .vs-text {
+            font-size: 13px;
+            color: #6B7280;
+            text-align: center;
+            line-height: 1.6;
+            font-weight: 600;
+        }
+        .svf-evar-advantage {
+            margin-top: 80px;
+            background: #fff;
+            border-radius: 24px;
+            padding: 56px 48px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+            border: 1px solid #E2E8F0;
+        }
+        .advantage-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .advantage-header h3 {
+            font-size: 26px;
+            font-weight: 900;
+            color: #111827;
+        }
+        .advantage-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+        }
+        .advantage-item {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+        }
+        .advantage-icon {
+            font-size: 32px;
+            flex-shrink: 0;
+        }
+        .advantage-item strong {
+            display: block;
+            font-size: 16px;
+            font-weight: 800;
+            color: #111827;
+            margin-bottom: 6px;
+        }
+        .advantage-item p {
+            font-size: 14px;
+            color: #4A5568;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        /* 시너지 효과 섹션 */
+        .synergy-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #0D1B3E 0%, #134A2C 100%);
+        }
+        .synergy-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+            margin-top: 56px;
+        }
+        .synergy-card {
+            background: rgba(255,255,255,0.07);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 20px;
+            padding: 36px 28px;
+            text-align: center;
+            transition: background 0.3s;
+        }
+        .synergy-card:hover {
+            background: rgba(255,255,255,0.12);
+        }
+        .synergy-icon {
+            font-size: 40px;
+            margin-bottom: 16px;
+        }
+        .synergy-card h4 {
+            font-size: 18px;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 12px;
+        }
+        .synergy-card p {
+            font-size: 14px;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.7;
+        }
+
+        @media (max-width: 992px) {
+            .svf-evar-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            .svf-evar-vs {
+                flex-direction: row;
+                padding: 16px 0;
+            }
+            .advantage-grid { grid-template-columns: 1fr; }
+            .synergy-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 768px) {
+            .svf-evar-card { padding: 32px 24px; }
+            .svf-evar-advantage { padding: 36px 24px; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header" id="header">
+        <div class="header-container">
+            <div class="logo-group">
+                <a href="../index.html" class="logo">
+                    <span class="logo-icon">🧬</span>
+                    <span class="logo-text">RegenMed<span class="logo-highlight">Consulting</span></span>
+                </a>
+                <span class="logo-sub">첨단재생의료기관</span>
+            </div>
+            <nav class="nav">
+                <a href="why-us.html" class="nav-link">왜 우리인가</a>
+                <div class="nav-dropdown">
+                    <a href="philosophy.html" class="nav-link active">통합 솔루션 <span class="nav-arrow">▾</span></a>
+                    <div class="nav-dropdown-menu">
+                        <a href="philosophy.html" class="dropdown-link">차별화 철학</a>
+                        <a href="package.html" class="dropdown-link">4단계 통합 패키지</a>
+                        <a href="prp-prf.html" class="dropdown-link">PRP + PRF 기술</a>
+                        <a href="svf-evar.html" class="dropdown-link active">SVF + E-VAR 기술</a>
+                        <a href="sop.html" class="dropdown-link">SOP 패키지</a>
+                    </div>
+                </div>
+                <div class="nav-dropdown">
+                    <a href="services.html" class="nav-link">서비스 <span class="nav-arrow">▾</span></a>
+                    <div class="nav-dropdown-menu">
+                        <a href="diagnosis.html" class="dropdown-link">비즈니스 진단</a>
+                        <a href="results.html" class="dropdown-link">진단 결과 보기</a>
+                        <a href="https://jaiwshim-project.github.io/mediconsulting/pages/kimjaeryong.html" class="dropdown-link">김재룡성형외과</a>
+                    </div>
+                </div>
+                <div class="nav-dropdown">
+                    <a href="nkcl.html" class="nav-link">파트너 <span class="nav-arrow">▾</span></a>
+                    <div class="nav-dropdown-menu">
+                        <a href="nkcl.html" class="dropdown-link nkcl-link">NKCL Bio Group</a>
+                        <a href="exvar.html" class="dropdown-link">ExVAR 셀테라피</a>
+                    </div>
+                </div>
+                <a href="process.html" class="nav-link">프로세스</a>
+                <a href="requirements.html" class="nav-link">시설요건</a>
+                <a href="news.html" class="nav-link">기사 보기</a>
+            </nav>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- 모바일 오버레이 -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+
+    <!-- 모바일 메뉴 -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="why-us.html" class="mobile-nav-link">왜 우리인가</a>
+        <div class="mobile-nav-accordion">
+            <button class="mobile-nav-accordion-btn">통합 솔루션 <span class="mobile-acc-arrow">▾</span></button>
+            <div class="mobile-nav-accordion-content">
+                <a href="philosophy.html" class="mobile-nav-sub-link">차별화 철학</a>
+                <a href="package.html" class="mobile-nav-sub-link">4단계 통합 패키지</a>
+                <a href="prp-prf.html" class="mobile-nav-sub-link">PRP + PRF 기술</a>
+                <a href="svf-evar.html" class="mobile-nav-sub-link">SVF + E-VAR 기술</a>
+                <a href="sop.html" class="mobile-nav-sub-link">SOP 패키지</a>
+            </div>
+        </div>
+        <div class="mobile-nav-accordion">
+            <button class="mobile-nav-accordion-btn">서비스 <span class="mobile-acc-arrow">▾</span></button>
+            <div class="mobile-nav-accordion-content">
+                <a href="services.html" class="mobile-nav-sub-link">서비스 전체보기</a>
+                <a href="diagnosis.html" class="mobile-nav-sub-link">비즈니스 진단</a>
+                <a href="results.html" class="mobile-nav-sub-link">진단 결과 보기</a>
+                <a href="https://jaiwshim-project.github.io/mediconsulting/pages/kimjaeryong.html" class="mobile-nav-sub-link">김재룡성형외과</a>
+            </div>
+        </div>
+        <div class="mobile-nav-accordion">
+            <button class="mobile-nav-accordion-btn">파트너 <span class="mobile-acc-arrow">▾</span></button>
+            <div class="mobile-nav-accordion-content">
+                <a href="nkcl.html" class="mobile-nav-sub-link nkcl-link">NKCL Bio Group</a>
+                <a href="exvar.html" class="mobile-nav-sub-link">ExVAR 셀테라피</a>
+            </div>
+        </div>
+        <a href="process.html" class="mobile-nav-link">프로세스</a>
+        <a href="requirements.html" class="mobile-nav-link">시설요건</a>
+        <a href="news.html" class="mobile-nav-link">기사 보기</a>
+        <a href="results.html" class="mobile-nav-link nav-cta-mobile">진단 결과 보기</a>
+    </div>
+
+    <section class="page-hero svf-hero">
+        <div class="page-hero-content">
+            <span class="page-hero-badge">Dual Cell Therapy</span>
+            <h1 class="page-hero-title">SVF + E-VAR 통합 세포치료 프로토콜</h1>
+            <p class="page-hero-desc">지방유래 줄기세포 재생 + NK세포 면역치료의 시너지</p>
+        </div>
+    </section>
+
+    <section class="svf-evar-section" id="svf-evar">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Dual Cell Therapy</span>
+                <h2 class="section-title">SVF + E-VAR 통합 세포치료 프로토콜</h2>
+                <p class="section-desc">지방유래 줄기세포(SVF)의 재생력과 NK세포(E-VAR)의 면역력을 동시에 활용하는 차세대 통합 치료</p>
+            </div>
+            <div class="svf-evar-grid">
+                <div class="svf-evar-card svf-card">
+                    <div class="svf-evar-badge">SVF</div>
+                    <h3>지방유래 기질혈관분획</h3>
+                    <p class="svf-evar-subtitle">Stromal Vascular Fraction</p>
+                    <div class="svf-evar-features">
+                        <div class="svf-evar-feature">
+                            <span class="svf-evar-label">세포 공급원</span>
+                            <span class="svf-evar-value">자가 지방조직</span>
+                        </div>
+                        <div class="svf-evar-feature">
+                            <span class="svf-evar-label">처리 방식</span>
+                            <span class="svf-evar-value">효소 분해 / 기계적 처리</span>
+                        </div>
+                        <div class="svf-evar-feature">
+                            <span class="svf-evar-label">주요 성분</span>
+                            <span class="svf-evar-value">중간엽 줄기세포, 내피세포</span>
+                        </div>
+                        <div class="svf-evar-feature">
+                            <span class="svf-evar-label">주요 적용</span>
+                            <span class="svf-evar-value">관절·피부·조직 재생</span>
+                        </div>
+                        <div class="svf-evar-feature">
+                            <span class="svf-evar-label">처리 시간</span>
+                            <span class="svf-evar-value">1~2시간 (당일 시술 가능)</span>
+                        </div>
+                    </div>
+                    <p class="svf-evar-desc">자가 지방조직에서 분리한 다양한 세포군으로, 줄기세포·내피세포·면역세포를 포함합니다. 손상 조직 재생, 혈관 신생, 항염 효과가 탁월하며 당일 채취·시술이 가능합니다.</p>
+                </div>
+                <div class="svf-evar-vs">
+                    <div class="vs-circle">+</div>
+                    <p class="vs-text">재생과 면역의<br>통합 치료</p>
+                </div>
+                <div class="svf-evar-card evar-card">
+                    <div class="svf-evar-badge evar-badge">E-VAR</div>
+                    <h3>NK세포 면역 셀테라피</h3>
+                    <p class="svf-evar-subtitle">ExVAR Cell Therapy</p>
+                    <div class="svf-evar-features">
+                        <div class="svf-evar-feature">
+                            <span class="svf-evar-label">세포 공급원</span>
+                            <span class="svf-evar-value">자가 말초혈액</span>
+                        </div>
+                        <div class="svf-evar-feature">
+                            <span class="svf-evar-label">처리 방식</span>
+                            <span class="svf-evar-value">체외 활성화 (Ex vivo)</span>
+                        </div>
+                        <div class="svf-evar-feature">
+                            <span class="svf-evar-label">주요 성분</span>
+                            <span class="svf-evar-value">활성화 NK세포</span>
+                        </div>
+                        <div class="svf-evar-feature">
+                            <span class="svf-evar-label">주요 적용</span>
+                            <span class="svf-evar-value">항암·면역 증강·재생 보조</span>
+                        </div>
+                        <div class="svf-evar-feature">
+                            <span class="svf-evar-label">처리 시간</span>
+                            <span class="svf-evar-value">4~48시간 (CORE 모델)</span>
+                        </div>
+                    </div>
+                    <p class="svf-evar-desc">말초혈액에서 채취한 NK세포를 체외에서 활성화·증폭 후 재주입합니다. 자연살해세포의 강력한 면역 기능으로 암세포 제거, 면역력 증강, 재생 환경 조성에 효과적입니다.</p>
+                </div>
+            </div>
+            <div class="svf-evar-advantage">
+                <div class="advantage-header">
+                    <h3>왜 SVF + E-VAR 통합인가?</h3>
+                </div>
+                <div class="advantage-grid">
+                    <div class="advantage-item">
+                        <span class="advantage-icon">🔄</span>
+                        <div>
+                            <strong>이중 치료 시너지</strong>
+                            <p>SVF의 조직 재생력 + E-VAR의 면역 활성화로 재생과 면역을 동시에 강화. 단독 치료 대비 치료 효과 극대화</p>
+                        </div>
+                    </div>
+                    <div class="advantage-item">
+                        <span class="advantage-icon">💰</span>
+                        <div>
+                            <strong>프리미엄 수익 창출</strong>
+                            <p>두 가지 첨단재생의료 시술을 통합 패키지로 제공. 고부가가치 통합 치료 프로그램으로 경쟁 차별화</p>
+                        </div>
+                    </div>
+                    <div class="advantage-item">
+                        <span class="advantage-icon">🛡️</span>
+                        <div>
+                            <strong>자가세포 100% 안전</strong>
+                            <p>SVF와 E-VAR 모두 환자 본인의 세포를 사용. 면역 거부반응 없이 안전하게 시술 가능</p>
+                        </div>
+                    </div>
+                    <div class="advantage-item">
+                        <span class="advantage-icon">🏥</span>
+                        <div>
+                            <strong>병원 내 자체 시설 운영</strong>
+                            <p>하나의 세포처리시설에서 SVF와 E-VAR 동시 운영. 시설 투자 효율화 및 원스톱 치료 서비스 제공</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 시너지 효과 섹션 -->
+    <section class="synergy-section">
+        <div class="container">
+            <div class="section-header light">
+                <span class="section-badge">Synergy Effects</span>
+                <h2 class="section-title">SVF + E-VAR 통합 치료 적용 분야</h2>
+                <p class="section-desc">두 기술의 시너지로 더 넓은 적용 영역과 탁월한 치료 결과를 실현합니다</p>
+            </div>
+            <div class="synergy-grid">
+                <div class="synergy-card">
+                    <div class="synergy-icon">🦴</div>
+                    <h4>관절·근골격계 재생</h4>
+                    <p>SVF의 연골 재생 + E-VAR의 염증 억제 면역 조절로 관절염, 연골 손상, 인대 손상에 복합 치료 효과</p>
+                </div>
+                <div class="synergy-card">
+                    <div class="synergy-icon">🎗️</div>
+                    <h4>항암 보조·면역 강화</h4>
+                    <p>E-VAR NK세포로 암세포 제거 + SVF 줄기세포로 손상 조직 복구. 항암 치료 중 조직 재생 및 면역력 유지</p>
+                </div>
+                <div class="synergy-card">
+                    <div class="synergy-icon">✨</div>
+                    <h4>피부·미용 재생</h4>
+                    <p>SVF 성장인자로 콜라겐 재생 + E-VAR 면역 활성화로 피부 환경 개선. 노화 방지 및 피부 재생 치료</p>
+                </div>
+                <div class="synergy-card">
+                    <div class="synergy-icon">🧠</div>
+                    <h4>만성질환·노화 관리</h4>
+                    <p>줄기세포 재생력과 NK세포 면역력을 동시에 회복. 만성 염증, 면역 저하, 노화 관련 복합 증상 개선</p>
+                </div>
+                <div class="synergy-card">
+                    <div class="synergy-icon">💉</div>
+                    <h4>수술 후 회복 촉진</h4>
+                    <p>수술 후 SVF로 조직 재생 가속 + E-VAR로 감염 방어 면역력 강화. 회복 기간 단축 및 합병증 예방</p>
+                </div>
+                <div class="synergy-card">
+                    <div class="synergy-icon">🔬</div>
+                    <h4>맞춤형 통합 치료</h4>
+                    <p>환자 상태와 치료 목표에 따라 SVF·E-VAR 비율 조정. 개인화된 세포치료 프로토콜 수립 가능</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA 섹션 -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>SVF + E-VAR 통합 시설 구축 상담을 신청하세요</h2>
+                <p>두 가지 첨단재생의료 기술을 하나의 시설에서 운영하는 최적의 솔루션을 제안합니다</p>
+                <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+                    <a href="prp-prf.html" class="btn btn-secondary" style="border-color: rgba(255,255,255,0.3); color: #fff;">
+                        <span>PRP + PRF 기술 보기</span>
+                    </a>
+                    <a href="contact.html" class="btn btn-white">
+                        <span>무료 상담 신청</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="../script.js"></script>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="../index.html" class="logo">
+                        <span class="logo-icon">🧬</span>
+                        <span class="logo-text">RegenMed<span class="logo-highlight">Consulting</span></span>
+                    </a>
+                    <span class="logo-sub">첨단재생의료기관</span>
+                    <p class="footer-desc">첨단재생의료 실시기관 인허가 전문 컨설팅<br>복잡한 인허가 절차를 쉽고 빠르게</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <a href="services.html">서비스</a>
+                    <a href="process.html">컨설팅 프로세스</a>
+                    <a href="contact.html">무료상담</a>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact</h4>
+                    <p>📞 010-5592-5700 (이장춘 대표)</p>
+                    <p>📞 010-5012-2885 (이용식 회장)</p>
+                    <p>📧 jaiwshim@gmail.com</p>
+                    <p>📍 대전시</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 RegenMed Consulting. All rights reserved.</p>
+                <a href="admin.html" class="admin-footer-btn" title="관리자 대시보드">&#9881; 관리자</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 맨 위로 버튼 -->
+    <button class="back-to-top" id="backToTop">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 15l-6-6-6 6"/>
+        </svg>
+    </button>
+
+    <!-- 리젠메드AI상담톡 -->
+    <button class="ai-chat-btn" onclick="document.getElementById('aiChatPanel').classList.toggle('open')">리젠메드<span style="color:#FFD600">AI</span>상담톡</button>
+    <div class="ai-chat-panel" id="aiChatPanel">
+        <div class="ai-chat-header">
+            <span>리젠메드<span style="color:#FFD600">AI</span>상담톡</span>
+            <button class="ai-chat-close" onclick="document.getElementById('aiChatPanel').classList.remove('open')">&times;</button>
+        </div>
+        <iframe src="https://aitalker.co.kr/biz020" class="ai-chat-iframe"></iframe>
+    </div>
+    <style>
+        .ai-chat-btn {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: linear-gradient(135deg, #0066CC, #00B894);
+            color: #fff;
+            font-size: 15px;
+            font-weight: 700;
+            padding: 14px 28px;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 6px 24px rgba(0,102,204,0.4);
+            z-index: 9999;
+            transition: all 0.3s;
+            font-family: var(--font-primary);
+        }
+        .ai-chat-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 32px rgba(0,102,204,0.5);
+        }
+        .ai-chat-panel {
+            position: fixed;
+            bottom: 80px;
+            right: 24px;
+            width: 400px;
+            height: 600px;
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 12px 48px rgba(0,0,0,0.2);
+            z-index: 10000;
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        .ai-chat-panel.open { display: flex; }
+        .ai-chat-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 20px;
+            background: linear-gradient(135deg, #0066CC, #00B894);
+            color: #fff;
+            font-size: 15px;
+            font-weight: 700;
+        }
+        .ai-chat-close {
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 24px;
+            cursor: pointer;
+            line-height: 1;
+        }
+        .ai-chat-iframe {
+            flex: 1;
+            width: 100%;
+            border: none;
+        }
+        @media (max-width: 480px) {
+            .ai-chat-panel {
+                width: calc(100vw - 32px);
+                height: calc(100vh - 120px);
+                right: 16px;
+                bottom: 72px;
+            }
+        }
+    </style>
+    <!-- 사용자 매뉴얼 버튼 -->
+    <a href="manual.html" class="manual-float-btn" title="사용자 매뉴얼">
+        <span class="manual-btn-icon">📖</span>
+        <span class="manual-btn-text">사용자 매뉴얼</span>
+    </a>
+    <style>
+        .manual-float-btn {
+            position: fixed;
+            bottom: 24px;
+            left: 24px;
+            background: linear-gradient(135deg, #0D1B3E, #1A3360);
+            color: #fff;
+            font-size: 13px;
+            font-weight: 700;
+            padding: 12px 20px;
+            border-radius: 50px;
+            border: 1px solid rgba(255,255,255,0.15);
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(13,27,62,0.4);
+            z-index: 9999;
+            transition: all 0.3s;
+            font-family: inherit;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .manual-float-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 28px rgba(13,27,62,0.5);
+            background: linear-gradient(135deg, #1A3360, #0066CC);
+        }
+        .manual-btn-icon { font-size: 16px; }
+    </style>
+</body>
+</html>
