@@ -752,6 +752,17 @@ button {
     letter-spacing: 1px;
 }
 
+.section-exvar-label {
+    font-size: clamp(1.2rem, 3.5vw, 2.2rem);
+    color: var(--primary);
+    font-weight: 800;
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+    display: block;
+    width: 100%;
+}
+
 .section-title {
     font-size: clamp(2rem, 4vw, 2.8rem);
     font-weight: 800;
