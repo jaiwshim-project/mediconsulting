@@ -76,6 +76,7 @@
 html {
     scroll-behavior: smooth;
     font-size: 16px;
+    overflow-x: hidden;
 }
 
 body {
@@ -6125,5 +6126,283 @@ button {
 @media (max-width: 768px) {
     .nkcl-cards {
         grid-template-columns: 1fr;
+    }
+}
+
+/* ========================================
+   모바일 최적화 보완
+======================================== */
+
+/* ── 768px 이하 공통 보완 ── */
+@media (max-width: 768px) {
+    html, body {
+        overflow-x: hidden;
+        max-width: 100%;
+    }
+
+    /* 컨테이너 */
+    .container {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    /* 헤더 로고 서브텍스트 숨김 */
+    .logo-sub {
+        display: none;
+    }
+
+    /* Hero */
+    .hero {
+        padding: 70px 16px 40px;
+    }
+
+    /* Page Hero */
+    .page-hero {
+        padding: 36px 16px 30px;
+    }
+    .page-hero-desc {
+        font-size: 0.92rem;
+    }
+
+    /* 섹션 패딩 */
+    .news-section,
+    .diagnosis-intro-section {
+        padding: 48px 0 60px;
+    }
+
+    /* 아이콘 크기 축소 */
+    .problem-icon {
+        font-size: 2.6rem;
+        margin-bottom: 16px;
+    }
+    .expertise-icon {
+        font-size: 2.8rem;
+        margin-bottom: 16px;
+    }
+    .philosophy-icon {
+        font-size: 2.4rem;
+        margin-bottom: 14px;
+    }
+    .step-number {
+        font-size: 2.5rem;
+        margin-bottom: 12px;
+    }
+
+    /* 카드 패딩 */
+    .philosophy-card,
+    .solution-card,
+    .expertise-card-large,
+    .nkcl-card,
+    .roadmap-card {
+        padding: 24px 20px;
+    }
+
+    /* 섹션 서브타이틀 */
+    .section-subtitle,
+    .section-desc {
+        font-size: 0.92rem;
+    }
+
+    /* PRP/SVF 그리드 */
+    .prp-prf-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+    .prp-prf-vs {
+        display: none;
+    }
+
+    /* 솔루션 그리드 */
+    .solution-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    /* detail-features */
+    .detail-features {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    /* expertise-grid-large */
+    .expertise-grid-large {
+        grid-template-columns: 1fr;
+    }
+
+    /* roadmap */
+    .roadmap-levels {
+        grid-template-columns: 1fr;
+        max-width: 100%;
+    }
+
+    /* 진단 페이지 */
+    .diagnosis-intro h2 {
+        font-size: 1.5rem;
+    }
+    .diagnosis-intro p {
+        font-size: 0.95rem;
+    }
+    .diagnosis-intro-section {
+        padding: 48px 0 24px;
+    }
+
+    /* 뉴스 게시판 테이블 가로 스크롤 */
+    .board-table-wrap {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* 결과 페이지 */
+    .result-header h2 {
+        font-size: 1.5rem;
+    }
+
+    /* 푸터 */
+    .footer-content {
+        gap: 28px;
+    }
+
+    /* trust badges */
+    .trust-badges {
+        flex-wrap: wrap;
+        gap: 16px;
+        justify-content: center;
+    }
+    .trust-item {
+        flex: 1 1 calc(50% - 8px);
+        justify-content: center;
+    }
+
+    /* 뷰 토글 */
+    .news-view-btn {
+        padding: 7px 12px;
+        font-size: 0.8rem;
+    }
+}
+
+/* ── 480px 이하 ── */
+@media (max-width: 480px) {
+    :root {
+        --section-padding: 40px 0;
+    }
+
+    /* Hero */
+    .hero {
+        padding: 64px 16px 36px;
+    }
+    .hero-title {
+        font-size: 1.7rem;
+    }
+    .hero-description {
+        font-size: 0.92rem;
+    }
+    .hero-stats {
+        gap: 14px;
+    }
+
+    /* Page Hero */
+    .page-hero {
+        padding: 28px 16px 24px;
+    }
+    .page-hero-title {
+        font-size: 1.4rem;
+        margin: 10px 0;
+    }
+    .page-hero-desc {
+        font-size: 0.88rem;
+    }
+
+    /* Section */
+    .section-title {
+        font-size: 1.45rem;
+    }
+    .section-subtitle,
+    .section-desc {
+        font-size: 0.88rem;
+    }
+
+    /* 아이콘 */
+    .problem-icon {
+        font-size: 2.2rem;
+    }
+    .expertise-icon {
+        font-size: 2.4rem;
+    }
+    .philosophy-icon {
+        font-size: 2rem;
+    }
+    .step-number {
+        font-size: 2rem;
+    }
+
+    /* 카드 패딩 전반 */
+    .service-card,
+    .problem-card,
+    .process-step,
+    .expertise-card,
+    .requirement-category,
+    .philosophy-card,
+    .solution-card,
+    .expertise-card-large,
+    .nkcl-card {
+        padding: 20px 16px;
+    }
+
+    /* 버튼 */
+    .btn {
+        padding: 11px 20px;
+        font-size: 0.9rem;
+    }
+
+    /* trust */
+    .trust-item {
+        flex: 1 1 100%;
+    }
+
+    /* detail-features 1열 */
+    .detail-features {
+        grid-template-columns: 1fr;
+    }
+
+    /* 뉴스 게시판 번호 열 숨김 */
+    .board-table th.col-num,
+    .board-table td.col-num {
+        display: none;
+    }
+
+    /* 뷰 토글 */
+    .view-toggle-group {
+        padding: 3px;
+    }
+    .news-view-btn {
+        padding: 6px 10px;
+        font-size: 0.76rem;
+    }
+    .news-total-count {
+        font-size: 0.78rem;
+    }
+
+    /* 진단 */
+    .diagnosis-intro h2 {
+        font-size: 1.3rem;
+    }
+    .result-header h2 {
+        font-size: 1.3rem;
+    }
+    .result-score-circle {
+        width: 130px;
+        height: 130px;
+    }
+
+    /* 푸터 */
+    .footer-content {
+        gap: 20px;
+    }
+    .footer {
+        padding: 32px 0 20px;
+    }
+
+    /* 모바일 메뉴 */
+    .mobile-menu {
+        padding: 16px;
     }
 }
