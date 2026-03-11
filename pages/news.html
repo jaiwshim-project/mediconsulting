@@ -104,79 +104,47 @@
         </div>
     </section>
 
-    <!-- 기사 그리드 -->
+    <!-- 기사 목록 -->
     <section class="news-section">
         <div class="container">
 
             <!-- 뷰 전환 -->
             <div class="news-view-controls">
-                <button class="news-view-btn" id="viewThumb" onclick="setView('thumb')" title="썸네일 보기">
-                    ⊞ 썸네일
-                </button>
-                <button class="news-view-btn active" id="viewBoard" onclick="setView('board')" title="게시판 보기">
-                    ≡ 게시판
-                </button>
+                <div class="view-toggle-group">
+                    <button class="news-view-btn active" id="viewBoard" onclick="setView('board')" title="게시판 보기">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+                        게시판형
+                    </button>
+                    <button class="news-view-btn" id="viewThumb" onclick="setView('thumb')" title="썸네일 보기">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+                        썸네일형
+                    </button>
+                </div>
+                <span class="news-total-count" id="newsCount">로딩 중...</span>
             </div>
 
-            <div class="news-grid" id="newsGrid">
-
-                <!-- 네이버 블로그 카드 1 -->
-                <a href="https://blog.naver.com/jaiwooshim/224208938834" target="_blank" class="news-card">
-                    <div class="news-thumb">
-                        <img src="https://images.unsplash.com/photo-1576086213369-97a306d36557?w=400&h=240&fit=crop" alt="기사 썸네일">
-                        <span class="news-tag">인증 성공</span>
-                    </div>
-                    <div class="news-body">
-                        <p class="news-source">네이버 블로그</p>
-                        <h3 class="news-title">리젠메드컨설팅: 첨단재생의료기관 인증 획득 성공 스토리 및 의미 심층 분석</h3>
-                        <p class="news-date">2026.03.09</p>
-                    </div>
-                </a>
-
-                <!-- 네이버 블로그 카드 2 -->
-                <a href="https://blog.naver.com/jaiwooshim/224208938544" target="_blank" class="news-card">
-                    <div class="news-thumb">
-                        <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=400&h=240&fit=crop" alt="기사 썸네일">
-                        <span class="news-tag">혁신</span>
-                    </div>
-                    <div class="news-body">
-                        <p class="news-source">네이버 블로그</p>
-                        <h3 class="news-title">리젠메드컨설팅: 첨단재생의료기관 인증 획득, 혁신의 시작</h3>
-                        <p class="news-date">2026.03.09</p>
-                    </div>
-                </a>
-
-                <!-- 네이버 블로그 카드 3 -->
-                <a href="https://blog.naver.com/jaiwooshim/224208938418" target="_blank" class="news-card">
-                    <div class="news-thumb">
-                        <img src="https://images.unsplash.com/photo-1579154204601-01588f351e67?w=400&h=240&fit=crop" alt="기사 썸네일">
-                        <span class="news-tag">비하인드</span>
-                    </div>
-                    <div class="news-body">
-                        <p class="news-source">네이버 블로그</p>
-                        <h3 class="news-title">리젠메드컨설팅, 첨단재생의료기관 인증 획득! 그 비하인드 스토리와 의미를 파헤쳐 봅니다!</h3>
-                        <p class="news-date">2026.03.09</p>
-                    </div>
-                </a>
-
-                <!-- 네이버 블로그 카드 4 -->
-                <a href="https://blog.naver.com/jaiwooshim/224208938296" target="_blank" class="news-card">
-                    <div class="news-thumb">
-                        <img src="https://images.unsplash.com/photo-1507413245164-6160d8298b31?w=400&h=240&fit=crop" alt="기사 썸네일">
-                        <span class="news-tag">완벽 분석</span>
-                    </div>
-                    <div class="news-body">
-                        <p class="news-source">네이버 블로그</p>
-                        <h3 class="news-title">리젠메드컨설팅: 첨단재생의료기관 인증 획득 과정 및 의미 완벽 분석</h3>
-                        <p class="news-date">2026.03.09</p>
-                    </div>
-                </a>
-
-                <!-- 동적 기사는 JS에서 newsGrid에 직접 추가 -->
-
-
+            <!-- 게시판 뷰 -->
+            <div id="newsBoardView">
+                <div class="board-table-wrap">
+                    <table class="board-table">
+                        <thead>
+                            <tr>
+                                <th class="col-num">번호</th>
+                                <th class="col-title">제목 / 요약</th>
+                                <th class="col-cat">카테고리</th>
+                                <th class="col-date">날짜</th>
+                                <th class="col-link">링크</th>
+                            </tr>
+                        </thead>
+                        <tbody id="boardTableBody"></tbody>
+                    </table>
+                </div>
             </div>
-            <!-- //news-grid -->
+
+            <!-- 썸네일 그리드 -->
+            <div id="newsThumbView" style="display:none;">
+                <div class="news-grid" id="newsGrid"></div>
+            </div>
 
         </div>
     </section>
@@ -293,6 +261,14 @@
             'https://haxcktfnuudlqciyljtp.supabase.co',
             'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhheGNrdGZudXVkbHFjaXlsanRwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjkzMDUwNDAsImV4cCI6MjA4NDg4MTA0MH0.suN7BeaHx3MjaNlMDQa0940P-rMl2XPyk4ksoQEU3YM'
         );
+
+        // 정적 기사 (고정 기사)
+        const staticArticles = [
+            { title: '리젠메드컨설팅: 첨단재생의료기관 인증 획득 성공 스토리 및 의미 심층 분석', url: 'https://blog.naver.com/jaiwooshim/224208938834', tag: '인증 성공', source: '네이버 블로그', date: '2026.03.09', thumb: 'https://images.unsplash.com/photo-1576086213369-97a306d36557?w=400&h=240&fit=crop' },
+            { title: '리젠메드컨설팅: 첨단재생의료기관 인증 획득, 혁신의 시작', url: 'https://blog.naver.com/jaiwooshim/224208938544', tag: '혁신', source: '네이버 블로그', date: '2026.03.09', thumb: 'https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=400&h=240&fit=crop' },
+            { title: '리젠메드컨설팅, 첨단재생의료기관 인증 획득! 그 비하인드 스토리와 의미를 파헤쳐 봅니다!', url: 'https://blog.naver.com/jaiwooshim/224208938418', tag: '비하인드', source: '네이버 블로그', date: '2026.03.09', thumb: 'https://images.unsplash.com/photo-1579154204601-01588f351e67?w=400&h=240&fit=crop' },
+            { title: '리젠메드컨설팅: 첨단재생의료기관 인증 획득 과정 및 의미 완벽 분석', url: 'https://blog.naver.com/jaiwooshim/224208938296', tag: '완벽 분석', source: '네이버 블로그', date: '2026.03.09', thumb: 'https://images.unsplash.com/photo-1507413245164-6160d8298b31?w=400&h=240&fit=crop' }
+        ];
         const defaultThumbs = [
             'https://images.unsplash.com/photo-1576086213369-97a306d36557?w=400&h=240&fit=crop',
             'https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=400&h=240&fit=crop',
@@ -301,60 +277,98 @@
             'https://images.unsplash.com/photo-1530026405186-ed1f139313f8?w=400&h=240&fit=crop',
             'https://images.unsplash.com/photo-1582719471384-894fbb16e074?w=400&h=240&fit=crop'
         ];
+
+        let allArticles = [...staticArticles];
+        let currentView = 'board';
+
+        function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
         function todayStr() {
             const t = new Date();
-            return t.getFullYear() + '.' +
-                String(t.getMonth() + 1).padStart(2, '0') + '.' +
-                String(t.getDate()).padStart(2, '0');
+            return t.getFullYear() + '.' + String(t.getMonth()+1).padStart(2,'0') + '.' + String(t.getDate()).padStart(2,'0');
         }
-        function makeDynamicCard(a, i) {
-            const thumb = a.thumb || defaultThumbs[i % defaultThumbs.length];
-            const date = a.date || todayStr();
-            const card = document.createElement('a');
-            card.href = a.url;
-            card.target = '_blank';
-            card.className = 'news-card';
-            card.dataset.dynamic = '1';
-            card.innerHTML =
-                '<div class="news-thumb"><img src="' + thumb + '" alt="기사 썸네일"><span class="news-tag">' + esc(a.tag || '블로그') + '</span></div>' +
-                '<div class="news-body"><p class="news-source">' + esc(a.source || '') + '</p><h3 class="news-title">' + esc(a.title) + '</h3><p class="news-date">' + esc(date) + '</p></div>';
-            return card;
+        function formatDateDash(d) {
+            if (!d) return '';
+            return String(d).replace(/\./g, '-');
         }
-        function clearDynamicCards() {
-            document.querySelectorAll('#newsGrid [data-dynamic]').forEach(el => el.remove());
+
+        // ── 게시판 뷰 렌더링 ──
+        function renderBoardView() {
+            const tbody = document.getElementById('boardTableBody');
+            tbody.innerHTML = '';
+            const total = allArticles.length;
+            allArticles.forEach(function(a, i) {
+                const num = total - i;
+                const dateStr = formatDateDash(a.date || todayStr());
+                const tr = document.createElement('tr');
+                tr.innerHTML =
+                    '<td class="col-num">' + num + '</td>' +
+                    '<td class="col-title"><a href="' + esc(a.url) + '" target="_blank" class="bt-title-link">' +
+                        '<div class="bt-title">' + esc(a.title) + '</div>' +
+                        '<div class="bt-summary">기사 내용을 확인하려면 링크를 클릭하세요.</div>' +
+                    '</a></td>' +
+                    '<td class="col-cat"><span class="cat-badge">' + esc(a.tag || '블로그') + '</span></td>' +
+                    '<td class="col-date"><span class="board-date">' + esc(dateStr) + '</span></td>' +
+                    '<td class="col-link"><a href="' + esc(a.url) + '" target="_blank" class="board-link-btn" title="링크 열기">' +
+                        '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>' +
+                    '</a></td>';
+                tbody.appendChild(tr);
+            });
         }
-        (async function() {
+
+        // ── 썸네일 뷰 렌더링 ──
+        function renderThumbView() {
             const grid = document.getElementById('newsGrid');
+            grid.innerHTML = '';
+            allArticles.forEach(function(a, i) {
+                const thumb = a.thumb || defaultThumbs[i % defaultThumbs.length];
+                const card = document.createElement('a');
+                card.href = a.url;
+                card.target = '_blank';
+                card.className = 'news-card';
+                card.innerHTML =
+                    '<div class="news-thumb"><img src="' + thumb + '" alt="기사 썸네일" loading="lazy"><span class="news-tag">' + esc(a.tag || '블로그') + '</span></div>' +
+                    '<div class="news-body"><p class="news-source">' + esc(a.source || '') + '</p><h3 class="news-title">' + esc(a.title) + '</h3><p class="news-date">' + esc(a.date || todayStr()) + '</p></div>';
+                grid.appendChild(card);
+            });
+        }
+
+        function updateCount() {
+            document.getElementById('newsCount').textContent = allArticles.length + '개의 기사';
+        }
+
+        // ── 뷰 전환 ──
+        function setView(mode) {
+            currentView = mode;
+            const boardDiv = document.getElementById('newsBoardView');
+            const thumbDiv = document.getElementById('newsThumbView');
+            const btnBoard = document.getElementById('viewBoard');
+            const btnThumb = document.getElementById('viewThumb');
+            if (mode === 'board') {
+                boardDiv.style.display = '';
+                thumbDiv.style.display = 'none';
+                btnBoard.classList.add('active');
+                btnThumb.classList.remove('active');
+                renderBoardView();
+            } else {
+                boardDiv.style.display = 'none';
+                thumbDiv.style.display = '';
+                btnBoard.classList.remove('active');
+                btnThumb.classList.add('active');
+                renderThumbView();
+            }
+            localStorage.setItem('newsView', mode);
+        }
+
+        // 초기 로드: Supabase에서 기사 불러오기
+        (async function() {
             const { data, error } = await _sb
                 .from('news_articles')
                 .select('*')
                 .order('created_at', { ascending: false });
-            if (error || !data) return;
-            data.forEach(function(a, i) {
-                grid.appendChild(makeDynamicCard(a, i));
-            });
-        })();
-        function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
-
-        // ── 뷰 전환 ──
-        function setView(mode) {
-            const grid = document.getElementById('newsGrid');
-            const btnThumb = document.getElementById('viewThumb');
-            const btnBoard = document.getElementById('viewBoard');
-            if (mode === 'board') {
-                grid.classList.add('board-view');
-                btnBoard.classList.add('active');
-                btnThumb.classList.remove('active');
-                localStorage.setItem('newsView', 'board');
-            } else {
-                grid.classList.remove('board-view');
-                btnThumb.classList.add('active');
-                btnBoard.classList.remove('active');
-                localStorage.setItem('newsView', 'thumb');
+            if (!error && data && data.length > 0) {
+                allArticles = [...data, ...staticArticles];
             }
-        }
-        // 저장된 뷰 복원 (기본값: 게시판)
-        (function() {
+            updateCount();
             const saved = localStorage.getItem('newsView');
             setView(saved === 'thumb' ? 'thumb' : 'board');
         })();
@@ -371,11 +385,10 @@
             if (document.getElementById('adminPw').value === ADMIN_PW) {
                 document.getElementById('adminLoginBox').style.display = 'none';
                 document.getElementById('adminForm').style.display = 'block';
-                // 오늘 날짜 자동 입력
                 const today = new Date();
                 const yy = today.getFullYear();
-                const mm = String(today.getMonth() + 1).padStart(2, '0');
-                const dd = String(today.getDate()).padStart(2, '0');
+                const mm = String(today.getMonth()+1).padStart(2,'0');
+                const dd = String(today.getDate()).padStart(2,'0');
                 const dateEl = document.getElementById('af-date');
                 if (!dateEl.value) dateEl.value = yy + '.' + mm + '.' + dd;
                 document.getElementById('af-title').focus();
@@ -405,16 +418,14 @@
             if (error) { alert('저장 실패: ' + error.message); return; }
             ['af-title','af-url','af-tag','af-source','af-date','af-thumb'].forEach(id => document.getElementById(id).value = '');
             const toast = document.getElementById('afToast');
-            toast.textContent = '✅ 기사가 추가되었습니다! 페이지를 새로고침하면 표시됩니다.';
+            toast.textContent = '✅ 기사가 추가되었습니다!';
             toast.style.display = 'block';
             setTimeout(() => { toast.style.display = 'none'; }, 3000);
-            // 동적 카드 새로고침
-            clearDynamicCards();
-            const grid = document.getElementById('newsGrid');
+            // 데이터 재로드
             const { data } = await _sb.from('news_articles').select('*').order('created_at', { ascending: false });
-            if (data) data.forEach(function(a, i) {
-                grid.appendChild(makeDynamicCard(a, i));
-            });
+            if (data) allArticles = [...data, ...staticArticles];
+            updateCount();
+            setView(currentView);
         }
     </script>
 </body>
