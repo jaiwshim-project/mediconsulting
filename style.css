@@ -4159,8 +4159,12 @@ button {
     }
 
     .footer-content {
-        grid-template-columns: 1fr;
-        text-align: center;
+        grid-template-columns: 1fr 1fr;
+        text-align: left;
+    }
+
+    .footer-brand {
+        grid-column: 1 / -1;
     }
 
     .footer-links a:hover {
