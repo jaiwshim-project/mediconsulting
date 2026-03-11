@@ -3381,7 +3381,7 @@ button {
     line-height: 1.6;
 }
 
-.board-link-btn {
+.board-del-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -3389,12 +3389,13 @@ button {
     height: 32px;
     background: #fee2e2;
     color: #ef4444;
+    border: none;
     border-radius: 8px;
-    text-decoration: none;
+    cursor: pointer;
     transition: background 0.2s;
 }
 
-.board-link-btn:hover {
+.board-del-btn:hover {
     background: #fecaca;
 }
 
