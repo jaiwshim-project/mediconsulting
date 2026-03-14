@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NKCL × RegenMed 비즈니스 제안서 | 스케일업 블루프린트</title>
+    <meta name="description" content="NKCL Bio Group × RegenMed Consulting 파트너십 제안서. 면역·재생 통합 플랫폼 구축 전략 및 3년 스케일업 로드맵.">
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* ===== PROPOSAL PAGE STYLES ===== */
+        .proposal-hero {
+            background: linear-gradient(135deg, #0D1B3E 0%, #1A3360 50%, #004DA6 100%);
+            padding: 100px 0 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .proposal-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0,143,114,0.3) 0%, transparent 70%);
+        }
+        .proposal-hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        .proposal-badge {
+            display: inline-block;
+            background: rgba(85,239,196,0.15);
+            border: 1px solid rgba(85,239,196,0.4);
+            color: #55EFC4;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            padding: 6px 18px;
+            border-radius: 50px;
+            margin-bottom: 20px;
+        }
+        .proposal-hero-title {
+            font-size: clamp(28px, 5vw, 52px);
+            font-weight: 900;
+            color: #fff;
+            line-height: 1.2;
+            margin-bottom: 12px;
+        }
+        .proposal-hero-sub {
+            font-size: clamp(16px, 2.5vw, 22px);
+            color: #93C5FD;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+        .proposal-hero-desc {
+            font-size: 15px;
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 36px;
+        }
+        .proposal-meta {
+            display: flex;
+            gap: 32px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .proposal-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255,255,255,0.7);
+            font-size: 14px;
+        }
+        .proposal-meta-item span:first-child {
+            font-size: 18px;
+        }
+
+        /* ===== SLIDE VIEWER ===== */
+        .slide-section {
+            background: #F0F4F8;
+            padding: 60px 0;
+        }
+        .slide-viewer-wrap {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        .slide-counter-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            padding: 0 4px;
+        }
+        .slide-counter-text {
+            font-size: 14px;
+            font-weight: 700;
+            color: #374151;
+        }
+        .slide-counter-text span {
+            color: #004DA6;
+            font-size: 20px;
+        }
+        .slide-download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #004DA6, #008F72);
+            color: #fff;
+            font-size: 13px;
+            font-weight: 700;
+            padding: 8px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        .slide-download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,77,166,0.4);
+        }
+
+        /* Main slide display */
+        .slide-main {
+            position: relative;
+            background: #fff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 48px rgba(0,0,0,0.16);
+            aspect-ratio: 16/9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .slide-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: none;
+        }
+        .slide-img.active {
+            display: block;
+        }
+
+        /* Nav arrows */
+        .slide-nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 52px; height: 52px;
+            background: rgba(255,255,255,0.92);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            color: #004DA6;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+            z-index: 10;
+            transition: all 0.2s;
+        }
+        .slide-nav-btn:hover {
+            background: #fff;
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 6px 24px rgba(0,0,0,0.2);
+        }
+        .slide-nav-prev { left: 16px; }
+        .slide-nav-next { right: 16px; }
+        .slide-nav-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+            transform: translateY(-50%);
+        }
+
+        /* Slide description panel */
+        .slide-desc-panel {
+            background: #fff;
+            border-radius: 16px;
+            padding: 32px 36px;
+            margin-top: 20px;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+            border-left: 5px solid #003A80;
+        }
+        .slide-desc-panel .slide-desc-title {
+            font-size: 16px;
+            font-weight: 800;
+            color: #003A80;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .slide-desc-panel .slide-desc-title::before {
+            content: '';
+            display: inline-block;
+            width: 8px; height: 8px;
+            background: #004DA6;
+            border-radius: 50%;
+        }
+        .slide-desc-panel p {
+            font-size: 16px;
+            color: #111827;
+            line-height: 1.9;
+            margin: 0;
+            font-weight: 400;
+            letter-spacing: -0.01em;
+        }
+        .slide-desc-item { display: none; }
+        .slide-desc-item.active { display: block; }
+
+        /* Progress bar */
+        .slide-progress {
+            height: 4px;
+            background: #E2E8F0;
+            border-radius: 2px;
+            margin-top: 16px;
+            overflow: hidden;
+        }
+        .slide-progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #004DA6, #008F72);
+            border-radius: 2px;
+            transition: width 0.4s ease;
+        }
+
+        /* Thumbnails strip */
+        .slide-thumbs {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            overflow-x: auto;
+            padding: 8px 0 12px;
+            scrollbar-width: thin;
+            scrollbar-color: #CBD5E1 transparent;
+        }
+        .slide-thumbs::-webkit-scrollbar { height: 4px; }
+        .slide-thumbs::-webkit-scrollbar-track { background: transparent; }
+        .slide-thumbs::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 2px; }
+
+        .slide-thumb {
+            flex-shrink: 0;
+            width: 110px;
+            cursor: pointer;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 3px solid transparent;
+            transition: all 0.2s;
+            position: relative;
+        }
+        .slide-thumb img {
+            width: 100%;
+            aspect-ratio: 16/9;
+            object-fit: cover;
+            display: block;
+        }
+        .slide-thumb-num {
+            position: absolute;
+            bottom: 4px;
+            left: 4px;
+            background: rgba(0,0,0,0.6);
+            color: #fff;
+            font-size: 10px;
+            font-weight: 700;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+        .slide-thumb:hover {
+            border-color: #93C5FD;
+        }
+        .slide-thumb.active {
+            border-color: #004DA6;
+            box-shadow: 0 4px 12px rgba(0,77,166,0.3);
+        }
+
+        /* Slide info cards */
+        .slide-info-section {
+            background: #fff;
+            padding: 60px 0;
+        }
+        .slide-info-grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        .slide-info-card {
+            background: linear-gradient(135deg, #F8FAFF, #EFF6FF);
+            border: 1px solid #DBEAFE;
+            border-radius: 16px;
+            padding: 24px 20px;
+            text-align: center;
+        }
+        .slide-info-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+        .slide-info-value {
+            font-size: 24px;
+            font-weight: 900;
+            color: #004DA6;
+            line-height: 1.2;
+            margin-bottom: 6px;
+        }
+        .slide-info-label {
+            font-size: 13px;
+            color: #6B7280;
+            line-height: 1.5;
+        }
+
+        /* Roadmap section */
+        .roadmap-section {
+            background: linear-gradient(135deg, #0D1B3E 0%, #1A3360 100%);
+            padding: 60px 0;
+        }
+        .roadmap-section .section-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+        .roadmap-section .section-title {
+            color: #fff;
+        }
+        .roadmap-section .section-desc {
+            color: rgba(255,255,255,0.7);
+        }
+        .roadmap-steps {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .roadmap-step {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 32px 24px;
+            text-align: center;
+            position: relative;
+        }
+        .roadmap-step-year {
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            color: #55EFC4;
+            margin-bottom: 8px;
+        }
+        .roadmap-step-num {
+            width: 48px; height: 48px;
+            background: linear-gradient(135deg, #004DA6, #008F72);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: 900;
+            color: #fff;
+            margin: 0 auto 16px;
+        }
+        .roadmap-step h4 {
+            font-size: 18px;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 12px;
+        }
+        .roadmap-step-revenue {
+            font-size: 28px;
+            font-weight: 900;
+            color: #FFD600;
+            margin-bottom: 8px;
+        }
+        .roadmap-step p {
+            font-size: 13px;
+            color: rgba(255,255,255,0.6);
+            line-height: 1.6;
+        }
+
+        /* Tier section */
+        .tier-section {
+            background: #F8FAFF;
+            padding: 60px 0;
+        }
+        .tier-grid {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .tier-card {
+            background: #fff;
+            border-radius: 20px;
+            padding: 32px 28px;
+            border: 2px solid #E2E8F0;
+            transition: all 0.3s;
+        }
+        .tier-card:hover {
+            border-color: #004DA6;
+            box-shadow: 0 8px 32px rgba(0,77,166,0.12);
+            transform: translateY(-4px);
+        }
+        .tier-label {
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            color: #6B7280;
+            margin-bottom: 8px;
+        }
+        .tier-card h4 {
+            font-size: 18px;
+            font-weight: 900;
+            color: #111827;
+            margin-bottom: 16px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid #F1F5F9;
+        }
+        .tier-card ul {
+            list-style: none;
+            padding: 0; margin: 0;
+        }
+        .tier-card ul li {
+            font-size: 14px;
+            color: #374151;
+            padding: 8px 0;
+            border-bottom: 1px solid #F8FAFF;
+            display: flex;
+            gap: 8px;
+        }
+        .tier-card ul li::before {
+            content: '✓';
+            color: #008F72;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        /* CTA section */
+        .proposal-cta {
+            background: linear-gradient(135deg, #004DA6 0%, #008F72 100%);
+            padding: 72px 24px;
+            text-align: center;
+        }
+        .proposal-cta h2 {
+            font-size: clamp(24px, 4vw, 40px);
+            font-weight: 900;
+            color: #fff;
+            margin-bottom: 16px;
+        }
+        .proposal-cta p {
+            font-size: 18px;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 40px;
+        }
+        .cta-btn-group {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .cta-btn-white {
+            display: inline-block;
+            background: #fff;
+            color: #004DA6;
+            font-size: 16px;
+            font-weight: 800;
+            padding: 16px 36px;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        .cta-btn-white:hover {
+            background: #F0F4FF;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 28px rgba(0,0,0,0.2);
+        }
+        .cta-btn-outline {
+            display: inline-block;
+            background: transparent;
+            color: #fff;
+            font-size: 16px;
+            font-weight: 700;
+            padding: 16px 36px;
+            border-radius: 50px;
+            text-decoration: none;
+            border: 2px solid rgba(255,255,255,0.5);
+            transition: all 0.3s;
+        }
+        .cta-btn-outline:hover {
+            border-color: #fff;
+            background: rgba(255,255,255,0.1);
+        }
+
+        /* Keyboard hint */
+        .keyboard-hint {
+            text-align: center;
+            margin-top: 12px;
+            font-size: 13px;
+            color: #9CA3AF;
+        }
+        .keyboard-hint kbd {
+            background: #E5E7EB;
+            border-radius: 4px;
+            padding: 2px 8px;
+            font-size: 12px;
+            color: #374151;
+            font-family: monospace;
+        }
+
+        @media (max-width: 992px) {
+            .slide-info-grid { grid-template-columns: repeat(2, 1fr); }
+            .roadmap-steps { grid-template-columns: 1fr; max-width: 480px; }
+            .tier-grid { grid-template-columns: 1fr; max-width: 480px; }
+        }
+        @media (max-width: 640px) {
+            .slide-info-grid { grid-template-columns: 1fr 1fr; }
+            .slide-nav-btn { width: 40px; height: 40px; font-size: 16px; }
+            .slide-nav-prev { left: 8px; }
+            .slide-nav-next { right: 8px; }
+            .slide-thumb { width: 80px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- 헤더 -->
+    <header class="header" id="header">
+        <div class="header-container">
+            <div class="logo-group">
+                <a href="../index.html" class="logo">
+                    <span class="logo-icon">🧬</span>
+                    <span class="logo-text">RegenMed<span class="logo-highlight">Consulting</span></span>
+                </a>
+                <span class="logo-sub">첨단재생의료기관</span>
+            </div>
+            <nav class="nav">
+                <a href="why-us.html" class="nav-link">왜 우리인가</a>
+                <div class="nav-dropdown">
+                    <a href="philosophy.html" class="nav-link">통합 솔루션 <span class="nav-arrow">▾</span></a>
+                    <div class="nav-dropdown-menu">
+                        <a href="philosophy.html" class="dropdown-link">차별화 철학</a>
+                        <a href="package.html" class="dropdown-link">4단계 통합 패키지</a>
+                        <a href="prp-prf.html" class="dropdown-link">PRP + PRF 기술</a>
+                        <a href="svf-evar.html" class="dropdown-link">SVF + E-VAR 기술</a>
+                        <a href="sop.html" class="dropdown-link">SOP 패키지</a>
+                    </div>
+                </div>
+                <div class="nav-dropdown">
+                    <a href="services.html" class="nav-link">서비스 <span class="nav-arrow">▾</span></a>
+                    <div class="nav-dropdown-menu">
+                        <a href="diagnosis.html" class="dropdown-link">비즈니스 진단</a>
+                        <a href="results.html" class="dropdown-link">진단 결과 보기</a>
+                        <a href="https://jaiwshim-project.github.io/mediconsulting/pages/kimjaeryong.html" class="dropdown-link">김재룡성형외과</a>
+                    </div>
+                </div>
+                <div class="nav-dropdown">
+                    <a href="nkcl.html" class="nav-link active">파트너 <span class="nav-arrow">▾</span></a>
+                    <div class="nav-dropdown-menu">
+                        <a href="nkcl.html" class="dropdown-link nkcl-link">NKCL Bio Group</a>
+                        <a href="exvar.html" class="dropdown-link">ExVAR 셀테라피</a>
+                        <a href="nkcl-proposal.html" class="dropdown-link" style="color:#004DA6;font-weight:700;">📋 NKCL 제안서</a>
+                    </div>
+                </div>
+                <div class="nav-dropdown">
+                    <a href="process.html" class="nav-link">프로세스 <span class="nav-arrow">▾</span></a>
+                    <div class="nav-dropdown-menu">
+                        <a href="process.html" class="dropdown-link">컨설팅 프로세스</a>
+                        <a href="sop-guide.html" class="dropdown-link">표준작업지침서</a>
+                    </div>
+                </div>
+                <a href="requirements.html" class="nav-link">시설요건</a>
+                <a href="news.html" class="nav-link">기사 보기</a>
+            </nav>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- 모바일 오버레이 -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+
+    <!-- 모바일 메뉴 -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="why-us.html" class="mobile-nav-link">왜 우리인가</a>
+        <div class="mobile-nav-accordion">
+            <button class="mobile-nav-accordion-btn">통합 솔루션 <span class="mobile-acc-arrow">▾</span></button>
+            <div class="mobile-nav-accordion-content">
+                <a href="philosophy.html" class="mobile-nav-sub-link">차별화 철학</a>
+                <a href="package.html" class="mobile-nav-sub-link">4단계 통합 패키지</a>
+                <a href="prp-prf.html" class="mobile-nav-sub-link">PRP + PRF 기술</a>
+                <a href="svf-evar.html" class="mobile-nav-sub-link">SVF + E-VAR 기술</a>
+                <a href="sop.html" class="mobile-nav-sub-link">SOP 패키지</a>
+            </div>
+        </div>
+        <div class="mobile-nav-accordion">
+            <button class="mobile-nav-accordion-btn">서비스 <span class="mobile-acc-arrow">▾</span></button>
+            <div class="mobile-nav-accordion-content">
+                <a href="services.html" class="mobile-nav-sub-link">서비스 전체보기</a>
+                <a href="diagnosis.html" class="mobile-nav-sub-link">비즈니스 진단</a>
+                <a href="results.html" class="mobile-nav-sub-link">진단 결과 보기</a>
+                <a href="https://jaiwshim-project.github.io/mediconsulting/pages/kimjaeryong.html" class="mobile-nav-sub-link">김재룡성형외과</a>
+            </div>
+        </div>
+        <div class="mobile-nav-accordion">
+            <button class="mobile-nav-accordion-btn">파트너 <span class="mobile-acc-arrow">▾</span></button>
+            <div class="mobile-nav-accordion-content">
+                <a href="nkcl.html" class="mobile-nav-sub-link nkcl-link">NKCL Bio Group</a>
+                <a href="exvar.html" class="mobile-nav-sub-link">ExVAR 셀테라피</a>
+                <a href="nkcl-proposal.html" class="mobile-nav-sub-link" style="color:#004DA6;font-weight:700;">📋 NKCL 제안서</a>
+            </div>
+        </div>
+        <div class="mobile-nav-accordion">
+            <button class="mobile-nav-accordion-btn">프로세스 <span class="mobile-acc-arrow">▾</span></button>
+            <div class="mobile-nav-accordion-content">
+                <a href="process.html" class="mobile-nav-sub-link">컨설팅 프로세스</a>
+                <a href="sop-guide.html" class="mobile-nav-sub-link">표준작업지침서</a>
+            </div>
+        </div>
+        <a href="requirements.html" class="mobile-nav-link">시설요건</a>
+        <a href="news.html" class="mobile-nav-link">기사 보기</a>
+        <a href="results.html" class="mobile-nav-link nav-cta-mobile">진단 결과 보기</a>
+    </div>
+
+    <!-- 히어로 -->
+    <section class="proposal-hero">
+        <div class="proposal-hero-content container">
+            <div class="proposal-badge">Business Proposal 2026</div>
+            <h1 class="proposal-hero-title">스케일업 블루프린트</h1>
+            <p class="proposal-hero-sub">NKCL Bio Group × RegenMed Consulting</p>
+            <p class="proposal-hero-desc">면역·재생 통합 플랫폼 구축 전략 및 3년 스케일업 로드맵</p>
+            <div class="proposal-meta">
+                <div class="proposal-meta-item">
+                    <span>📋</span><span>총 13페이지 제안서</span>
+                </div>
+                <div class="proposal-meta-item">
+                    <span>🏥</span><span>1,000+ 잠재 병원 시장</span>
+                </div>
+                <div class="proposal-meta-item">
+                    <span>💰</span><span>3년 누적 240억 목표</span>
+                </div>
+                <div class="proposal-meta-item">
+                    <span>🤝</span><span>파트너십 공동 플랫폼</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 슬라이드 뷰어 -->
+    <section class="slide-section">
+        <div class="slide-viewer-wrap">
+            <div class="slide-counter-bar">
+                <div class="slide-counter-text">
+                    슬라이드 <span id="slideCurrentNum">1</span> / 13
+                </div>
+                <a href="nkcl.html" class="slide-download-btn">
+                    ← NKCL 파트너 정보 보기
+                </a>
+            </div>
+
+            <!-- 메인 슬라이드 -->
+            <div class="slide-main" id="slideMain">
+                <img src="../NKCL 제안서/슬라이드1.JPG" alt="슬라이드 1 - 스케일업 블루프린트 커버" class="slide-img active" id="slide-1">
+                <img src="../NKCL 제안서/슬라이드2.JPG" alt="슬라이드 2 - 면역·재생 통합 플랫폼 전략" class="slide-img" id="slide-2">
+                <img src="../NKCL 제안서/슬라이드3.JPG" alt="슬라이드 3 - 1,000개 잠재시장" class="slide-img" id="slide-3">
+                <img src="../NKCL 제안서/슬라이드4.JPG" alt="슬라이드 4 - 단독영업 vs 통합플랫폼" class="slide-img" id="slide-4">
+                <img src="../NKCL 제안서/슬라이드5.JPG" alt="슬라이드 5 - 블랙박스 해독 3모듈" class="slide-img" id="slide-5">
+                <img src="../NKCL 제안서/슬라이드6.JPG" alt="슬라이드 6 - 프리미엄 상향 판매 계단" class="slide-img" id="slide-6">
+                <img src="../NKCL 제안서/슬라이드7.JPG" alt="슬라이드 7 - 단위 경제 시뮬레이션" class="slide-img" id="slide-7">
+                <img src="../NKCL 제안서/슬라이드8.JPG" alt="슬라이드 8 - 수익 공유 파이프라인" class="slide-img" id="slide-8">
+                <img src="../NKCL 제안서/슬라이드9.JPG" alt="슬라이드 9 - 3년 스케일업 로드맵" class="slide-img" id="slide-9">
+                <img src="../NKCL 제안서/슬라이드10.JPG" alt="슬라이드 10 - 3가지 비즈니스 패키징 Tier" class="slide-img" id="slide-10">
+                <img src="../NKCL 제안서/슬라이드11.JPG" alt="슬라이드 11 - 파트너십 5대 전략적 이점" class="slide-img" id="slide-11">
+                <img src="../NKCL 제안서/슬라이드12.JPG" alt="슬라이드 12 - 면역 재생 플랫폼 플라이휠" class="slide-img" id="slide-12">
+                <img src="../NKCL 제안서/슬라이드13.JPG" alt="슬라이드 13 - 공동 플랫폼 지배자" class="slide-img" id="slide-13">
+
+                <button class="slide-nav-btn slide-nav-prev" id="prevBtn" onclick="changeSlide(-1)" disabled>&#8249;</button>
+                <button class="slide-nav-btn slide-nav-next" id="nextBtn" onclick="changeSlide(1)">&#8250;</button>
+            </div>
+
+            <!-- 진행 바 -->
+            <div class="slide-progress">
+                <div class="slide-progress-fill" id="progressFill" style="width: 7.69%"></div>
+            </div>
+            <div class="keyboard-hint">
+                키보드 <kbd>←</kbd> <kbd>→</kbd> 로 이동 &nbsp;|&nbsp; 아래 썸네일을 클릭해도 이동할 수 있습니다
+            </div>
+
+            <!-- 슬라이드별 설명 패널 -->
+            <div class="slide-desc-panel">
+                <div class="slide-desc-item active" id="desc-1">
+                    <div class="slide-desc-title">슬라이드 1 — 스케일업 블루프린트 : 제안서 개요</div>
+                    <p>이 제안서는 NKCL Bio Group과 RegenMed Consulting이 공동으로 구상한 면역·재생 통합 플랫폼 구축 전략의 핵심을 담고 있습니다. '스케일업 블루프린트'라는 제목이 상징하듯, 단순한 제품 공급 계약을 넘어 한국 첨단재생의료 시장 전체를 아우르는 사업 설계도를 제시합니다. NKCL Bio Group은 GMP 인증 4,000㎡ 시설과 4개국 특허 기술, 전임상 4개 암종 검증을 완료한 NK세포 면역치료 분야의 글로벌 리더입니다. RegenMed Consulting은 첨단재생의료기관 인허가 절차 전반을 설계·실행하는 전문 컨설팅 파트너입니다. 두 회사의 핵심 역량이 결합될 때, 전국 1,000개 이상의 잠재 병원 시장에 동시에 접근하는 '플랫폼형 파트너십'이 완성됩니다. 이 제안서는 그 파트너십의 구조, 수익 모델, 3년 로드맵, 그리고 병원별 맞춤 패키지까지 체계적으로 설명합니다. 지금부터 슬라이드를 한 장씩 넘기며 전략의 전모를 확인하십시오.</p>
+                </div>
+                <div class="slide-desc-item" id="desc-2">
+                    <div class="slide-desc-title">슬라이드 2 — 면역·재생 통합 플랫폼 구축 전략</div>
+                    <p>파트너십의 전체 골격을 3단계 로드맵과 수익 시뮬레이션으로 요약합니다. 1단계는 'NK세포 면역치료'를 기반으로 파일럿 병원에서 수익 모델을 검증하는 것이며, 2단계는 검증된 패키지를 전국으로 확산시켜 플랫폼 구조를 완성하는 것입니다. 3단계에서는 공동 브랜드와 독점 인허가 서비스로 시장 지배력을 강화합니다. 수익 시뮬레이션에 따르면 파트너 병원 1곳당 연간 최소 12억 원의 추가 매출이 발생하며, 이 중 NKCL은 약 4억 원의 수익을 확보합니다. 100개 병원으로 확대 시 400억 원 규모의 연간 수익이 가능합니다. 통합 플랫폼의 핵심은 인허가·시설·SOP·수익화라는 4개 모듈이 하나의 패키지로 묶인다는 점입니다. 병원 원장 입장에서는 복잡한 의사 결정 없이 원스톱으로 첨단재생의료기관 운영 체계를 구축할 수 있습니다. 이것이 경쟁사 대비 결정적인 차별점입니다.</p>
+                </div>
+                <div class="slide-desc-item" id="desc-3">
+                    <div class="slide-desc-title">슬라이드 3 — 1,000개 잠재시장과 기술 확산의 한계</div>
+                    <p>한국에는 현재 첨단재생의료 실시기관으로 지정 가능한 의료기관이 1,000개를 상회합니다. 그러나 실제 지정 기관 수는 아직 극히 제한적입니다. 그 이유는 기술 자체의 문제가 아니라 '실행 역량의 부재' 때문입니다. 인허가 절차의 복잡성, 시설 기준의 모호함, 임상 프로토콜의 낯섦이 잠재 병원들의 진입을 막고 있습니다. NKCL은 세계 최고 수준의 NK세포 기술을 보유하고 있지만, 기술만으로는 병원의 인허가 장벽을 넘을 수 없습니다. 반대로 RegenMed는 인허가 실행력을 갖추고 있지만 병원에 제공할 핵심 치료 기술이 필요합니다. 두 회사가 왜 파트너십을 맺어야 하는지를 시장 규모와 기술 확산 한계라는 두 가지 축으로 설명합니다. 1,000개의 잠재 병원은 기술과 실행이 결합될 때 비로소 실제 고객으로 전환됩니다. 이 거대한 미개척 시장을 선점하는 것이 이 제안의 핵심 기회입니다.</p>
+                </div>
+                <div class="slide-desc-item" id="desc-4">
+                    <div class="slide-desc-title">슬라이드 4 — 단독 영업 Friction vs 통합 플랫폼 Flow 비교</div>
+                    <p>현재 NKCL이 단독으로 병원 영업을 진행할 때 겪는 '마찰(Friction)'과, 통합 플랫폼을 통해 얻을 수 있는 '흐름(Flow)'을 직관적으로 대비합니다. 단독 영업 방식에서는 병원 원장이 NK세포 치료에 관심을 보이더라도 인허가 절차, 시설 개조 비용, 임상 SOP 작성, 의료진 교육 등 수십 개의 의사 결정 단계를 스스로 헤쳐 나가야 합니다. 결과적으로 상당수 병원이 관심 단계에서 포기하고 맙니다. 반면 통합 플랫폼에서는 병원이 RegenMed를 통해 원스톱 솔루션을 제공받으며, NKCL은 기술·제품 공급에만 집중할 수 있습니다. 병원 영업 성사율이 극적으로 높아지고, 계약에서 실제 치료 개시까지의 기간이 단축됩니다. 이는 곧 NKCL의 영업 비용 절감과 매출 사이클 가속으로 이어집니다. 파트너십의 경제적 합리성을 가장 명확하게 보여줍니다.</p>
+                </div>
+                <div class="slide-desc-item" id="desc-5">
+                    <div class="slide-desc-title">슬라이드 5 — 블랙박스 해독 : 시설설계·인허가 SOP·수익모델 3모듈</div>
+                    <p>병원 원장들이 첨단재생의료 진입을 주저하는 가장 큰 이유는 '블랙박스'처럼 느껴지는 복잡한 규제와 운영 체계 때문입니다. RegenMed가 그 블랙박스를 해독하는 세 가지 모듈을 제시합니다. 첫 번째 모듈은 '시설설계'로, 보건복지부 기준에 맞는 NK세포 처리실·냉동보관실·투여실의 설계와 인테리어를 체계적으로 안내합니다. 두 번째 모듈은 '인허가 SOP'로, 실시기관 지정 신청부터 연간 보고까지의 전 과정을 표준화된 절차서로 제공합니다. 세 번째 모듈은 '수익모델'로, 환자 유치 전략, 가격 책정, 패키지 구성, 마케팅 콘텐츠까지 수익화 전반을 지원합니다. 이 세 모듈이 통합될 때 병원은 처음 관심을 보인 시점부터 6개월 이내에 실제 치료를 개시하고 수익을 창출하는 것이 가능해집니다. NKCL 입장에서는 병원 파트너의 생존율이 높아지고, 장기 공급 관계가 안정적으로 유지됩니다.</p>
+                </div>
+                <div class="slide-desc-item" id="desc-6">
+                    <div class="slide-desc-title">슬라이드 6 — 프리미엄 상향 판매 계단 : PRP → 재생센터 → NK면역세포센터</div>
+                    <p>병원이 RegenMed 플랫폼에 합류한 후 단계적으로 수익을 높이는 '상향 판매 계단'을 설명합니다. 첫 번째 계단은 PRP·PRF 시술 도입으로, 비교적 낮은 진입 비용으로 재생의료 수익을 시작하는 단계입니다. 두 번째 계단은 SVF(지방유래줄기세포)를 활용한 '재생센터' 구축으로, 병원의 브랜딩과 환자 단가를 동시에 높입니다. 세 번째 계단이 바로 'NK면역세포센터'로, NKCL의 NK세포 치료를 도입해 최고 수준의 수익과 병원 브랜드 가치를 동시에 실현합니다. 이 계단 구조는 두 가지 전략적 의미를 갖습니다. 첫째, 병원이 한 번에 큰 투자를 하지 않고도 단계적으로 성장할 수 있어 진입 장벽이 낮아집니다. 둘째, 각 단계마다 NKCL과 RegenMed의 서비스가 추가로 필요하기 때문에 장기적이고 안정적인 수익 관계가 형성됩니다. 파트너 병원 한 곳의 생애가치(LTV)를 극대화합니다.</p>
+                </div>
+                <div class="slide-desc-item" id="desc-7">
+                    <div class="slide-desc-title">슬라이드 7 — 단위 경제 시뮬레이션 : 병원 1곳 연매출 12억</div>
+                    <p>파트너십의 수익성을 가장 구체적인 숫자로 제시합니다. 파트너 병원 1곳을 기준으로 NK세포 면역치료를 월평균 10건 시행할 경우, 환자 1인당 치료비 600만 원을 적용하면 월 매출은 6,000만 원, 연간 환산 시 7억 2,000만 원에 달합니다. 여기에 PRP·SVF 등 복합 프로토콜 적용과 패키지 업셀링을 포함하면 연간 총 매출은 12억 원 수준으로 추산됩니다. 이 중 NKCL은 NK세포 제품 공급 수익으로 약 4억 원을, RegenMed는 컨설팅·SOP·운영 지원 수익으로 약 2억 원을 확보합니다. 병원은 나머지 6억 원을 순수 운영 수익으로 가져갑니다. 주목할 점은 병원의 추가 투자 대비 수익률이 매우 높다는 것입니다. 기존 시설 활용도를 높이는 방식이기 때문에 병원의 고정비 부담이 거의 없습니다. 이 단위 경제 모델은 파트너 병원 수가 늘어날수록 선형적으로 확장됩니다.</p>
+                </div>
+                <div class="slide-desc-item" id="desc-8">
+                    <div class="slide-desc-title">슬라이드 8 — 수익 공유 파이프라인 도해</div>
+                    <p>환자 1인 치료비 600만 원이 어떻게 배분되는지를 시각적 파이프라인으로 보여줍니다. 환자가 파트너 병원에 600만 원을 지불하면, 병원은 이 중 약 400만 원을 운영 수익으로 보유하고, 200만 원을 NKCL과 RegenMed 사이의 공급·서비스 비용으로 지출합니다. NKCL은 NK세포 제품 원가·물류·품질관리를 포함하여 약 133만 원의 순수익을 확보하며, RegenMed는 SOP 라이선스·운영 지원·교육 서비스로 약 67만 원을 가져갑니다. 이 수익 구조의 핵심은 '지속 반복성'입니다. 환자 치료는 1회로 끝나지 않고 정기 면역 관리 프로그램으로 이어지기 때문에, 병원이 한 명의 환자를 유치하면 3~5년에 걸쳐 반복 수익이 발생합니다. NKCL 입장에서는 병원 파트너 수에 비례해 안정적인 공급 수익이 쌓이고, RegenMed는 운영 지원 수익이 꾸준히 축적됩니다. 이 파이프라인 모델은 삼자 모두에게 장기 성장 동인을 제공합니다.</p>
+                </div>
+                <div class="slide-desc-item" id="desc-9">
+                    <div class="slide-desc-title">슬라이드 9 — 3년 스케일업 : 1년차 40억 → 2년차 80억 → 3년차 120억</div>
+                    <p>파트너십의 3년간 성장 시나리오를 구체적인 수치로 제시합니다. 1년차 목표는 파일럿 병원 3~5곳 계약 및 수익 모델 검증으로, 합산 매출 40억 원을 목표로 합니다. 이 단계에서 핵심은 '레퍼런스 케이스' 확보입니다. 성공한 파트너 병원의 실제 수익 데이터와 임상 결과가 이후 영업의 가장 강력한 도구가 됩니다. 2년차는 검증된 패키지를 기반으로 전국 확산을 가속합니다. 목표 병원 수를 10곳 이상으로 늘리고, 공동 브랜드 캠페인과 의료진 교육 프로그램을 병행해 합산 매출 80억 원을 달성합니다. 3년차는 프리미엄 인허가 패키지와 독점 공급 계약을 통해 파트너 병원 20곳 이상을 확보하고, 연간 120억 원의 매출을 실현합니다. 3년 누적 목표 매출은 240억 원으로, 이는 국내 첨단재생의료 분야에서 단일 플랫폼이 달성한 전례 없는 규모입니다. 이 성장 곡선이 현실적인 이유는 단위 경제가 이미 검증되어 있고 시장이 충분히 크기 때문입니다.</p>
+                </div>
+                <div class="slide-desc-item" id="desc-10">
+                    <div class="slide-desc-title">슬라이드 10 — 3가지 비즈니스 패키징 Tier</div>
+                    <p>파트너 병원의 준비도와 투자 의향에 따라 선택할 수 있는 세 가지 패키지 구조를 설명합니다. Tier 1은 '공급 연동형'으로, NK세포 제품 공급 계약을 기반으로 기본 임상 프로토콜만 제공하는 최소 진입 옵션입니다. 인허가 준비가 이미 완료된 병원이나 시범 운영을 원하는 병원에 적합합니다. Tier 2는 '공동 브랜드형'으로, NKCL과 병원이 공동 브랜드를 구축하고 RegenMed의 통합 패키지(인허가·시설·SOP·마케팅)를 포함합니다. 대부분의 파트너 병원에 가장 적합한 표준 패키지이며, 수익 공유 계약도 여기에 해당합니다. Tier 3는 '프리미엄 인허가형'으로, 완전 턴키 방식의 독점 컨설팅과 장기 파이프라인 구축을 포함합니다. 대형 병원이나 의료법인 그룹에 적합하며, 가장 높은 수익 공유율과 독점적 지원을 받습니다. 이 세 Tier 구조를 통해 다양한 규모와 상황의 병원이 각자의 조건에 맞게 유연하게 파트너십에 진입할 수 있습니다.</p>
+                </div>
+                <div class="slide-desc-item" id="desc-11">
+                    <div class="slide-desc-title">슬라이드 11 — 파트너십 5대 전략적 이점</div>
+                    <p>NKCL이 이 파트너십을 통해 얻게 되는 다섯 가지 핵심 전략적 이점을 정리합니다. 첫째, '상품화'입니다. NK세포 기술이 병원이 쉽게 구매할 수 있는 완제품 패키지로 전환되어 영업 효율이 극적으로 높아집니다. 둘째, '장벽 축소'입니다. RegenMed의 인허가·SOP 지원으로 병원의 진입 장벽이 낮아지고 의사 결정이 가속됩니다. 셋째, '전국 확산'입니다. RegenMed의 기존 네트워크와 컨설팅 인프라를 활용해 단기간에 전국 커버리지를 확보할 수 있습니다. 넷째, '리스크 분산'입니다. 단독 영업 대비 계약 불발 리스크가 현저히 줄어들고, 비용·인력·시간을 효율적으로 배분할 수 있습니다. 다섯째, '장기 파이프라인'입니다. 파트너 병원이 한 번 계약되면 재료·소모품·교육·업그레이드 서비스를 통해 다년간 안정적인 수익이 지속됩니다. 이 다섯 가지 이점이 결합될 때, NKCL은 단순 기술 공급자에서 면역·재생 의료 플랫폼의 공동 설계자로 포지셔닝이 격상됩니다.</p>
+                </div>
+                <div class="slide-desc-item" id="desc-12">
+                    <div class="slide-desc-title">슬라이드 12 — 면역 재생 플랫폼 플라이휠</div>
+                    <p>파트너십이 만들어내는 자기 강화 성장 구조, 즉 '플라이휠(Flywheel)'을 도식화합니다. 플라이휠의 세 축은 'NKCL 기술', 'RegenMed 실행 플랫폼', '1,000+ 병원 인프라'입니다. NKCL의 NK세포 기술이 병원에 공급되면, 병원은 치료 결과를 축적하고 레퍼런스를 형성합니다. 이 레퍼런스가 새로운 병원의 진입을 유도하고, 늘어난 병원 파트너는 NKCL의 공급량 확대를 요구합니다. NKCL은 규모의 경제로 원가를 절감하고, 그 여유 자원을 R&D와 새로운 기술 개발에 투자합니다. 새로운 기술은 다시 플랫폼의 경쟁력을 높이고, RegenMed는 더 강력한 패키지를 병원에 제공할 수 있게 됩니다. 이 플라이휠이 한 번 돌기 시작하면 외부 충격 없이도 자기 강화 성장이 이루어집니다. 3년 후 이 플랫폼이 100개 병원에 뿌리내린다면, 후발 경쟁자가 진입하기 어려운 강력한 네트워크 효과가 형성됩니다. 단순 공급 계약이 아닌 '플랫폼 지배' 전략으로 불리는 까닭이 여기에 있습니다.</p>
+                </div>
+                <div class="slide-desc-item" id="desc-13">
+                    <div class="slide-desc-title">슬라이드 13 — 클로징 : 면역 재생 플랫폼의 공동 지배자로</div>
+                    <p>제안서의 핵심 메시지를 한 문장으로 압축합니다. "단순한 협업을 넘어, 면역 재생 플랫폼의 공동 지배자로." NKCL Bio Group과 RegenMed Consulting은 각각 독립적으로도 훌륭한 회사입니다. 그러나 두 회사가 결합할 때 비로소 개별 역량의 합을 훨씬 초과하는 시너지가 창출됩니다. NKCL은 기술을 갖고 있지만 병원 접근 실행력이 필요합니다. RegenMed는 실행력을 갖고 있지만 병원에 제공할 핵심 치료 기술이 필요합니다. 이 두 회사의 결합은 전략적 필연입니다. 한국 첨단재생의료 시장은 지금 이 순간 형성 중입니다. 누가 먼저 1,000개 병원에 접근하는 표준 플랫폼을 구축하느냐가 향후 10년을 지배하는 포지션을 결정합니다. 이 제안서는 그 선점 기회를 함께 잡자는 초청입니다. NKCL Bio Group의 결단 있는 파트너십 결정을 기다립니다. RegenMed Consulting은 즉시 실행 가능한 모든 준비가 되어 있습니다.</p>
+                </div>
+            </div>
+
+            <!-- 썸네일 스트립 -->
+            <div class="slide-thumbs" id="slideThumbs">
+                <div class="slide-thumb active" onclick="goToSlide(1)">
+                    <img src="../NKCL 제안서/슬라이드1.JPG" alt="1">
+                    <span class="slide-thumb-num">1</span>
+                </div>
+                <div class="slide-thumb" onclick="goToSlide(2)">
+                    <img src="../NKCL 제안서/슬라이드2.JPG" alt="2">
+                    <span class="slide-thumb-num">2</span>
+                </div>
+                <div class="slide-thumb" onclick="goToSlide(3)">
+                    <img src="../NKCL 제안서/슬라이드3.JPG" alt="3">
+                    <span class="slide-thumb-num">3</span>
+                </div>
+                <div class="slide-thumb" onclick="goToSlide(4)">
+                    <img src="../NKCL 제안서/슬라이드4.JPG" alt="4">
+                    <span class="slide-thumb-num">4</span>
+                </div>
+                <div class="slide-thumb" onclick="goToSlide(5)">
+                    <img src="../NKCL 제안서/슬라이드5.JPG" alt="5">
+                    <span class="slide-thumb-num">5</span>
+                </div>
+                <div class="slide-thumb" onclick="goToSlide(6)">
+                    <img src="../NKCL 제안서/슬라이드6.JPG" alt="6">
+                    <span class="slide-thumb-num">6</span>
+                </div>
+                <div class="slide-thumb" onclick="goToSlide(7)">
+                    <img src="../NKCL 제안서/슬라이드7.JPG" alt="7">
+                    <span class="slide-thumb-num">7</span>
+                </div>
+                <div class="slide-thumb" onclick="goToSlide(8)">
+                    <img src="../NKCL 제안서/슬라이드8.JPG" alt="8">
+                    <span class="slide-thumb-num">8</span>
+                </div>
+                <div class="slide-thumb" onclick="goToSlide(9)">
+                    <img src="../NKCL 제안서/슬라이드9.JPG" alt="9">
+                    <span class="slide-thumb-num">9</span>
+                </div>
+                <div class="slide-thumb" onclick="goToSlide(10)">
+                    <img src="../NKCL 제안서/슬라이드10.JPG" alt="10">
+                    <span class="slide-thumb-num">10</span>
+                </div>
+                <div class="slide-thumb" onclick="goToSlide(11)">
+                    <img src="../NKCL 제안서/슬라이드11.JPG" alt="11">
+                    <span class="slide-thumb-num">11</span>
+                </div>
+                <div class="slide-thumb" onclick="goToSlide(12)">
+                    <img src="../NKCL 제안서/슬라이드12.JPG" alt="12">
+                    <span class="slide-thumb-num">12</span>
+                </div>
+                <div class="slide-thumb" onclick="goToSlide(13)">
+                    <img src="../NKCL 제안서/슬라이드13.JPG" alt="13">
+                    <span class="slide-thumb-num">13</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 핵심 지표 카드 -->
+    <section class="slide-info-section">
+        <div class="slide-info-grid">
+            <div class="slide-info-card">
+                <div class="slide-info-icon">🏥</div>
+                <div class="slide-info-value">1,000+</div>
+                <div class="slide-info-label">잠재 병원 시장<br>(전국 첨단재생의료 대상)</div>
+            </div>
+            <div class="slide-info-card">
+                <div class="slide-info-icon">💰</div>
+                <div class="slide-info-value">12억</div>
+                <div class="slide-info-label">병원 1곳 연매출<br>(단위 경제 시뮬레이션)</div>
+            </div>
+            <div class="slide-info-card">
+                <div class="slide-info-icon">📈</div>
+                <div class="slide-info-value">240억</div>
+                <div class="slide-info-label">3년 누적 목표 매출<br>(1년차 40 → 3년차 120억)</div>
+            </div>
+            <div class="slide-info-card">
+                <div class="slide-info-icon">🤝</div>
+                <div class="slide-info-value">60:40</div>
+                <div class="slide-info-label">수익 공유 구조<br>(병원 400만 : NKCL 200만)</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3년 로드맵 -->
+    <section class="roadmap-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge" style="background:rgba(85,239,196,0.15);border-color:rgba(85,239,196,0.4);color:#55EFC4;">Scale-Up Roadmap</span>
+                <h2 class="section-title">3년 스케일업 로드맵</h2>
+                <p class="section-desc">단계별 파트너 병원 확대 및 수익 성장 전략</p>
+            </div>
+            <div class="roadmap-steps">
+                <div class="roadmap-step">
+                    <div class="roadmap-step-year">YEAR 1</div>
+                    <div class="roadmap-step-num">1</div>
+                    <h4>플랫폼 검증</h4>
+                    <div class="roadmap-step-revenue">40억</div>
+                    <p>파일럿 병원 계약<br>수익 모델 검증<br>SOP 표준화 완성</p>
+                </div>
+                <div class="roadmap-step">
+                    <div class="roadmap-step-year">YEAR 2</div>
+                    <div class="roadmap-step-num">2</div>
+                    <h4>가속 확산</h4>
+                    <div class="roadmap-step-revenue">80억</div>
+                    <p>전국 파트너 확대<br>공동 브랜드 론칭<br>레퍼런스 구축</p>
+                </div>
+                <div class="roadmap-step">
+                    <div class="roadmap-step-year">YEAR 3</div>
+                    <div class="roadmap-step-num">3</div>
+                    <h4>플랫폼 지배</h4>
+                    <div class="roadmap-step-revenue">120억</div>
+                    <p>프리미엄 인허가 완성<br>면역재생 플랫폼 선도<br>신규 시장 진출</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3가지 비즈니스 패키징 Tier -->
+    <section class="tier-section">
+        <div class="container">
+            <div class="section-header" style="text-align:center;margin-bottom:48px;">
+                <span class="section-badge">Partnership Tiers</span>
+                <h2 class="section-title">3가지 비즈니스 패키징</h2>
+                <p class="section-desc">병원의 준비도와 투자 의향에 따라 최적 Tier 선택</p>
+            </div>
+            <div class="tier-grid">
+                <div class="tier-card">
+                    <div class="tier-label">TIER 1</div>
+                    <h4>공급 연동형</h4>
+                    <ul>
+                        <li>NK세포 공급 계약 기반</li>
+                        <li>기본 임상 프로토콜 제공</li>
+                        <li>최소 진입 비용</li>
+                        <li>RegenMed SOP 기본 포함</li>
+                    </ul>
+                </div>
+                <div class="tier-card" style="border-color:#004DA6;box-shadow:0 8px 32px rgba(0,77,166,0.12);">
+                    <div class="tier-label" style="color:#004DA6;">TIER 2 · 추천</div>
+                    <h4>공동 브랜드형</h4>
+                    <ul>
+                        <li>NKCL × 병원 공동 브랜드</li>
+                        <li>마케팅 자산 공유</li>
+                        <li>전문 인허가 지원 포함</li>
+                        <li>RegenMed 통합 패키지</li>
+                    </ul>
+                </div>
+                <div class="tier-card">
+                    <div class="tier-label">TIER 3</div>
+                    <h4>프리미엄 인허가형</h4>
+                    <ul>
+                        <li>완전 턴키 인허가 대행</li>
+                        <li>전용 시설 설계 컨설팅</li>
+                        <li>독점 수익 공유 구조</li>
+                        <li>장기 파이프라인 구축</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="proposal-cta">
+        <h2>단순한 협업을 넘어,<br>면역 재생 플랫폼의 공동 지배자로</h2>
+        <p>NKCL Bio Group과 RegenMed Consulting의 파트너십에 관심 있으신가요?</p>
+        <div class="cta-btn-group">
+            <a href="nkcl.html" class="cta-btn-white">NKCL Bio Group 자세히 보기</a>
+            <a href="diagnosis.html" class="cta-btn-outline">무료 파트너십 상담 신청</a>
+        </div>
+    </section>
+
+    <!-- 푸터 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="../index.html" class="logo">
+                        <span class="logo-icon">🧬</span>
+                        <span class="logo-text">RegenMed<span class="logo-highlight">Consulting</span></span>
+                    </a>
+                    <span class="logo-sub">첨단재생의료기관</span>
+                    <p class="footer-desc">첨단재생의료 실시기관 인허가 전문 컨설팅<br>복잡한 인허가 절차를 쉽고 빠르게</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <a href="services.html">서비스</a>
+                    <a href="process.html">컨설팅 프로세스</a>
+                    <a href="expertise.html">전문분야</a>
+                    <a href="contact.html">무료상담</a>
+                    <a href="nkcl-proposal.html" style="color:#FFD600;font-weight:700;">📋 NKCL 제안서</a>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact</h4>
+                    <p>📞 010-5592-5700 (이장춘 대표)</p>
+                    <p>📞 010-5012-2885 (이용식 회장)</p>
+                    <p>📧 jaiwshim@gmail.com</p>
+                    <p>📍 대전시</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 RegenMed Consulting. All rights reserved.</p>
+                <a href="admin.html" class="admin-footer-btn" title="관리자 대시보드">&#9881; 관리자</a>
+            </div>
+        </div>
+    </footer>
+
+    <button class="back-to-top" id="backToTop">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 15l-6-6-6 6"/>
+        </svg>
+    </button>
+
+    <script src="../script.js"></script>
+
+    <!-- 슬라이드 뷰어 스크립트 -->
+    <script>
+        var currentSlide = 1;
+        var totalSlides = 13;
+
+        function goToSlide(n) {
+            // 이전 슬라이드 숨기기
+            document.getElementById('slide-' + currentSlide).classList.remove('active');
+            document.querySelectorAll('.slide-thumb')[currentSlide - 1].classList.remove('active');
+            document.getElementById('desc-' + currentSlide).classList.remove('active');
+
+            // 범위 조정
+            if (n < 1) n = 1;
+            if (n > totalSlides) n = totalSlides;
+            currentSlide = n;
+
+            // 새 슬라이드 보이기
+            document.getElementById('slide-' + currentSlide).classList.add('active');
+            document.querySelectorAll('.slide-thumb')[currentSlide - 1].classList.add('active');
+            document.getElementById('desc-' + currentSlide).classList.add('active');
+
+            // 카운터 & 프로그레스 업데이트
+            document.getElementById('slideCurrentNum').textContent = currentSlide;
+            document.getElementById('progressFill').style.width = (currentSlide / totalSlides * 100) + '%';
+
+            // 버튼 상태
+            document.getElementById('prevBtn').disabled = (currentSlide === 1);
+            document.getElementById('nextBtn').disabled = (currentSlide === totalSlides);
+
+            // 썸네일 스크롤
+            var thumb = document.querySelectorAll('.slide-thumb')[currentSlide - 1];
+            thumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        }
+
+        function changeSlide(dir) {
+            goToSlide(currentSlide + dir);
+        }
+
+        // 키보드 지원
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowLeft') changeSlide(-1);
+            if (e.key === 'ArrowRight') changeSlide(1);
+        });
+
+        // 터치 스와이프 지원
+        var touchStartX = 0;
+        var slideMain = document.getElementById('slideMain');
+        slideMain.addEventListener('touchstart', function(e) {
+            touchStartX = e.touches[0].clientX;
+        }, { passive: true });
+        slideMain.addEventListener('touchend', function(e) {
+            var diff = touchStartX - e.changedTouches[0].clientX;
+            if (Math.abs(diff) > 50) {
+                changeSlide(diff > 0 ? 1 : -1);
+            }
+        }, { passive: true });
+    </script>
+
+    <!-- AI 상담톡 -->
+    <button class="ai-chat-btn" onclick="document.getElementById('aiChatPanel').classList.toggle('open')">리젠메드<span style="color:#FFD600">AI</span>상담톡</button>
+    <div class="ai-chat-panel" id="aiChatPanel">
+        <div class="ai-chat-header">
+            <span>리젠메드<span style="color:#FFD600">AI</span>상담톡</span>
+            <button class="ai-chat-close" onclick="document.getElementById('aiChatPanel').classList.remove('open')">&times;</button>
+        </div>
+        <iframe src="https://aitalker.co.kr/biz020" class="ai-chat-iframe"></iframe>
+    </div>
+    <style>
+        .ai-chat-btn {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: linear-gradient(135deg, #0066CC, #00B894);
+            color: #fff;
+            font-size: 15px;
+            font-weight: 700;
+            padding: 14px 28px;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 6px 24px rgba(0,102,204,0.4);
+            z-index: 9999;
+            transition: all 0.3s;
+            font-family: var(--font-primary);
+        }
+        .ai-chat-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 32px rgba(0,102,204,0.5); }
+        .ai-chat-panel {
+            position: fixed;
+            bottom: 80px;
+            right: 24px;
+            width: 380px;
+            height: 560px;
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            z-index: 9998;
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        .ai-chat-panel.open { display: flex; }
+        .ai-chat-header {
+            background: linear-gradient(135deg, #0066CC, #00B894);
+            color: #fff;
+            padding: 16px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 700;
+        }
+        .ai-chat-close {
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 22px;
+            cursor: pointer;
+            line-height: 1;
+        }
+        .ai-chat-iframe { flex: 1; border: none; }
+        @media (max-width: 480px) {
+            .ai-chat-panel { width: calc(100vw - 32px); right: 16px; }
+        }
+    </style>
+
+    <a href="manual.html" class="manual-float-btn" title="사용자 매뉴얼">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/>
+        </svg>
+    </a>
+    <style>
+        .manual-float-btn {
+            position: fixed;
+            bottom: 88px;
+            right: 24px;
+            width: 48px; height: 48px;
+            background: #fff;
+            border: 2px solid #E2E8F0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #374151;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            z-index: 9997;
+            transition: all 0.3s;
+        }
+        .manual-float-btn:hover {
+            background: #004DA6;
+            border-color: #004DA6;
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,77,166,0.3);
+        }
+    </style>
+
+</body>
+</html>
