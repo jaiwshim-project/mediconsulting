@@ -85,6 +85,7 @@ body {
     color: var(--gray-800);
     line-height: 1.6;
     overflow-x: hidden;
+    padding-top: 73px;
 }
 
 a {
@@ -125,7 +126,7 @@ button {
    Header
 ======================================== */
 .header {
-    position: sticky;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
@@ -4385,9 +4386,9 @@ button {
 }
 
 .nkcl-link {
-    font-size: 0.94rem !important;
-    color: #FFD600 !important;
-    font-weight: 600 !important;
+    font-size: 0.775rem !important;
+    color: var(--gray-700) !important;
+    font-weight: 500 !important;
 }
 
 /* Mobile Sub Link (legacy) */
