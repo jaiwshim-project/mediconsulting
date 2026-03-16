@@ -1,3 +1,7 @@
 node_modules/
 .env
 .vercel
+
+# Large binary files (exceed GitHub 100MB limit)
+1 자료 모음/2025_첨단재생의료_SOP_청사진.pptx
+1 자료 모음/NKCL 제안서.pptx

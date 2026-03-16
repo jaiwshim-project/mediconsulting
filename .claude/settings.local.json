@@ -30,7 +30,25 @@
       "Bash(wc:*)",
       "WebFetch(domain:objetps.com)",
       "Bash(sed:*)",
-      "WebFetch(domain:youtu.be)"
+      "WebFetch(domain:youtu.be)",
+      "WebFetch(domain:blog.naver.com)",
+      "WebFetch(domain:m.blog.naver.com)",
+      "Read(//usr/**)",
+      "Read(//mingw64/**)",
+      "Read(//c/Program Files/Hancom/**)",
+      "Read(//c/Program Files \\(x86\\)/**)",
+      "Read(//c/Program Files/**)",
+      "Bash(SRC=\"C:/01 Claude-Code/23 이장춘/1 자료 모음/2025년도+첨단재생의료실시기관+지정신청+공모+붙임자료_v2.0_\\(3\\)/\\(양식 5\\) 2025년도 표준작업지침서 작성가이드 및 예시모델.hwp\"\nDEST=\"C:/01 Claude-Code/23 이장춘/리젠메드컨설팅/pages/sop-guide.hwp\"\ncp \"$SRC\" \"$DEST\" && echo \"copied\")",
+      "Bash(cd \"C:/01 Claude-Code/23 이장춘/리젠메드컨설팅\" && /c/Users/USER/AppData/Local/Programs/Python/Python314/python make_sop_pdf.py && echo \"Success\" || echo \"Failed\")",
+      "Bash(cd \"C:/01 Claude-Code/23 이장춘/리젠메드컨설팅\" && /c/Users/USER/AppData/Local/Programs/Python/Python314/python -c \"\nimport sys\nprint\\(sys.getdefaultencoding\\(\\)\\)\nwith open\\('make_sop_pdf.py', 'rb'\\) as f:\n    head = f.read\\(100\\)\nprint\\(head\\)\n\")",
+      "Bash(cd \"C:/01 Claude-Code/23 이장춘/리젠메드컨설팅\" && /c/Users/USER/AppData/Local/Programs/Python/Python314/python make_sop_pdf.py 2>&1 | head -30)",
+      "Bash(cd \"C:/01 Claude-Code/23 이장춘/리젠메드컨설팅\" && /c/Users/USER/AppData/Local/Programs/Python/Python314/python update_nav.py)",
+      "Bash(cd \"C:/01 Claude-Code/23 이장춘/리젠메드컨설팅\" && rm -f pages/sop-guide.hwp sop_raw.txt sop_clean.txt make_sop_pdf.py update_nav.py)",
+      "Bash(for f:*)",
+      "Bash(do echo:*)",
+      "Read(//c/01 Claude-Code/60-03 리젠메드컨설팅/**)",
+      "Bash(for file:*)",
+      "Bash(printf:*)"
     ]
   }
 }
