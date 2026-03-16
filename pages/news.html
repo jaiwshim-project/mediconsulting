@@ -43,7 +43,8 @@
                     <a href="nkcl.html" class="nav-link">파트너 <span class="nav-arrow">▾</span></a>
                     <div class="nav-dropdown-menu">
                         <a href="nkcl.html" class="dropdown-link nkcl-link">NKCL Bio Group</a>
-                        <a href="exvar.html" class="dropdown-link">ExVAR 셀테라피</a>
+                        <a href="exvar.html" class="dropdown-link">E-VAR 셀테라피</a>
+                        <a href="nkcl-proposal.html" class="dropdown-link" style="color:#004DA6;font-weight:700;">📋 NKCL 제안서</a>
                     </div>
                 </div>
                 <div class="nav-dropdown">
@@ -93,7 +94,8 @@
             <button class="mobile-nav-accordion-btn">파트너 <span class="mobile-acc-arrow">▾</span></button>
             <div class="mobile-nav-accordion-content">
                 <a href="nkcl.html" class="mobile-nav-sub-link nkcl-link">NKCL Bio Group</a>
-                <a href="exvar.html" class="mobile-nav-sub-link">ExVAR 셀테라피</a>
+                <a href="exvar.html" class="mobile-nav-sub-link">E-VAR 셀테라피</a>
+                <a href="nkcl-proposal.html" class="mobile-nav-sub-link" style="color:#004DA6;font-weight:700;">📋 NKCL 제안서</a>
             </div>
         </div>
         <div class="mobile-nav-accordion">
@@ -109,8 +111,12 @@
 
     <!-- 페이지 히어로 -->
     <section class="page-hero news-hero">
+        <div class="hero-bg">
+            <div class="hero-gradient"></div>
+            <div class="hero-pattern"></div>
+        </div>
         <div class="page-hero-content">
-            <span class="page-hero-badge">News & Blog</span>
+            <span class="section-badge">News & Blog</span>
             <h1 class="page-hero-title">기사 보기</h1>
             <p class="page-hero-desc">첨단재생의료 관련 최신 기사 및 블로그 글을 모아 소개합니다</p>
         </div>
@@ -236,21 +242,20 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
-                    <div class="logo-group">
-                        <a href="../index.html" class="logo">
-                            <span class="logo-icon">🧬</span>
-                            <span class="logo-text">RegenMed<span class="logo-highlight">Consulting</span></span>
-                        </a>
-                        <span class="logo-sub">첨단재생의료기관</span>
-                    </div>
+                    <a href="../index.html" class="logo">
+                        <span class="logo-icon">🧬</span>
+                        <span class="logo-text">RegenMed<span class="logo-highlight">Consulting</span></span>
+                    </a>
+                    <span class="logo-sub">첨단재생의료기관</span>
                     <p class="footer-desc">첨단재생의료 실시기관 인허가 전문 컨설팅<br>복잡한 인허가 절차를 쉽고 빠르게</p>
                 </div>
                 <div class="footer-links">
                     <h4>Quick Links</h4>
                     <a href="services.html">서비스</a>
                     <a href="process.html">컨설팅 프로세스</a>
-                    <a href="requirements.html">시설요건</a>
-                    <a href="news.html">기사 보기</a>
+                    <a href="expertise.html">전문분야</a>
+                    <a href="contact.html">무료상담</a>
+                    <a href="nkcl-proposal.html" style="color:#FFD600;font-weight:700;">📋 NKCL 제안서</a>
                 </div>
                 <div class="footer-contact">
                     <h4>Contact</h4>
@@ -262,10 +267,41 @@
             </div>
             <div class="footer-bottom">
                 <p>&copy; 2026 RegenMed Consulting. All rights reserved.</p>
+                <a href="admin.html" class="admin-footer-btn" title="관리자 대시보드">&#9881; 관리자</a>
             </div>
         </div>
     </footer>
 
+    <button class="back-to-top" id="backToTop">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 15l-6-6-6 6"/>
+        </svg>
+    </button>
+    <button class="ai-chat-btn" onclick="document.getElementById('aiChatPanel').classList.toggle('open')">리젠메드<span style="color:#FFD600">AI</span>상담톡</button>
+    <div class="ai-chat-panel" id="aiChatPanel">
+        <div class="ai-chat-header">
+            <span>리젠메드<span style="color:#FFD600">AI</span>상담톡</span>
+            <button class="ai-chat-close" onclick="document.getElementById('aiChatPanel').classList.remove('open')">&times;</button>
+        </div>
+        <iframe src="https://aitalker.co.kr/biz020" class="ai-chat-iframe"></iframe>
+    </div>
+    <a href="manual.html" class="manual-float-btn" title="사용자 매뉴얼">
+        <span class="manual-btn-icon">📖</span>
+        <span class="manual-btn-text">사용자 매뉴얼</span>
+    </a>
+    <style>
+        .ai-chat-btn{position:fixed;bottom:24px;right:24px;background:linear-gradient(135deg,#0066CC,#00B894);color:#fff;font-size:15px;font-weight:700;padding:14px 28px;border-radius:50px;border:none;cursor:pointer;box-shadow:0 6px 24px rgba(0,102,204,0.4);z-index:9999;transition:all 0.3s;font-family:var(--font-primary);}
+        .ai-chat-btn:hover{transform:translateY(-3px);box-shadow:0 10px 32px rgba(0,102,204,0.5);}
+        .ai-chat-panel{position:fixed;bottom:80px;right:24px;width:400px;height:600px;background:#fff;border-radius:20px;box-shadow:0 12px 48px rgba(0,0,0,0.2);z-index:10000;display:none;flex-direction:column;overflow:hidden;}
+        .ai-chat-panel.open{display:flex;}
+        .ai-chat-header{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;background:linear-gradient(135deg,#0066CC,#00B894);color:#fff;font-size:15px;font-weight:700;}
+        .ai-chat-close{background:none;border:none;color:#fff;font-size:24px;cursor:pointer;line-height:1;}
+        .ai-chat-iframe{flex:1;width:100%;border:none;}
+        .manual-float-btn{position:fixed;bottom:24px;left:24px;background:linear-gradient(135deg,#0D1B3E,#1A3360);color:#fff;font-size:13px;font-weight:700;padding:12px 20px;border-radius:50px;border:1px solid rgba(255,255,255,0.15);cursor:pointer;box-shadow:0 6px 20px rgba(13,27,62,0.4);z-index:9999;transition:all 0.3s;font-family:inherit;text-decoration:none;display:flex;align-items:center;gap:8px;}
+        .manual-float-btn:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(13,27,62,0.5);background:linear-gradient(135deg,#1A3360,#0066CC);}
+        .manual-btn-icon{font-size:16px;}
+        @media(max-width:480px){.ai-chat-panel{width:calc(100vw - 32px);height:calc(100vh - 120px);right:16px;bottom:72px;}}
+    </style>
     <script src="../script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
     <script>
