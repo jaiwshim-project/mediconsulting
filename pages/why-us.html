@@ -110,56 +110,6 @@
             .dhc-btn { justify-content: center; }
         }
 
-        /* PDF 뷰어 */
-        .pdf-viewer-section {
-            padding: 80px 0;
-            background: #F6F7FB;
-        }
-        .pdf-tab-nav {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-        }
-        .pdf-tab-btn {
-            padding: 12px 28px;
-            border: 2px solid #E2E8F0;
-            border-radius: 12px;
-            background: #fff;
-            font-size: 14px;
-            font-weight: 700;
-            color: #4A5568;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-family: var(--font-primary);
-        }
-        .pdf-tab-btn:hover {
-            border-color: #0066CC;
-            color: #0066CC;
-        }
-        .pdf-tab-btn.active {
-            background: linear-gradient(135deg, #004DA6, #008F72);
-            color: #fff;
-            border-color: transparent;
-        }
-        .pdf-viewer-wrap {
-            background: #fff;
-            border-radius: 20px;
-            box-shadow: 0 4px 32px rgba(0,0,0,0.08);
-            overflow: hidden;
-            border: 1px solid #E2E8F0;
-        }
-        .pdf-iframe {
-            width: 100%;
-            height: 800px;
-            border: none;
-            display: block;
-        }
-        @media (max-width: 768px) {
-            .pdf-iframe { height: 500px; }
-            .pdf-viewer-section { padding: 48px 0; }
-            .pdf-tab-btn { padding: 10px 18px; font-size: 13px; }
-        }
     </style>
 </head>
 <body>
@@ -361,29 +311,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- PDF 뷰어 섹션 -->
-    <section class="pdf-viewer-section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">비즈니스 성공 블루프린트</h2>
-                <p class="section-desc">첨단재생의료 실시기관 인허가 성공을 위한 가이드를 확인하세요</p>
-            </div>
-            <div class="pdf-tab-nav">
-                <button class="pdf-tab-btn active" onclick="switchPdf(this, '../1 자료 모음/리젠메드컨설팅 사업제안서.pdf')">비즈니스 블루프린트</button>
-            </div>
-            <div class="pdf-viewer-wrap">
-                <iframe id="pdfFrame" src="../1 자료 모음/리젠메드컨설팅 사업제안서.pdf#toolbar=0&navpanes=0&scrollbar=1" class="pdf-iframe"></iframe>
-            </div>
-            <script>
-            function switchPdf(btn, src) {
-                document.querySelectorAll('.pdf-tab-btn').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                document.getElementById('pdfFrame').src = src + '#toolbar=0&navpanes=0&scrollbar=1';
-            }
-            </script>
         </div>
     </section>
 
